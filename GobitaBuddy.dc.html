@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<svg viewBox="0 0 120 126" width="100%" height="100%" style="display:block;overflow:visible" aria-label="Gobita mascot">
+  <defs>
+    <linearGradient id="gbBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FCEFD9"></stop>
+      <stop offset="1" stop-color="#EFD6B2"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- feet -->
+  <ellipse cx="47" cy="113" rx="9.5" ry="6" fill="#6B5044"></ellipse>
+  <ellipse cx="73" cy="113" rx="9.5" ry="6" fill="#6B5044"></ellipse>
+  <!-- arms -->
+  <rect x="11" y="64" width="12" height="28" rx="6" fill="#E7C79E" stroke="#3A2C22" stroke-width="3"></rect>
+  <rect x="97" y="64" width="12" height="28" rx="6" fill="#E7C79E" stroke="#3A2C22" stroke-width="3"></rect>
+
+  <!-- antenna (Gobita spark) -->
+  <line x1="60" y1="20" x2="60" y2="8" stroke="#C9A24E" stroke-width="3" stroke-linecap="round"></line>
+  <circle cx="60" cy="5.5" r="4.2" fill="#F2CE73" stroke="#3A2C22" stroke-width="2"></circle>
+
+  <!-- hexagon body -->
+  <polygon points="60,18 97,38 97,80 60,100 23,80 23,38" fill="url(#gbBody)" stroke="#3A2C22" stroke-width="5" stroke-linejoin="round"></polygon>
+
+  <!-- face -->
+  <circle cx="40" cy="72" r="4.8" fill="#E89980" opacity=".55"></circle>
+  <circle cx="80" cy="72" r="4.8" fill="#E89980" opacity=".55"></circle>
+  <ellipse cx="49" cy="60" rx="5" ry="7" fill="#3A2C22"></ellipse>
+  <ellipse cx="71" cy="60" rx="5" ry="7" fill="#3A2C22"></ellipse>
+  <circle cx="51" cy="56.5" r="1.8" fill="#fff"></circle>
+  <circle cx="73" cy="56.5" r="1.8" fill="#fff"></circle>
+  <path d="M50 74 Q60 82 70 74" fill="none" stroke="#3A2C22" stroke-width="3.2" stroke-linecap="round"></path>
+
+  <!-- ── LEO NÚI (climb) — rust beanie + rope ── -->
+  <sc-if value="{{ isClimb }}" hint-placeholder-val="{{ false }}">
+  <g>
+    <circle cx="103" cy="80" r="9" fill="none" stroke="#C9A24E" stroke-width="4"></circle>
+    <path d="M31 41 Q60 8 89 41 Z" fill="#B5673C" stroke="#3A2C22" stroke-width="3" stroke-linejoin="round"></path>
+    <path d="M29 39 Q60 30 91 39 L91 44 Q60 35 29 44 Z" fill="#8A4B38"></path>
+    <circle cx="60" cy="10" r="6" fill="#F2CE73" stroke="#3A2C22" stroke-width="2.5"></circle>
+  </g>
+  </sc-if>
+
+  <!-- ── ĐUA (race) — jockey helmet + number ── -->
+  <sc-if value="{{ isRace }}" hint-placeholder-val="{{ false }}">
+  <g>
+    <path d="M30 43 Q60 8 90 43 Z" fill="#C0685B" stroke="#3A2C22" stroke-width="3" stroke-linejoin="round"></path>
+    <path d="M83 41 Q101 41 105 49 Q92 47 81 47 Z" fill="#8F3F35"></path>
+    <path d="M46 22 Q60 13 74 22 L71 33 Q60 27 49 33 Z" fill="#F2CE73"></path>
+    <rect x="97" y="58" width="19" height="17" rx="3" fill="#fff" stroke="#3A2C22" stroke-width="2.5"></rect>
+    <text x="106.5" y="71" font-size="12" font-weight="800" text-anchor="middle" fill="#B5673C" font-family="Montserrat,Arial,sans-serif">7</text>
+  </g>
+  </sc-if>
+
+  <!-- ── LẬT THẺ (memory) — magician hat + cards ── -->
+  <sc-if value="{{ isMemory }}" hint-placeholder-val="{{ false }}">
+  <g>
+    <ellipse cx="60" cy="40" rx="34" ry="7.5" fill="#3A2C22"></ellipse>
+    <rect x="43" y="5" width="34" height="35" rx="4" fill="#4A3325" stroke="#3A2C22" stroke-width="3"></rect>
+    <rect x="43" y="27" width="34" height="8" fill="#C0685B"></rect>
+    <g transform="translate(104 78) rotate(18)">
+      <rect x="-7" y="-13" width="15" height="21" rx="2.5" fill="#F7F2EB" stroke="#3A2C22" stroke-width="2"></rect>
+    </g>
+    <g transform="translate(100 78) rotate(2)">
+      <rect x="-7" y="-13" width="15" height="21" rx="2.5" fill="#fff" stroke="#3A2C22" stroke-width="2"></rect>
+      <path d="M0 -8 l3 5 -3 5 -3 -5 Z" fill="#C0685B"></path>
+    </g>
+  </g>
+  </sc-if>
+
+  <!-- ── BLITZ — headband + goggles + speed lines ── -->
+  <sc-if value="{{ isBlitz }}" hint-placeholder-val="{{ false }}">
+  <g>
+    <line x1="4" y1="52" x2="18" y2="52" stroke="#E0A24F" stroke-width="3" stroke-linecap="round"></line>
+    <line x1="2" y1="62" x2="17" y2="62" stroke="#D24B3E" stroke-width="3" stroke-linecap="round"></line>
+    <line x1="4" y1="72" x2="18" y2="72" stroke="#C9A24E" stroke-width="3" stroke-linecap="round"></line>
+    <path d="M30 45 Q60 30 90 45 L90 34 Q60 22 30 34 Z" fill="#D24B3E" stroke="#3A2C22" stroke-width="2.5" stroke-linejoin="round"></path>
+    <path d="M63 27 L53 39 L59 39 L56 47 L67 34 L61 34 Z" fill="#F2CE73" stroke="#3A2C22" stroke-width="1.4" stroke-linejoin="round"></path>
+  </g>
+  </sc-if>
+
+  <!-- ── HẦM MỎ (mine) — miner helmet + lamp glow ── -->
+  <sc-if value="{{ isMine }}" hint-placeholder-val="{{ false }}">
+  <g>
+    <circle cx="60" cy="25" r="13" fill="#F2CE73" opacity=".38"></circle>
+    <ellipse cx="60" cy="42" rx="31" ry="8" fill="#C98A1E"></ellipse>
+    <path d="M33 42 Q60 8 87 42 Z" fill="#F0B429" stroke="#3A2C22" stroke-width="3" stroke-linejoin="round"></path>
+    <circle cx="60" cy="24" r="7" fill="#FFF3C4" stroke="#3A2C22" stroke-width="2.5"></circle>
+  </g>
+  </sc-if>
+
+  <!-- ── XẾP PROMPT (prompt) — builder hard hat + blocks ── -->
+  <sc-if value="{{ isPrompt }}" hint-placeholder-val="{{ false }}">
+  <g>
+    <ellipse cx="60" cy="41" rx="33" ry="8" fill="#B5521A"></ellipse>
+    <path d="M36 41 Q60 9 84 41 Z" fill="#E2701A" stroke="#3A2C22" stroke-width="3" stroke-linejoin="round"></path>
+    <rect x="57" y="11" width="6" height="30" rx="2" fill="#B5521A"></rect>
+    <g transform="translate(95 61)">
+      <rect x="0" y="0" width="23" height="6.5" rx="3.2" fill="#3A2C22"></rect>
+      <rect x="0" y="9.5" width="16" height="6.5" rx="3.2" fill="#6B5044"></rect>
+      <rect x="0" y="19" width="20" height="6.5" rx="3.2" fill="#C9A24E"></rect>
+    </g>
+  </g>
+  </sc-if>
+
+  <!-- ── GIỮ VỮNG BỨC TƯỜNG (wall) — guard helmet + round shield ── -->
+  <sc-if value="{{ isWall }}" hint-placeholder-val="{{ false }}">
+  <g>
+    <circle cx="103" cy="86" r="12" fill="#C9A24E" stroke="#3A2C22" stroke-width="3"></circle>
+    <circle cx="103" cy="86" r="5" fill="#F2CE73" stroke="#3A2C22" stroke-width="2"></circle>
+    <path d="M30 44 Q60 9 90 44 Z" fill="#7A5C4A" stroke="#3A2C22" stroke-width="3" stroke-linejoin="round"></path>
+    <rect x="29" y="41" width="62" height="6" rx="3" fill="#52382B"></rect>
+    <circle cx="60" cy="18" r="5" fill="#C0685B" stroke="#3A2C22" stroke-width="2.5"></circle>
+  </g>
+  </sc-if>
+</svg>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:140,&quot;height&quot;:150},&quot;outfit&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;climb&quot;,&quot;race&quot;,&quot;memory&quot;,&quot;blitz&quot;,&quot;mine&quot;,&quot;prompt&quot;,&quot;wall&quot;],&quot;default&quot;:&quot;climb&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const o = this.props.outfit || 'climb';
+    return {
+      isClimb: o === 'climb', isRace: o === 'race', isMemory: o === 'memory',
+      isBlitz: o === 'blitz', isMine: o === 'mine', isPrompt: o === 'prompt', isWall: o === 'wall',
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="position:relative;width:100%;height:100%;overflow:hidden">
+  <svg viewBox="0 0 320 112" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" style="display:block;position:absolute;inset:0">
+    <defs>
+      <linearGradient id="skyDawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBE3B4"></stop><stop offset="1" stop-color="#F1B183"></stop></linearGradient>
+      <linearGradient id="skyRace" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D2A0"></stop><stop offset="1" stop-color="#EBB27C"></stop></linearGradient>
+      <linearGradient id="skyBlitz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EDA24E"></stop><stop offset="1" stop-color="#D46E33"></stop></linearGradient>
+      <radialGradient id="feltMem" cx="50%" cy="34%" r="80%"><stop offset="0" stop-color="#8C6249"></stop><stop offset="1" stop-color="#573A2C"></stop></radialGradient>
+      <radialGradient id="lampGlow" cx="50%" cy="42%" r="55%"><stop offset="0" stop-color="#F2CE73" stop-opacity=".85"></stop><stop offset="1" stop-color="#F2CE73" stop-opacity="0"></stop></radialGradient>
+      <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CDA073"></stop><stop offset="1" stop-color="#B07E52"></stop></linearGradient>
+    </defs>
+
+    <!-- ══ CLIMB · mountain at dawn ══ -->
+    <sc-if value="{{ isClimb }}" hint-placeholder-val="{{ false }}">
+    <g>
+      <rect x="0" y="0" width="320" height="112" fill="url(#skyDawn)"></rect>
+      <circle cx="96" cy="46" r="26" fill="#F9DC94"></circle>
+      <circle cx="96" cy="46" r="26" fill="#FCEBB8" opacity=".5"></circle>
+      <polygon points="70,26 78,34 70,42 62,34" fill="#fff" opacity=".28"></polygon>
+      <polygon points="232,20 240,28 232,36 224,28" fill="#fff" opacity=".22"></polygon>
+      <path d="M-10 112 L70 46 L150 112 Z" fill="#C99B72"></path>
+      <path d="M120 112 L210 40 L300 112 Z" fill="#8F6448"></path>
+      <path d="M210 40 L232 58 L210 62 L196 54 Z" fill="#F7F2EB" opacity=".85"></path>
+      <path d="M250 112 L330 58 L400 112 Z" fill="#6B4A38"></path>
+      <line x1="210" y1="40" x2="210" y2="24" stroke="#3A2C22" stroke-width="2.4"></line>
+      <path d="M210 24 L228 29 L210 34 Z" fill="#C0685B"></path>
+    </g>
+    </sc-if>
+
+    <!-- ══ RACE · racetrack ══ -->
+    <sc-if value="{{ isRace }}" hint-placeholder-val="{{ false }}">
+    <g>
+      <rect x="0" y="0" width="320" height="112" fill="url(#skyRace)"></rect>
+      <circle cx="256" cy="34" r="20" fill="#F9DC94"></circle>
+      <polygon points="60,24 68,32 60,40 52,32" fill="#fff" opacity=".22"></polygon>
+      <rect x="0" y="70" width="320" height="42" fill="#7C8A52"></rect>
+      <polygon points="118,70 202,70 268,112 52,112" fill="#8A5A3E"></polygon>
+      <polygon points="150,70 170,70 186,112 134,112" fill="#7A4E34"></polygon>
+      <rect x="156" y="76" width="8" height="9" fill="#F7F2EB"></rect>
+      <rect x="153" y="92" width="14" height="11" fill="#F7F2EB"></rect>
+      <g>
+        <rect x="196" y="58" width="30" height="20" fill="#F7F2EB"></rect>
+        <rect x="196" y="58" width="7.5" height="6.6" fill="#3A2C22"></rect><rect x="211" y="58" width="7.5" height="6.6" fill="#3A2C22"></rect>
+        <rect x="203.5" y="64.6" width="7.5" height="6.6" fill="#3A2C22"></rect><rect x="218.5" y="64.6" width="7.5" height="6.6" fill="#3A2C22"></rect>
+        <rect x="196" y="71.2" width="7.5" height="6.8" fill="#3A2C22"></rect><rect x="211" y="71.2" width="7.5" height="6.8" fill="#3A2C22"></rect>
+        <line x1="196" y1="58" x2="196" y2="92" stroke="#3A2C22" stroke-width="2.4"></line>
+      </g>
+    </g>
+    </sc-if>
+
+    <!-- ══ MEMORY · card table ══ -->
+    <sc-if value="{{ isMemory }}" hint-placeholder-val="{{ false }}">
+    <g>
+      <rect x="0" y="0" width="320" height="112" fill="url(#feltMem)"></rect>
+      <ellipse cx="160" cy="20" rx="150" ry="40" fill="#F2CE73" opacity=".16"></ellipse>
+      <polygon points="44,30 52,38 44,46 36,38" fill="#fff" opacity=".12"></polygon>
+      <polygon points="280,26 288,34 280,42 272,34" fill="#fff" opacity=".1"></polygon>
+      <g transform="translate(120 78)">
+        <g transform="rotate(-24)"><rect x="-13" y="-30" width="26" height="40" rx="4" fill="#F4EAD8" stroke="#3A2C22" stroke-width="2"></rect></g>
+        <g transform="rotate(-12)"><rect x="-13" y="-30" width="26" height="40" rx="4" fill="#F7F2EB" stroke="#3A2C22" stroke-width="2"></rect></g>
+        <g transform="rotate(0)"><rect x="-13" y="-30" width="26" height="40" rx="4" fill="#fff" stroke="#3A2C22" stroke-width="2"></rect><path d="M0 -18 l6 9 -6 9 -6 -9 Z" fill="#C0685B"></path></g>
+        <g transform="rotate(12)"><rect x="-13" y="-30" width="26" height="40" rx="4" fill="#F7F2EB" stroke="#3A2C22" stroke-width="2"></rect></g>
+        <g transform="rotate(24)"><rect x="-13" y="-30" width="26" height="40" rx="4" fill="#F4EAD8" stroke="#3A2C22" stroke-width="2"></rect></g>
+      </g>
+    </g>
+    </sc-if>
+
+    <!-- ══ BLITZ · countdown clock ══ -->
+    <sc-if value="{{ isBlitz }}" hint-placeholder-val="{{ false }}">
+    <g>
+      <rect x="0" y="0" width="320" height="112" fill="url(#skyBlitz)"></rect>
+      <g stroke="#F7DFA8" stroke-width="7" opacity=".4" stroke-linecap="round">
+        <line x1="104" y1="56" x2="20" y2="12"></line><line x1="104" y1="56" x2="8" y2="56"></line><line x1="104" y1="56" x2="20" y2="100"></line>
+        <line x1="104" y1="56" x2="300" y2="8"></line><line x1="104" y1="56" x2="316" y2="56"></line><line x1="104" y1="56" x2="300" y2="104"></line>
+      </g>
+      <circle cx="104" cy="56" r="40" fill="#F7F2EB" stroke="#3A2C22" stroke-width="4"></circle>
+      <circle cx="104" cy="56" r="40" fill="none" stroke="#E0A24F" stroke-width="4" stroke-dasharray="188 63" transform="rotate(-90 104 56)"></circle>
+      <line x1="104" y1="56" x2="104" y2="28" stroke="#C0685B" stroke-width="4" stroke-linecap="round"></line>
+      <line x1="104" y1="56" x2="126" y2="60" stroke="#3A2C22" stroke-width="4" stroke-linecap="round"></line>
+      <circle cx="104" cy="56" r="4" fill="#3A2C22"></circle>
+      <text x="104" y="88" font-size="15" font-weight="800" text-anchor="middle" fill="#3A2C22" font-family="Montserrat,Arial,sans-serif">60</text>
+    </g>
+    </sc-if>
+
+    <!-- ══ MINE · underground glow ══ -->
+    <sc-if value="{{ isMine }}" hint-placeholder-val="{{ false }}">
+    <g>
+      <rect x="0" y="0" width="320" height="112" fill="#3A2C22"></rect>
+      <path d="M40 112 Q40 44 160 44 Q280 44 280 112 Z" fill="#4E3729"></path>
+      <path d="M64 112 Q64 60 160 60 Q256 60 256 112 Z" fill="#5E4230"></path>
+      <ellipse cx="160" cy="96" rx="120" ry="44" fill="url(#lampGlow)"></ellipse>
+      <g stroke="#C9A24E" stroke-width="2" opacity=".5"><line x1="90" y1="58" x2="110" y2="78"></line><line x1="240" y1="56" x2="220" y2="76"></line></g>
+      <g transform="translate(96 92)"><rect x="-9" y="-9" width="18" height="18" rx="3" transform="rotate(45)" fill="#F2CE73" stroke="#3A2C22" stroke-width="2"></rect></g>
+      <g transform="translate(222 90)"><rect x="-7" y="-7" width="14" height="14" rx="3" transform="rotate(45)" fill="#E0A24F" stroke="#3A2C22" stroke-width="2"></rect></g>
+      <polygon points="30,24 38,32 30,40 22,32" fill="#F2CE73" opacity=".25"></polygon>
+      <polygon points="292,28 300,36 292,44 284,36" fill="#F2CE73" opacity=".2"></polygon>
+    </g>
+    </sc-if>
+
+    <!-- ══ PROMPT · workshop ══ -->
+    <sc-if value="{{ isPrompt }}" hint-placeholder-val="{{ false }}">
+    <g>
+      <rect x="0" y="0" width="320" height="112" fill="url(#wood)"></rect>
+      <g fill="#A5734A" opacity=".55">
+        <circle cx="40" cy="24" r="3"></circle><circle cx="72" cy="24" r="3"></circle><circle cx="104" cy="24" r="3"></circle><circle cx="40" cy="48" r="3"></circle><circle cx="72" cy="48" r="3"></circle><circle cx="104" cy="48" r="3"></circle>
+      </g>
+      <rect x="0" y="82" width="320" height="30" fill="#8F6440"></rect>
+      <rect x="0" y="80" width="320" height="5" fill="#6B4A30"></rect>
+      <g transform="translate(150 42)">
+        <rect x="0" y="0" width="86" height="11" rx="5.5" fill="#3A2C22"></rect>
+        <rect x="0" y="15" width="60" height="11" rx="5.5" fill="#6B5044"></rect>
+        <rect x="0" y="30" width="74" height="11" rx="5.5" fill="#C9A24E"></rect>
+      </g>
+      <g transform="translate(258 40) rotate(24)"><rect x="0" y="0" width="9" height="44" rx="3" fill="#B0B7BD"></rect><circle cx="4.5" cy="4" r="7" fill="none" stroke="#B0B7BD" stroke-width="4"></circle></g>
+    </g>
+    </sc-if>
+
+    <!-- ══ WALL · castle gate + cute monsters ══ -->
+    <sc-if value="{{ isWall }}" hint-placeholder-val="{{ false }}">
+    <g>
+      <rect x="0" y="0" width="320" height="112" fill="url(#skyRace)"></rect>
+      <circle cx="272" cy="28" r="17" fill="#F9DC94"></circle>
+      <rect x="0" y="94" width="320" height="18" fill="#8A6A46"></rect>
+      <g fill="#C97B4E"><rect x="14" y="32" width="14" height="9"></rect><rect x="38" y="32" width="14" height="9"></rect><rect x="62" y="32" width="14" height="9"></rect></g>
+      <rect x="14" y="40" width="62" height="56" fill="#C97B4E"></rect>
+      <g stroke="#F4EAD8" stroke-width="1.5" opacity=".45"><line x1="14" y1="54" x2="76" y2="54"></line><line x1="14" y1="68" x2="76" y2="68"></line><line x1="14" y1="82" x2="76" y2="82"></line><line x1="36" y1="40" x2="36" y2="54"></line><line x1="58" y1="54" x2="58" y2="68"></line><line x1="36" y1="68" x2="36" y2="82"></line><line x1="58" y1="82" x2="58" y2="96"></line></g>
+      <g transform="translate(148 80)"><ellipse cx="0" cy="12" rx="11" ry="3" fill="#3A2C22" opacity=".28"></ellipse><ellipse cx="0" cy="0" rx="13" ry="12" fill="#6FB6A6"></ellipse><path d="M-9 -11 l3 5 M9 -11 l-3 5" stroke="#4E8E80" stroke-width="2" stroke-linecap="round"></path><circle cx="-4" cy="-2" r="3.4" fill="#fff"></circle><circle cx="4" cy="-2" r="3.4" fill="#fff"></circle><circle cx="-4" cy="-1.5" r="1.6" fill="#3A2C22"></circle><circle cx="4" cy="-1.5" r="1.6" fill="#3A2C22"></circle></g>
+      <g transform="translate(210 84)"><ellipse cx="0" cy="10" rx="9" ry="2.5" fill="#3A2C22" opacity=".28"></ellipse><ellipse cx="0" cy="0" rx="11" ry="10" fill="#B98BC4"></ellipse><path d="M0 -10 l0 -5" stroke="#9268A0" stroke-width="2" stroke-linecap="round"></path><circle cx="0" cy="-14" r="2" fill="#9268A0"></circle><circle cx="-3.5" cy="-1" r="3" fill="#fff"></circle><circle cx="3.5" cy="-1" r="3" fill="#fff"></circle><circle cx="-3.5" cy="-.5" r="1.4" fill="#3A2C22"></circle><circle cx="3.5" cy="-.5" r="1.4" fill="#3A2C22"></circle></g>
+      <g transform="translate(266 80)"><ellipse cx="0" cy="11" rx="10" ry="2.8" fill="#3A2C22" opacity=".28"></ellipse><ellipse cx="0" cy="0" rx="12" ry="11" fill="#E19A6B"></ellipse><path d="M-8 -10 l2 5 M8 -10 l-2 5" stroke="#C1794C" stroke-width="2" stroke-linecap="round"></path><circle cx="-4" cy="-2" r="3.2" fill="#fff"></circle><circle cx="4" cy="-2" r="3.2" fill="#fff"></circle><circle cx="-4" cy="-1.5" r="1.5" fill="#3A2C22"></circle><circle cx="4" cy="-1.5" r="1.5" fill="#3A2C22"></circle></g>
+    </g>
+    </sc-if>
+  </svg>
+
+  <div style="position:absolute;right:16px;bottom:-4px;width:74px;height:78px;filter:drop-shadow(0 3px 5px rgba(58,44,34,.28))">
+    <dc-import name="GobitaBuddy" outfit="{{ outfit }}" hint-size="74px,78px" style="width:74px;height:78px;display:block"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:260,&quot;height&quot;:112},&quot;game&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;climb&quot;,&quot;race&quot;,&quot;memory&quot;,&quot;blitz&quot;,&quot;mine&quot;,&quot;prompt&quot;,&quot;wall&quot;],&quot;default&quot;:&quot;climb&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const g = this.props.game || 'climb';
+    return {
+      outfit: g,
+      isClimb: g === 'climb', isRace: g === 'race', isMemory: g === 'memory',
+      isBlitz: g === 'blitz', isMine: g === 'mine', isPrompt: g === 'prompt', isWall: g === 'wall',
+    };
+  }
+}
+</script>
+</body>
+</html>

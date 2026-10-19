@@ -1,0 +1,15 @@
+/* Montserrat, self-hosted and subset to the app's character set — Latin +
+   Vietnamese + numerals + the punctuation/arrows/currency the UI uses. One
+   woff2 per weight (~24KB each; 120KB total, down from 588KB across 15
+   Google subset files). No unicode-range: each file already holds the whole
+   app charset, so the browser fetches exactly one file per weight it paints.
+
+   Paths are relative to THIS stylesheet (assets/fonts/). The previous rules
+   used './assets/fonts/…', which a browser resolves against the stylesheet's
+   own directory → 'assets/fonts/assets/fonts/…' → 404, so every face silently
+   fell back to Arial. Fixed to './mont-*.woff2'. */
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url('./mont-400.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url('./mont-500.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url('./mont-600.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url('./mont-700.woff2') format('woff2');}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url('./mont-800.woff2') format('woff2');}

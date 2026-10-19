@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F7F2EB}</style>
+</helmet>
+
+<x-import component-from-global-scope="doc-page" from="./doc-page.js" size="a4" margin="1.6cm" hint-size="100%,2000px">
+<div style="font-family:'Montserrat',Arial,sans-serif;color:#3A2C22;font-size:12.5px;line-height:1.65">
+
+  <!-- cover header -->
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+    <img src="./assets/gobita-mark-color.png" alt="Gobita" style="height:28px;width:auto;display:block">
+    <span style="font-size:10px;font-weight:700;letter-spacing:.14em;color:#8A7B6D;text-transform:uppercase;border-left:1px solid #D9CDBC;padding-left:9px">Learn · Hướng dẫn sử dụng</span>
+  </div>
+  <h1 style="margin:0 0 4px;font-size:26px;font-weight:800;line-height:1.2">Dùng Gobita Learn trong 5 phút</h1>
+  <div style="font-size:12px;color:#6B5044;font-weight:600;margin-bottom:14px">Cho người bận và không rành công nghệ. Mỗi việc chỉ cần 1–3 nút bấm. Go Big · Take Action.</div>
+
+  <div style="background:#EDE4D8;border-radius:12px;padding:12px 16px;margin-bottom:18px;font-weight:600;font-size:12px">
+    Quy tắc duy nhất cần nhớ: <b>mọi thứ trên web đều xoay quanh Ma trận 4×4</b> — bạn học một ô, luyện trong Live Room, khoe lên Cộng đồng, nhận điểm, mở ô tiếp theo. Lặp lại.
+  </div>
+
+  <div style="background:#F2EBE1;border:1px solid #E3D8C8;border-radius:10px;padding:9px 14px;margin-bottom:18px;font-size:11.5px;font-weight:600">🌐 Đổi ngôn ngữ bất cứ lúc nào: vào <b>Space → Hồ sơ &amp; cài đặt → Ngôn ngữ</b>, bấm VI hoặc EN — toàn bộ giao diện đổi ngay, không cần tải lại trang.</div>
+
+  <!-- ══════ PART 1: STUDENT ══════ -->
+  <div style="background:#3A2C22;color:#fff;border-radius:10px;padding:8px 16px;font-size:14px;font-weight:800;margin:0 0 12px">PHẦN 1 · DÀNH CHO HỌC VIÊN</div>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">1. Ngày đầu tiên (2 phút)</h2>
+  <ol style="margin:0 0 12px;padding-left:20px">
+    <li><b>Chọn điều bạn quan tâm</b> — 4 thẻ (tiết kiệm thời gian / làm nội dung / tăng thu nhập / số liệu). Chọn 1, không có đáp án sai.</li>
+    <li><b>Trả lời "dùng AI bao giờ chưa?"</b> — hệ thống xếp bạn vào ô xuất phát phù hợp.</li>
+    <li><b>Viết 1 prompt 60 giây</b> — AI góp ý ngay, bạn nhận huy hiệu "Ngày 1" + 20 điểm đầu tiên.</li>
+  </ol>
+  <div style="background:#ECD8AC;border-radius:10px;padding:9px 14px;margin-bottom:14px;font-size:11.5px;font-weight:700">Mẹo: thấy nút "Bỏ qua" ở mọi bước — không ai ép bạn. Quay lại lúc nào cũng được.</div>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">2. Màn hình chính = Ma trận kỹ năng</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>Ô <b>sáng viền cam</b> = ô bạn đang học. Ô mờ = chưa mở.</li>
+    <li>Mỗi ô ghi rõ <b>kết quả thực tế</b> (vd: −30% thời gian tìm kiếm) và <b>hệ số điểm</b> (×1.0 → ×4.0 — ô càng khó, điểm càng cao).</li>
+    <li>Bấm vào ô đang học → vào thẳng bài học.</li>
+    <li>Kéo 2 thanh trượt "Máy tính giá trị" để xem kỹ năng này đáng bao nhiêu tiền/tháng với bạn.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">3. Học một bài (Thư viện)</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>Một bài = 5 block nhỏ (video 4–6 phút, bài đọc 3 phút, thử app, bài tập). Học xong block nào gạch block đó.</li>
+    <li>Cuối bài luôn có <b>bài tập prompt</b>: viết → bấm "Nộp để nhận phản hồi AI" → AI chấm theo 3 tiêu chí (rõ ràng · cụ thể · kiểm chứng) và chỉ chỗ thiếu. Đạt = +40 điểm + pháo giấy.</li>
+    <li>Mọi prompt bạn viết tự lưu vào <b>Nhật ký prompt</b> (trong Hồ sơ) — mỗi tháng AI chỉ cho bạn thấy mình tiến bộ chỗ nào.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">4. Live Room — lớp học 20:30 (vui nhất)</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li><b>Vào đúng phòng, dù nhiều lớp đang live cùng lúc:</b> mở Live Room → sảnh chờ chỉ hiện phòng của lớp bạn (phòng khác hiện "khóa" để không vào nhầm). Bấm "Vào phòng ngay", hoặc nhập <b>mã phòng</b> giáo viên đọc trên lớp (VD: OFF-283), hoặc quét QR/mở link cô gửi.</li>
+    <li>10–15 người cùng làm một đề. Vòng "im lặng": ai cũng nộp kín, rồi <b>tất cả thẻ lật cùng lúc</b> — không ai chép ai.</li>
+    <li>Thấy prompt bạn khác hay? Bấm <b>Fork</b> — chép về sửa theo ý mình, đăng bản cải tiến. Được vote là có điểm.</li>
+    <li><b>🖥 Màn hình học sinh:</b> chuyển tab cạnh tường prompt để xem trực tiếp màn hình ChatGPT/Gemini của cả lớp (bạn bấm "Chia sẻ tab AI" trên máy mình) — giáo viên bấm vào một ô để phóng to, chữa bài ngay trên màn hình thật.</li>
+    <li>Trợ giảng AI nhắc riêng bạn (không ai thấy) khi bạn kẹt.</li>
+    <li>Kéo chuột để di chuyển quanh tường thẻ như một tấm bảng lớn.</li>
+    <li>Cuối buổi, 3 thẻ hay nhất được giáo viên đăng lên Cộng đồng — có tên bạn, +120 điểm.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">5. Cộng đồng, điểm &amp; hạng</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>Hạng của bạn = <b>tên ô năng lực thật</b> (vd "Agent Creator") — khoe được lên LinkedIn.</li>
+    <li>Điểm chỉ đến từ <b>hành động</b>: học block (20), đạt rubric (40), đăng artifact (30), top-3 Live Room (120), trả lời giúp bạn (15), báo cáo kết quả thật (100). Nhân với hệ số ô.</li>
+    <li>Bấm dấu <b>?</b> cạnh số điểm để xem bảng đầy đủ bất cứ lúc nào.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">6. Space — góc riêng của bạn</h2>
+  <ul style="margin:0 0 10px;padding-left:20px">
+    <li>Trang trí tùy thích: đổi hình nền (4 nền có sẵn, nền đã mua ở Shop, hoặc <b>tải ảnh của bạn lên</b> bằng nút "↑ Tải nền lên"), kéo-thả sticker/meme đã mua, ghi chú, ảnh, widget học tập từ khay bên trái.</li>
+    <li>Kéo được sticker/ảnh đi khắp bảng, kể cả sát mép phải — không còn bị chặn giữa chừng.</li>
+    <li>Bài giáo viên giao, thông báo lớp, và mục tiêu tuần tự hiện ở đây — Space là "bàn học" của bạn.</li>
+    <li>Mời bạn cùng lớp vào <b>học chung</b> — thấy nhau đang làm gì, chia sẻ tài liệu.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">6b. Ảnh của bạn — chỉnh khung, ghép, kéo-thả</h2>
+  <ul style="margin:0 0 10px;padding-left:20px">
+    <li>Bấm nút <b>✥ Chỉnh vị trí</b> (hiện ngay dưới khung khi có ảnh) hoặc nháy đúp vào ảnh: ảnh bung to hơn khung, kéo để đổi vị trí, kéo góc để phóng to/thu nhỏ (cuộn chuột cũng zoom được) — giống hệt cách chỉnh ảnh đại diện trên Zalo. Bấm ra ngoài hoặc phím Esc để lưu.</li>
+    <li><b>3 chế độ hiển thị ảnh</b> trong ⚙ Tùy chỉnh ảnh: <b>Lấp đầy</b> (phủ kín khung, cắt phần thừa), <b>Vừa khung</b> (thấy trọn ảnh, không cắt — chọn thêm màu nền sau ảnh), <b>Kéo giãn</b>. Thả logo hay ảnh có nền trong suốt, hệ thống tự chuyển sang "Vừa khung" để không mất chi tiết nào.</li>
+    <li>Rê chuột vào ảnh sẽ thấy 2 nút <b>Replace</b> (đổi ảnh khác) và <b>Remove</b> (gỡ ảnh) hiện rõ ràng bên dưới khung, không còn bị viền khung che mất.</li>
+    <li>Bấm <b>⚙ Tùy chỉnh ảnh</b> dưới khung để mở bảng cài đặt: chọn <b>tỉ lệ khung</b> (9 tỉ lệ, từ vuông đến dọc/ngang), bật/tắt <b>khung ảnh</b>, đổi <b>màu khung</b>, chọn <b>kiểu khung</b>, và chỉnh tiêu đề phía trên ảnh (nội dung, màu chữ, font).</li>
+    <li>8 kiểu khung để chọn: Cổ điển, Polaroid, Viền vàng, Gỗ, Neon, Cuộn phim (miễn phí) và 3 kiểu mới mua ở Shop — <b>Check-in</b> (khung kiểu bài đăng mạng xã hội, có dòng likes), <b>Vải bố</b> (mộc mạc, điểm trái tim đỏ), <b>Hoa hồng</b> (nền lụa đào, hoa hồng góc khung). Kiểu khung ôm sát viền ảnh thật — không còn khoảng trắng thừa quanh ảnh.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">7. Shop — đổi điểm lấy đồ, hoặc mua bằng tiền</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>5 nhóm hàng: <b>Nền</b> (trang trí Space), <b>Sticker &amp; Meme</b> (dán lên Space), <b>Khung ảnh</b> (Check-in, Vải bố, Hoa hồng — dùng ngay cho "Ảnh của bạn" trong Space), <b>Vé sự kiện</b> (Live Room khách mời, AI Day offline), <b>Công cụ AI</b> (Tutor Pro, Trợ lý Nghiên cứu, Prompt Coach — thuê theo tháng).</li>
+    <li>Mỗi món có 2 giá: <b>★ điểm</b> (đổi bằng điểm tích lũy) hoặc <b>giá tiền</b> (thanh toán trực tiếp, mô phỏng trong bản demo). Không đủ điểm? Hệ thống gợi ý trả bằng tiền.</li>
+    <li>Mua xong, nền/sticker tự xuất hiện trong danh sách ở Space — bấm "Xem trong Space →" để dùng ngay.</li>
+  </ul>
+  <div style="background:#ECD8AC;border-radius:10px;padding:9px 14px;margin-bottom:16px;font-size:11.5px;font-weight:700">Chán thì vào Arcade: 6 trò chơi ôn bài — đối kháng, ghép cặp, đào mỏ, xếp prompt, và mới nhất <b>Leo Núi Tri Thức</b> (leo núi live cả lớp). Chơi cũng ra điểm.</div>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">8. Arcade — 6 trò, một cơ chế năng lượng chung</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li><b>Quy tắc chung:</b> hành động (leo núi, đua, đào mỏ…) tốn <b>năng lượng ⚡</b>. Hết năng lượng → bấm vào thanh năng lượng để trả lời câu hỏi: <b>đúng thì được nạp thêm năng lượng để đi tiếp, sai thì nhân vật quay về vạch xuất phát.</b> Áp dụng cho Đua Kiến Thức, Hầm Mỏ Tri Thức và đặc biệt rõ ở Leo Núi Tri Thức.</li>
+    <li><b>Leo Núi Tri Thức (mới):</b> cả lớp leo cùng một ngọn núi theo thời gian thực, vào phòng bằng link/QR như Live Room. Mỗi bước leo (+8m) tốn 12⚡; hết năng lượng phải trả lời — đúng +40⚡, sai rơi thẳng về 0m. Ai chạm cờ 160m trước thì thắng; hết giờ mà chưa ai lên đỉnh thì người leo cao nhất thắng.</li>
+    <li>Giáo viên có 2 màn hình riêng trong trò này: <b>Màn hình học sinh</b> (leo, trả lời câu hỏi) và <b>Màn hình giáo viên</b> (bản đồ núi + bảng xếp hạng trực tiếp, có nút "Kết thúc cuộc đua ngay" để dừng sớm hơn giờ quy định).</li>
+    <li>4 trò còn lại (Đua Kiến Thức theo đội, Lật Thẻ AI, Blitz 60 giây, Xếp Prompt Hoàn Hảo, Hầm Mỏ Tri Thức) chơi tự do, không ghi vào hồ sơ — nhưng giáo viên có thể mở cùng bộ câu hỏi này trong Live Room để tính điểm thật.</li>
+  </ul>
+
+  <!-- ══════ PART 2: TEACHER ══════ -->
+  <div style="background:#3A2C22;color:#fff;border-radius:10px;padding:8px 16px;font-size:14px;font-weight:800;margin:0 0 12px">PHẦN 2 · DÀNH CHO GIÁO VIÊN</div>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">1. Vào chế độ giáo viên</h2>
+  <p style="margin:0 0 12px">Bấm nút tròn <b>GV</b> cạnh số điểm (góc trên phải). Một màn hình duy nhất — không menu ẩn.</p>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">2. Việc mỗi ngày = 3 nút</h2>
+  <ol style="margin:0 0 12px;padding-left:20px">
+    <li><b>Điểm danh</b> — 1 bấm, bảng chuyên cần tự cập nhật.</li>
+    <li><b>Duyệt bài AI đã chấm nháp</b> — AI chấm sẵn theo rubric, cô/thầy chỉ đọc và duyệt (sửa được từng dòng). Lời cuối luôn là của giáo viên.</li>
+    <li><b>Đăng thông báo</b> — hiện ngay trong Space của từng học viên.</li>
+  </ol>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">3. Quản nhiều lớp</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>Cột trái liệt kê các lớp — lớp nào có <b>bài chờ chấm</b> sẽ có huy hiệu đỏ. Bấm lớp nào, mọi số liệu đổi theo lớp đó.</li>
+    <li>Giáo trình xếp từ <b>block có sẵn</b> trong Thư viện: soạn một lần, dùng ở nhiều lớp — sửa một chỗ, mọi lớp cập nhật.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">4. Nắm từng học viên trong 1 dòng</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>Bảng học viên: <b>chuỗi ngày học · rubric đạt · trạng thái</b> (ổn / mentor / cần kèm / vắng).</li>
+    <li>Hai nút cạnh mỗi em: <b>"Giao riêng"</b> (bài tập cá nhân vào Space của em) và <b>"Nhắc nhẹ"</b> (lời nhắn thân thiện — như lời cô nhắn Tùng ngày đầu).</li>
+    <li>Em nào giỏi → trạng thái "mentor": xếp mỗi bàn một mentor trong Live Room, em đó cũng được điểm.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">5. Sau mỗi buổi — Bản đồ nhiệt AI</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>AI tóm tắt: <i>"80% lớp quên gán vai trò; 3 bạn đã thạo chuỗi prompt."</i> — biết ngay phải dạy lại cái gì.</li>
+    <li>Bấm nút kèm theo → AI soạn nháp bài ôn 10 phút, giáo viên duyệt rồi mới giao.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">6. Mời học sinh vào đúng phòng Live Room</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>Trong phòng, bấm <b>"＋ Mời học sinh"</b> → hiện QR + link riêng của phòng (VD: gobita.vn/live/OFF-283) + mã đọc miệng được.</li>
+    <li>Bấm <b>"🔔 Gửi thông báo tới lớp [tên lớp]"</b> — lời mời rơi thẳng vào Space + lịch của từng học sinh trong lớp đó, không làm phiền lớp khác.</li>
+    <li>Vì mỗi lớp có phòng + mã riêng, nhiều giáo viên có thể dạy live song song mà học sinh không vào nhầm phòng nhau.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">7. Điều hành Live Room</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>Bấm <b>"Lật tất cả thẻ"</b> để mở vòng reveal. Bấm một thẻ hay → <b>Spotlight</b> phóng to cho cả lớp + AI phân tích "vì sao prompt này tốt".</li>
+    <li>Chuyển tab <b>"🖥 Màn hình học sinh"</b> để xem lưới màn hình ChatGPT/Gemini học sinh đang chia sẻ trực tiếp (qua tính năng chia sẻ tab của trình duyệt, không cần API) — bấm vào một ô để phóng to, chữa bài ngay trên đó, rồi "Ghim prompt này lên tường" nếu muốn đưa vào vòng reveal.</li>
+    <li>Cuối buổi bấm <b>"Đăng 3 thẻ tốt nhất"</b> — bài hay lên Cộng đồng kèm tên học viên, giữ cộng đồng ấm giữa các buổi.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">8. Tải bài giảng lên Thư viện</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>Trong Chế độ giáo viên, khối <b>"Tải bài giảng lên Thư viện"</b>: kéo-thả file (.mp4, .pdf, .pptx, .docx) hoặc dán link YouTube/Drive.</li>
+    <li>AI tự cắt thành 4 block nhỏ (video + đọc + bài tập), giáo viên chọn <b>ô ma trận</b> phù hợp rồi bấm <b>"Đăng lên Thư viện + giáo trình lớp"</b> — bài xuất hiện ngay ở tất cả các lớp dùng chung block đó.</li>
+  </ul>
+
+  <h2 style="font-size:15px;font-weight:800;margin:0 0 6px">9. Nạp bộ câu hỏi cho Arcade &amp; Live Room</h2>
+  <ul style="margin:0 0 12px;padding-left:20px">
+    <li>Cùng màn hình giáo viên, khối <b>"Bộ câu hỏi Arcade &amp; Live"</b> — 3 cách nạp câu hỏi: <b>Tải CSV</b> (câu hỏi, đáp án A–D, số đáp án đúng), <b>Dán câu hỏi</b> (gõ tay, mỗi dòng cách nhau bằng dấu |), hoặc <b>AI soạn từ chủ đề</b> (chọn chủ đề bài giảng, AI viết nháp 5 câu).</li>
+    <li>Xem trước bản nháp, bấm ✕ để bỏ câu không ưng, rồi bấm <b>"Áp dụng cho Arcade &amp; Live Room"</b> — bộ câu hỏi mới có hiệu lực ngay lập tức ở cả 6 trò Arcade (kể cả Leo Núi Tri Thức) và mọi Live Room mới mở.</li>
+    <li>Tên và số câu của bộ đang dùng luôn hiện ở đầu mỗi trò, để giáo viên biết chắc học sinh đang luyện đúng nội dung nào.</li>
+  </ul>
+
+  <div style="background:#EDE4D8;border-radius:12px;padding:12px 16px;margin-top:6px;font-size:11.5px;font-weight:600;line-height:1.6">
+    <b>Gặp khó?</b> Ba nguyên tắc của Gobita Learn: (1) không có thao tác nào quá 3 bấm; (2) AI chỉ <i>nháp</i>, con người quyết định; (3) làm sai không mất gì — mọi thứ hoàn tác được. Cứ bấm thử.
+  </div>
+</div>
+</x-import>
+
+</x-dc>
+</body>
+</html>

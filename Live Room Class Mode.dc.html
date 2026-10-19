@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail" data-bg-color="#3A2C22">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3A2C22"></rect>
+    <text x="50" y="63" font-family="Georgia, serif" font-size="46" font-weight="700" fill="#F2CE73" text-anchor="middle">G</text>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F7F2EB;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cg fill='none' stroke='%23B3A595' stroke-opacity='0.14'%3E%3Cpath d='M28 2 52 16v28L28 58 4 44V16z'/%3E%3Cpath d='M28 50.5 52 64.5v28L28 106.5 4 92.5v-28z'/%3E%3C/g%3E%3C/svg%3E");}
+a{color:#F97300;text-decoration:none}
+a:hover{color:#C55B00}
+@keyframes gbPop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes gbFade{from{opacity:0}to{opacity:1}}
+@keyframes gbPulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes gbToast{0%{opacity:0;transform:translate(-50%,-14px) scale(.92)}12%{opacity:1;transform:translate(-50%,0) scale(1)}82%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-8px)}}
+@keyframes cmWave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+@keyframes cmRailIn{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+</style>
+</helmet>
+
+<div style="{{ rootStyle }}">
+
+  <!-- toast -->
+  <sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}">
+  <div style="{{ toastStyle }}">{{ toastMsg }}</div>
+  </sc-if>
+
+  <!-- ═══ TOP BAR ═══ -->
+  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;row-gap:8px;padding:10px 16px;background:rgba(247,242,235,.94);backdrop-filter:blur(8px);border-bottom:1px solid #E3D8C8;z-index:60;flex-shrink:0">
+    <sc-if value="{{ notEmbedded }}" hint-placeholder-val="{{ true }}">
+    <a href="./Gobita Learn.dc.html" style="display:flex;align-items:center;gap:8px;color:#3A2C22">
+      <img src="./assets/gobita-mark-color.png" alt="Gobita" style="height:24px;width:auto;display:block">
+      <span style="font-size:10px;font-weight:600;letter-spacing:.14em;color:#8A7B6D;text-transform:uppercase;border-left:1px solid #D9CDBC;padding-left:8px">Live Room</span>
+    </a>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:9px;min-width:0">
+      <span style="width:8px;height:8px;border-radius:50%;background:#D72638;animation:gbPulse 1.4s ease infinite;flex-shrink:0"></span>
+      <span style="font-size:11px;font-weight:800;letter-spacing:.1em;color:#D72638;font-family:ui-monospace,Menlo,monospace;white-space:nowrap">LIVE · {{ clock }}</span>
+      <sc-if value="{{ notEmbedded }}" hint-placeholder-val="{{ true }}">
+      <span style="font-size:13.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Tóm tắt báo cáo lộn xộn</span>
+      <span style="background:#E6C3A7;border-radius:999px;padding:3px 10px;font-size:10px;font-weight:700;white-space:nowrap">Consumer · Basic</span>
+      </sc-if>
+      <span style="background:#3A2C22;color:#F2CE73;border-radius:999px;padding:3px 10px;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap">Chế độ lớp học</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap">
+      <!-- preset switcher: the ONLY layout control a student ever touches -->
+      <sc-if value="{{ studentView }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;gap:4px;background:#EDE4D8;border-radius:999px;padding:4px" title="Bố cục — chọn 1, không cần sắp xếp cửa sổ">
+        <button onClick="{{ pickFocus }}" style="{{ chipFocus }}">◱ Focus</button>
+        <button onClick="{{ pickSplit }}" style="{{ chipSplit }}">◫ Chia đôi</button>
+        <button onClick="{{ pickTwo }}" style="{{ chipTwo }}">▯📱 2 thiết bị</button>
+      </div>
+      </sc-if>
+      <button onClick="{{ toggleFull }}" style="{{ fullBtnStyle }}" style-hover="filter:brightness(1.05)" title="Phóng to hết cỡ cho dễ nhìn — bấm lần nữa (hoặc Esc) để về màn hình web">{{ fullLabel }}</button>
+      <button onClick="{{ toggleSide }}" style="background:transparent;border:1px solid #B3A595;border-radius:999px;padding:7px 14px;font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:700;color:#6B5044;cursor:pointer;white-space:nowrap" style-hover="border-color:#6B5044">{{ sideLabel }}</button>
+      <sc-if value="{{ notEmbedded }}" hint-placeholder-val="{{ true }}">
+      <span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(180deg,#D08A5E,#B5673C);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0">L</span>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ STUDENT VIEW ═══════════════════ -->
+  <sc-if value="{{ studentView }}" hint-placeholder-val="{{ true }}">
+  <div data-screen-label="Class Mode — Học sinh" style="{{ bodyRowStyle }}">
+
+    <!-- ── YOUR AI · always large ── -->
+    <div style="{{ aiPanelStyle }}">
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid #E3D8C8;border-radius:16px;box-shadow:0 2px 10px rgba(58,44,34,.07);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 16px;background:#3A2C22;flex-shrink:0">
+          <span style="width:8px;height:8px;border-radius:50%;background:#74AA9C;flex-shrink:0"></span>
+          <span style="font-size:11.5px;font-weight:800;color:#EDE4D8;white-space:nowrap">AI của bạn · ChatGPT</span>
+          <span style="font-size:10px;font-weight:700;color:#B3A595;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">chat.openai.com — đang chia sẻ với phòng</span>
+          <span style="{{ myStepChipStyle }}">Bạn ở Bước {{ studentStep }}/6</span>
+        </div>
+        <div style="flex:1;min-height:0;overflow:auto;padding:18px 20px;display:flex;flex-direction:column;gap:12px;background:#F7F2EB">
+          <sc-for list="{{ messages }}" as="m" hint-placeholder-count="4">
+            <div style="{{ m.rowStyle }}">
+              <sc-if value="{{ m.chipOn }}" hint-placeholder-val="{{ false }}">
+              <span style="{{ m.chipStyle }}">{{ m.chip }}</span>
+              </sc-if>
+              <div style="{{ m.bubbleStyle }}">{{ m.text }}</div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ aiTyping }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-start;background:#EDE4D8;border-radius:14px 14px 14px 4px;padding:11px 16px;font-size:13px;color:#8A7B6D;font-weight:700;animation:gbFade .2s ease">ChatGPT đang trả lời<span style="display:inline-block;width:7px;height:13px;background:#C9A24E;margin-left:5px;vertical-align:text-bottom;animation:gbPulse .8s steps(2) infinite"></span></div>
+          </sc-if>
+        </div>
+        <div style="padding:12px 16px;border-top:1px solid #E3D8C8;background:#fff;flex-shrink:0">
+          <sc-if value="{{ fromStepOn }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;animation:gbPop .2s ease">
+            <span style="background:#ECD8AC;border-radius:999px;padding:3px 11px;font-size:10px;font-weight:800;white-space:nowrap">⑂ Từ Bước {{ fromStepN }} của thầy</span>
+            <span style="font-size:10.5px;color:#8A7B6D;font-weight:600">sửa lại theo ý bạn rồi gửi — không cần gõ lại từ đầu</span>
+            <button onClick="{{ clearFrom }}" style="margin-left:auto;background:none;border:none;color:#8A7B6D;font-size:13px;cursor:pointer;font-family:inherit;padding:0 4px">✕</button>
+          </div>
+          </sc-if>
+          <div style="display:flex;gap:10px;align-items:flex-end">
+            <textarea value="{{ composer }}" onChange="{{ composerType }}" rows="2" placeholder="Gõ prompt của bạn… hoặc bấm ‘Dùng prompt này’ ở thẻ bước của thầy" style="flex:1;min-width:0;background:#F7F2EB;border:1px solid #D9CDBC;border-radius:12px;padding:11px 14px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:#3A2C22;resize:none" style-focus="border-color:#F97300;outline:none"></textarea>
+            <button onClick="{{ send }}" style="background:#F97300;color:#fff;border:none;border-radius:12px;padding:12px 22px;font-family:'Montserrat',Arial,sans-serif;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(249,115,0,.3);flex-shrink:0" style-hover="filter:brightness(1.06)">Gửi ↵</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── "ĐANG THEO THẦY" RAIL ── -->
+    <sc-if value="{{ railOpen }}" hint-placeholder-val="{{ true }}">
+    <div style="{{ railStyle }}">
+
+      <!-- video docked in rail (Chia đôi preset) -->
+      <sc-if value="{{ videoInRail }}" hint-placeholder-val="{{ false }}">
+      <div style="margin:12px 12px 0;flex-shrink:0">{{ videoBody }}</div>
+      </sc-if>
+
+      <div style="display:flex;align-items:center;gap:9px;padding:14px 14px 10px;flex-shrink:0">
+        <span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(180deg,#C9A24E,#9A7328);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">HT</span>
+        <div style="min-width:0;flex:1">
+          <div style="font-size:12.5px;font-weight:800;white-space:nowrap">Đang theo thầy</div>
+          <div style="font-size:10px;font-weight:700;color:#8A7B6D;white-space:nowrap">GV Hương Trà · <span style="color:#D72638">● live</span> · Bước {{ curStep }}/6</div>
+        </div>
+        <button onClick="{{ collapseRail }}" title="Thu gọn — bấm mép phải để mở lại" style="background:#EDE4D8;border:none;border-radius:999px;width:26px;height:26px;color:#6B5044;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;flex-shrink:0;line-height:1" style-hover="background:#E3D6C4">»</button>
+      </div>
+
+      <!-- catch-up timeline -->
+      <div style="padding:0 14px 10px;flex-shrink:0">
+        <div style="display:flex;align-items:center;gap:0">
+          <sc-for list="{{ dots }}" as="d" hint-placeholder-count="6">
+            <button onClick="{{ d.click }}" title="{{ d.title }}" style="{{ d.style }}">{{ d.label }}</button>
+            <sc-if value="{{ d.hasLine }}" hint-placeholder-val="{{ true }}">
+            <span style="{{ d.lineStyle }}"></span>
+            </sc-if>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px">
+          <span style="font-size:9px;font-weight:700;color:#8A7B6D">{{ dotHintLeft }}</span>
+          <span style="font-size:9px;font-weight:700;color:#8A7B6D">thầy đang ở đây</span>
+        </div>
+      </div>
+
+      <!-- behind nudge -->
+      <sc-if value="{{ behindOn }}" hint-placeholder-val="{{ true }}">
+      <div style="margin:0 12px 10px;background:#ECD8AC;border-radius:12px;padding:9px 12px;display:flex;align-items:center;gap:9px;flex-shrink:0;animation:gbPop .25s ease">
+        <span style="font-size:11px;font-weight:800;flex:1;min-width:0;line-height:1.4">Bạn đang chậm <span style="color:#C55B00">{{ behind }} bước</span></span>
+        <button onClick="{{ catchUp }}" style="background:#3A2C22;color:#F2CE73;border:none;border-radius:999px;padding:6px 13px;font-family:'Montserrat',Arial,sans-serif;font-size:10.5px;font-weight:800;cursor:pointer;white-space:nowrap" style-hover="background:#52382B">Bắt kịp →</button>
+      </div>
+      </sc-if>
+      <sc-if value="{{ caughtUp }}" hint-placeholder-val="{{ false }}">
+      <div style="margin:0 12px 10px;background:#DBEFE3;border:1px solid #A9D6BF;border-radius:12px;padding:8px 12px;font-size:11px;font-weight:800;color:#256A47;flex-shrink:0">✓ Bạn đang theo kịp thầy</div>
+      </sc-if>
+
+      <!-- step cards -->
+      <div style="flex:1;min-height:0;overflow:auto;padding:2px 12px 12px;display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8A7B6D;padding:2px 2px 0">Mới nhất ở trên · cuộn xuống để xem lại</div>
+        <sc-for list="{{ railCards }}" as="c" hint-placeholder-count="4">
+          <div style="{{ c.cardStyle }}">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+              <span style="{{ c.stepChipStyle }}">Bước {{ c.n }}/6</span>
+              <span style="font-size:10px;font-weight:800;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.title }}</span>
+              <sc-if value="{{ c.live }}" hint-placeholder-val="{{ false }}">
+              <span style="display:flex;align-items:center;gap:4px;flex-shrink:0"><span style="width:6px;height:6px;border-radius:50%;background:#D72638;animation:gbPulse 1.4s ease infinite"></span><span style="font-size:8.5px;font-weight:800;letter-spacing:.08em;color:#D72638">LIVE</span></sc-if>
+              <sc-if value="{{ c.notLive }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size:9px;font-weight:700;color:#B3A595;flex-shrink:0;font-family:ui-monospace,Menlo,monospace">{{ c.time }}</span>
+              </sc-if>
+            </div>
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;line-height:1.6;background:#F7F2EB;border:1px solid #E3D8C8;border-radius:9px;padding:9px 11px;color:#3A2C22">{{ c.prompt }}</div>
+            <sc-if value="{{ c.hasAi }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size:10.5px;color:#6B5044;line-height:1.55;margin-top:7px;padding-left:9px;border-left:2px solid #D9CDBC"><b>AI:</b> {{ c.ai }}<sc-if value="{{ c.live }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block;width:6px;height:11px;background:#C9A24E;margin-left:3px;vertical-align:text-bottom;animation:gbPulse .8s steps(2) infinite"></span></sc-if></div>
+            </sc-if>
+            <div style="display:flex;align-items:center;gap:7px;margin-top:9px">
+              <button onClick="{{ c.copy }}" style="{{ c.copyStyle }}">{{ c.copyLabel }}</button>
+              <sc-if value="{{ c.doneByMe }}" hint-placeholder-val="{{ false }}">
+              <span style="font-size:9.5px;font-weight:800;color:#256A47;white-space:nowrap">✓ bạn đã làm</span>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+        <div style="font-size:10px;color:#8A7B6D;font-weight:600;line-height:1.5;padding:2px 2px 0">Còn {{ stepsLeft }} bước nữa — thẻ mới tự hiện khi thầy sang bước tiếp theo.</div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- collapsed rail tab -->
+    <sc-if value="{{ railCollapsed }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ expandRail }}" style="position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:45;background:#3A2C22;color:#EDE4D8;border:none;border-radius:12px 0 0 12px;padding:16px 9px;font-family:'Montserrat',Arial,sans-serif;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:-4px 4px 16px rgba(58,44,34,.2)" style-hover="background:#52382B" title="Mở lại thẻ bước của thầy">
+      <span style="width:7px;height:7px;border-radius:50%;background:#D72638;animation:gbPulse 1.4s ease infinite"></span>
+      <span style="writing-mode:vertical-rl;font-size:10px;font-weight:800;letter-spacing:.08em">Theo thầy · Bước {{ curStep }}/6</span>
+      <sc-if value="{{ behindOn }}" hint-placeholder-val="{{ true }}">
+      <span style="background:#F2CE73;color:#3A2C22;border-radius:999px;font-size:9px;font-weight:800;padding:2px 5px">{{ behind }}</span>
+      </sc-if>
+    </button>
+    </sc-if>
+
+    <!-- floating teacher video (Focus preset) -->
+    <sc-if value="{{ videoFloating }}" hint-placeholder-val="{{ true }}">
+    <div style="{{ videoWinStyle }}">{{ videoBody }}</div>
+    </sc-if>
+
+    <!-- two-device status chip -->
+    <sc-if value="{{ twoDevice }}" hint-placeholder-val="{{ false }}">
+    <div style="{{ twoChipStyle }}">
+      <span style="width:7px;height:7px;border-radius:50%;background:#74AA9C;flex-shrink:0"></span>
+      <span style="font-size:11px;font-weight:800;white-space:nowrap">📱 Video thầy đang phát trên điện thoại của bạn</span>
+      <button onClick="{{ openQr }}" style="background:rgba(247,242,235,.15);border:none;color:#F2CE73;border-radius:999px;padding:5px 13px;font-family:'Montserrat',Arial,sans-serif;font-size:10.5px;font-weight:800;cursor:pointer;white-space:nowrap" style-hover="background:rgba(247,242,235,.28)">QR / đổi</button>
+    </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <!-- ═══════════════════ TEACHER VIEW ═══════════════════ -->
+  <sc-if value="{{ teacherView }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Class Mode — Giáo viên" style="flex:1;min-height:0;overflow:auto;padding:16px 20px 40px;box-sizing:border-box;animation:gbPop .3s ease">
+    <div style="max-width:1200px;margin:0 auto">
+
+      <!-- broadcaster bar -->
+      <div style="background:#3A2C22;border-radius:16px;padding:16px 20px;color:#fff;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:14px;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cg fill='none' stroke='%23F2CE73' stroke-opacity='0.14'%3E%3Cpath d='M28 2 52 16v28L28 58 4 44V16z'/%3E%3C/g%3E%3C/svg%3E&quot;)">
+        <div style="flex:1;min-width:260px">
+          <div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#F2CE73;margin-bottom:5px">Chế độ lớp học · thầy phát từng bước</div>
+          <div style="font-size:16px;font-weight:800;line-height:1.35">Mỗi prompt bạn gõ trong tab AI tự thành một thẻ bước — học sinh thấy chữ, không cần nhìn video màn hình.</div>
+          <div style="font-size:11px;color:#B3A595;font-weight:600;margin-top:4px">Tự bắt từ tab ChatGPT của bạn qua tiện ích Gobita · chỉ phát khi bạn bấm "Chốt bước".</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="background:rgba(247,242,235,.12);border-radius:999px;padding:8px 15px;font-size:11.5px;font-weight:800;color:#F2CE73;white-space:nowrap">Đang phát: Bước {{ curStep }}/6</span>
+          <button onClick="{{ tNextStep }}" style="background:#F97300;color:#fff;border:none;border-radius:999px;padding:10px 20px;font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(249,115,0,.35)" style-hover="filter:brightness(1.06)">{{ tNextLabel }}</button>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(300px,1.2fr) minmax(280px,1fr) minmax(280px,1fr);gap:14px;align-items:start">
+
+        <!-- current step being broadcast -->
+        <div style="background:#EDE4D8;border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(58,44,34,.08)">
+          <div style="font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8A7B6D;margin-bottom:10px">Thẻ bước đang phát cho lớp</div>
+          <div style="background:#fff;border:1px solid #E3D8C8;border-radius:12px;padding:12px">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+              <span style="background:#3A2C22;color:#F2CE73;border-radius:999px;padding:2px 9px;font-size:9.5px;font-weight:800;white-space:nowrap">Bước {{ curStep }}/6</span>
+              <span style="font-size:10.5px;font-weight:800;flex:1;min-width:0">{{ liveTitle }}</span>
+              <span style="display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:#D72638;animation:gbPulse 1.4s ease infinite"></span><span style="font-size:8.5px;font-weight:800;color:#D72638">LIVE</span></span>
+            </div>
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;line-height:1.6;background:#F7F2EB;border:1px solid #E3D8C8;border-radius:9px;padding:9px 11px">{{ livePrompt }}</div>
+          </div>
+          <div style="font-size:10.5px;color:#6B5044;font-weight:600;line-height:1.55;margin-top:10px">Học sinh nhận thẻ này trong rail "Đang theo thầy" + nút <b>Dùng prompt này</b> — không ai phải chép tay từ màn hình chiếu.</div>
+        </div>
+
+        <!-- camera / screen broadcast -->
+        <div style="background:#EDE4D8;border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(58,44,34,.08)">
+          <div style="font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8A7B6D;margin-bottom:10px">Cửa sổ video của bạn (góc màn hình học sinh)</div>
+          <div style="background:#3A2C22;border-radius:12px;overflow:hidden;margin-bottom:10px">
+            <sc-if value="{{ tFace }}" hint-placeholder-val="{{ true }}">
+            <div style="height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+              <span style="width:44px;height:44px;border-radius:50%;background:linear-gradient(180deg,#C9A24E,#9A7328);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800">HT</span>
+              <div style="display:flex;align-items:flex-end;gap:2px;height:12px">
+                <span style="width:3px;height:12px;background:#F2CE73;border-radius:2px;animation:cmWave .9s ease infinite;transform-origin:bottom"></span>
+                <span style="width:3px;height:12px;background:#F2CE73;border-radius:2px;animation:cmWave .9s ease .15s infinite;transform-origin:bottom"></span>
+                <span style="width:3px;height:12px;background:#F2CE73;border-radius:2px;animation:cmWave .9s ease .3s infinite;transform-origin:bottom"></span>
+                <span style="width:3px;height:12px;background:#F2CE73;border-radius:2px;animation:cmWave .9s ease .45s infinite;transform-origin:bottom"></span>
+              </div>
+            </div>
+            </sc-if>
+            <sc-if value="{{ tScreen }}" hint-placeholder-val="{{ false }}">
+            <div style="height:120px;background:#F7F2EB;display:flex;flex-direction:column;gap:5px;padding:10px;box-sizing:border-box">
+              <div style="font-size:8px;font-weight:800;color:#8A7B6D;font-family:ui-monospace,Menlo,monospace">chat.openai.com</div>
+              <div style="align-self:flex-end;background:#3A2C22;color:#fff;border-radius:7px;padding:4px 7px;font-size:8px;font-family:ui-monospace,Menlo,monospace;max-width:85%">Thêm trang nguồn cho từng bullet…</div>
+              <div style="align-self:flex-start;background:#EDE4D8;border-radius:7px;padding:4px 7px;font-size:8px;max-width:85%">1. Doanh thu Q2 +18% (tr.4)…</div>
+            </div>
+            </sc-if>
+          </div>
+          <div style="display:flex;gap:4px;background:#F7F2EB;border-radius:999px;padding:4px">
+            <button onClick="{{ tSetFace }}" style="{{ tFaceChip }}">🙂 Mặt + giọng</button>
+            <button onClick="{{ tSetScreen }}" style="{{ tScreenChip }}">🖥 Màn hình</button>
+          </div>
+          <div style="font-size:10px;color:#8A7B6D;font-weight:600;line-height:1.5;margin-top:8px">Mặc định chỉ phát mặt + giọng (nhẹ mạng). Bật "Màn hình" khi cần cho lớp xem thao tác — cửa sổ nhỏ của học sinh tự đổi theo.</div>
+        </div>
+
+        <!-- class progress -->
+        <div style="background:#EDE4D8;border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(58,44,34,.08)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8A7B6D;flex:1">Lớp đang ở đâu</span>
+            <span style="background:#F7F2EB;border-radius:999px;padding:3px 10px;font-size:9.5px;font-weight:800;color:#6B5044;white-space:nowrap">{{ tOkCount }}/12 theo kịp</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
+            <sc-for list="{{ tRoster }}" as="s" hint-placeholder-count="6">
+              <div style="display:flex;align-items:center;gap:8px;background:#F7F2EB;border-radius:10px;padding:6px 10px">
+                <span style="{{ s.avStyle }}">{{ s.init }}</span>
+                <span style="font-size:11.5px;font-weight:800;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.name }}</span>
+                <span style="{{ s.stepStyle }}">{{ s.stepLabel }}</span>
+                <sc-if value="{{ s.slow }}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{ s.nudge }}" style="background:#3A2C22;color:#F2CE73;border:none;border-radius:999px;padding:4px 10px;font-family:'Montserrat',Arial,sans-serif;font-size:9.5px;font-weight:800;cursor:pointer;white-space:nowrap" style-hover="background:#52382B">Nhắc nhẹ</button>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size:10px;color:#8A7B6D;font-weight:600;line-height:1.5">Vị trí bước cập nhật tự động từ tab AI của từng em — không cần hỏi "các em tới đâu rồi?".</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ═══ PRESET PICKER (first entry) ═══ -->
+  <sc-if value="{{ pickerOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Class Mode — Chọn bố cục" style="{{ overlayWrapStyle }}">
+    <div style="position:absolute;inset:0;background:rgba(35,26,20,.55)"></div>
+    <div style="position:relative;width:100%;max-width:760px;background:#F7F2EB;border-radius:20px;box-shadow:0 24px 70px rgba(35,26,20,.42);animation:gbPop .25s ease;overflow:hidden">
+      <div style="background:#3A2C22;padding:20px 24px">
+        <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#F2CE73;margin-bottom:6px">Chế độ lớp học · một lần chọn là xong</div>
+        <div style="font-size:19px;font-weight:800;color:#fff;line-height:1.3">Bạn muốn theo thầy kiểu nào?</div>
+        <div style="font-size:12px;color:#B3A595;line-height:1.5;margin-top:5px">AI của bạn luôn chiếm phần lớn màn hình. Đổi lại bất cứ lúc nào ở thanh trên — không bao giờ phải tự kéo cửa sổ.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;padding:20px 24px 24px">
+
+        <button onClick="{{ pickFocus }}" style="text-align:left;background:#fff;border:1.5px solid #E3D8C8;border-radius:14px;padding:14px;cursor:pointer;font-family:'Montserrat',Arial,sans-serif;color:#3A2C22;display:flex;flex-direction:column;gap:10px" style-hover="border-color:#F97300;box-shadow:0 4px 14px rgba(58,44,34,.12)">
+          <div style="height:74px;background:#EDE4D8;border-radius:8px;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:6px 34px 6px 6px;background:#fff;border:1px solid #D9CDBC;border-radius:5px"></div>
+            <div style="position:absolute;top:6px;right:6px;bottom:6px;width:24px;background:#3A2C22;border-radius:5px"></div>
+            <div style="position:absolute;left:10px;bottom:10px;width:20px;height:14px;background:#C9A24E;border-radius:3px"></div>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:800;margin-bottom:3px">◱ Focus</div>
+            <div style="font-size:10.5px;color:#6B5044;line-height:1.5;font-weight:600">AI toàn màn hình. Thẻ bước của thầy là rail mỏng đè bên phải, video thầy thu nhỏ ở góc.</div>
+          </div>
+          <span style="align-self:flex-start;background:#3A2C22;color:#fff;border-radius:999px;padding:6px 16px;font-size:10.5px;font-weight:800">Chọn Focus</span>
+        </button>
+
+        <button onClick="{{ pickSplit }}" style="text-align:left;background:#fff;border:1.5px solid #E3D8C8;border-radius:14px;padding:14px;cursor:pointer;font-family:'Montserrat',Arial,sans-serif;color:#3A2C22;display:flex;flex-direction:column;gap:10px" style-hover="border-color:#F97300;box-shadow:0 4px 14px rgba(58,44,34,.12)">
+          <div style="height:74px;background:#EDE4D8;border-radius:8px;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:6px 32% 6px 6px;background:#fff;border:1px solid #D9CDBC;border-radius:5px"></div>
+            <div style="position:absolute;top:6px;right:6px;bottom:6px;width:calc(32% - 12px);background:#3A2C22;border-radius:5px"></div>
+            <div style="position:absolute;top:10px;right:10px;width:calc(32% - 20px);height:16px;background:#C9A24E;border-radius:3px"></div>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:800;margin-bottom:3px">◫ Chia đôi thông minh</div>
+            <div style="font-size:10.5px;color:#6B5044;line-height:1.5;font-weight:600">AI 70% · thẻ bước 30% luôn mở, video thầy gắn trên đầu rail. Không gì đè lên gì.</div>
+          </div>
+          <span style="align-self:flex-start;background:#3A2C22;color:#fff;border-radius:999px;padding:6px 16px;font-size:10.5px;font-weight:800">Chọn Chia đôi</span>
+        </button>
+
+        <button onClick="{{ pickTwo }}" style="text-align:left;background:#fff;border:1.5px solid #E3D8C8;border-radius:14px;padding:14px;cursor:pointer;font-family:'Montserrat',Arial,sans-serif;color:#3A2C22;display:flex;flex-direction:column;gap:10px" style-hover="border-color:#F97300;box-shadow:0 4px 14px rgba(58,44,34,.12)">
+          <div style="height:74px;background:#EDE4D8;border-radius:8px;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:6px 44px 6px 6px;background:#fff;border:1px solid #D9CDBC;border-radius:5px"></div>
+            <div style="position:absolute;top:10px;right:8px;width:26px;height:54px;background:#3A2C22;border-radius:6px;display:flex;align-items:center;justify-content:center"><span style="width:14px;height:10px;background:#C9A24E;border-radius:2px"></span></div>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:800;margin-bottom:3px">▯📱 Hai thiết bị</div>
+            <div style="font-size:10.5px;color:#6B5044;line-height:1.5;font-weight:600">Quét QR — video thầy sang điện thoại, laptop dành trọn cho AI. Thẻ bước vẫn ở mép phải.</div>
+          </div>
+          <span style="align-self:flex-start;background:#3A2C22;color:#fff;border-radius:999px;padding:6px 16px;font-size:10.5px;font-weight:800">Chọn Hai thiết bị</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ═══ QR MODAL (two-device pairing) ═══ -->
+  <sc-if value="{{ qrOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="{{ overlayWrapStyle2 }}">
+    <div onClick="{{ closeQr }}" style="position:absolute;inset:0;background:rgba(35,26,20,.55)"></div>
+    <div style="position:relative;width:100%;max-width:520px;background:#3A2C22;border-radius:20px;color:#fff;box-shadow:0 24px 70px rgba(35,26,20,.5);animation:gbPop .25s ease;padding:22px 24px;display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center">
+      <div style="width:150px;height:150px;background:#F7F2EB;border-radius:12px;padding:10px;box-sizing:border-box;display:grid;grid-template-columns:repeat(13,1fr);grid-auto-rows:1fr;gap:1.5px">
+        <sc-for list="{{ qrCells }}" as="q" hint-placeholder-count="30">
+          <span style="background:{{ q.bg }};border-radius:1px"></span>
+        </sc-for>
+      </div>
+      <div style="min-width:0">
+        <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#F2CE73;margin-bottom:7px">Hai thiết bị · ghép điện thoại</div>
+        <div style="font-size:16px;font-weight:800;line-height:1.35;margin-bottom:8px">Quét bằng camera điện thoại — video thầy phát bên đó, laptop này dành trọn cho AI.</div>
+        <div style="font-size:11.5px;color:#B3A595;line-height:1.6;margin-bottom:14px">① Quét QR · ② Video + giọng thầy hiện trên điện thoại · ③ Muốn xem màn hình thầy? Chạm nút 🖥 ngay trên điện thoại.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button onClick="{{ qrPaired }}" style="background:#F97300;color:#fff;border:none;border-radius:999px;padding:9px 18px;font-family:'Montserrat',Arial,sans-serif;font-size:11.5px;font-weight:800;cursor:pointer;white-space:nowrap" style-hover="filter:brightness(1.06)">✓ Đã quét xong</button>
+          <button onClick="{{ qrFallback }}" style="background:transparent;border:1px solid #6B5044;color:#EDE4D8;border-radius:999px;padding:9px 16px;font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap" style-hover="border-color:#B3A595">Không có điện thoại? → Focus</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;embedded&quot;: { &quot;editor&quot;: null, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot; },
+  &quot;defaultPreset&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;focus&quot;, &quot;split&quot;, &quot;two&quot;], &quot;default&quot;: &quot;focus&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Bố cục&quot; },
+  &quot;showPicker&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Bố cục&quot; },
+  &quot;autoAdvance&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Demo&quot; }
+}">
+class Component extends DCLogic {
+  state = {
+    preset: null,            // null → use prop default
+    pickerOpen: null,        // null → use prop default
+    railCollapsed: false,
+    teacherSide: false,
+    curStep: 4,
+    step4Done: false,
+    studentStep: 2,
+    focusStep: 0,            // highlighted card via timeline dot
+    composer: '',
+    fromStepN: 0,
+    messages: [
+      { role: 'me', step: 1, text: 'Bạn là trợ lý của CFO. Nhiệm vụ: giúp tôi xử lý một báo cáo quý lộn xộn. Chờ tôi gửi tài liệu.' },
+      { role: 'ai', text: 'Đã rõ vai trò. Gửi báo cáo cho tôi — tôi sẽ chờ đủ tài liệu trước khi tóm tắt.' },
+      { role: 'me', step: 2, text: 'Đây là báo cáo Q2 (dán toàn văn bên dưới). Đọc xong chỉ trả lời: "Đã đọc, 12 trang, 5 mục lớn."' },
+      { role: 'ai', text: 'Đã đọc, 12 trang, 5 mục lớn.' }
+    ],
+    aiTyping: false,
+    videoMode: 'face',
+    videoMuted: false,
+    videoHidden: false,
+    qrOpen: false,
+    isFull: false,
+    toastMsg: '', toastKey: 0,
+    clock: '24:18',
+    copiedN: 0,
+    tFaceMode: true
+  };
+
+  steps = [
+    { n: 1, title: 'Đặt vai trò cho AI', time: '20:04',
+      prompt: 'Bạn là trợ lý của CFO. Nhiệm vụ: giúp tôi xử lý một báo cáo quý lộn xộn. Chờ tôi gửi tài liệu.',
+      ai: 'Đã rõ vai trò. Gửi báo cáo cho tôi — tôi sẽ chờ đủ tài liệu trước khi tóm tắt.' },
+    { n: 2, title: 'Nạp tài liệu thật', time: '20:07',
+      prompt: 'Đây là báo cáo Q2 (dán toàn văn bên dưới). Đọc xong chỉ trả lời: "Đã đọc, 12 trang, 5 mục lớn."',
+      ai: 'Đã đọc, 12 trang, 5 mục lớn.' },
+    { n: 3, title: 'Tóm tắt có cấu trúc', time: '20:11',
+      prompt: 'Tóm tắt thành 5 bullet cho giám đốc chỉ có 2 phút: 3 số liệu chính, 1 rủi ro, 1 việc cần quyết định.',
+      ai: '1. Doanh thu Q2 +18% · 2. Chi phí logistics vượt 12% · 3. Tồn kho tăng 22% · 4. Rủi ro dòng tiền T8 · 5. Cần quyết: xả kho kênh online?' },
+    { n: 4, title: 'Thêm nguồn kiểm chứng', time: '20:15',
+      prompt: 'Ghi rõ trang nguồn cho từng bullet. Bullet nào không tìm được nguồn trong báo cáo thì ghi "chưa kiểm chứng".',
+      ai: '1. Doanh thu Q2 +18% (tr.4) · 2. Chi phí logistics (tr.7) · 3. Tồn kho (tr.9)' },
+    { n: 5, title: 'Đổi đối tượng người đọc', time: '20:21',
+      prompt: 'Viết lại 5 bullet cho giám đốc marketing: ưu tiên số liệu ảnh hưởng ngân sách quảng cáo, giữ trang nguồn.',
+      ai: '1. CAC tăng 9% → xem lại kênh (tr.6) · 2. Ngân sách Q3 còn 340tr (tr.8)…' },
+    { n: 6, title: 'Tự chấm bằng rubric', time: '20:27',
+      prompt: 'Tự chấm bản tóm tắt theo rubric: rõ ràng / cụ thể / kiểm chứng — mỗi tiêu chí 1 điểm yếu cần sửa.',
+      ai: 'Rõ ràng ✓ · Cụ thể: bullet 4 còn chung chung · Kiểm chứng: bullet 5 chưa có trang nguồn.' }
+  ];
+
+  aiReplies = {
+    3: '1. Doanh thu Q2 +18% · 2. Chi phí logistics vượt 12% · 3. Tồn kho tăng 22% · 4. Rủi ro dòng tiền T8 · 5. Cần quyết: xả kho kênh online?',
+    4: '1. Doanh thu Q2 +18% (tr.4) · 2. Chi phí logistics (tr.7) · 3. Tồn kho (tr.9) · 4. Dòng tiền T8 (tr.11) · 5. Xả kho — chưa kiểm chứng.',
+    5: '1. CAC tăng 9% → xem lại kênh (tr.6) · 2. Ngân sách Q3 còn 340tr (tr.8) · 3. Kênh online ROAS 2.1 (tr.9)…',
+    6: 'Rõ ràng ✓ · Cụ thể: bullet 4 còn chung chung · Kiểm chứng: bullet 5 chưa có trang nguồn.'
+  };
+
+  roster = [
+    { name: 'Minh', init: 'M', grad: 'linear-gradient(180deg,#D08A5E,#B5673C)', at: 4 },
+    { name: 'Hoàng', init: 'H', grad: 'linear-gradient(180deg,#7A5C4A,#52382B)', at: 4 },
+    { name: 'Trang', init: 'T', grad: 'linear-gradient(180deg,#C9A24E,#9A7328)', at: 3 },
+    { name: 'Linh (bạn)', init: 'L', grad: 'linear-gradient(180deg,#C0685B,#9A4439)', at: -1 },
+    { name: 'Tùng', init: 'T', grad: 'linear-gradient(180deg,#8A7B6D,#6B5044)', at: 1 },
+    { name: 'Quân', init: 'Q', grad: 'linear-gradient(180deg,#C9A24E,#9A7328)', at: 3 }
+  ];
+
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape' && this.state.isFull) this.setState({ isFull: false }); };
+    document.addEventListener('keydown', this._esc);
+    this._fsc = () => { if (!document.fullscreenElement && this.state.isFull && !this.props.embedded) this.setState({ isFull: false }); };
+    document.addEventListener('fullscreenchange', this._fsc);
+    let sec = 18, min = 24;
+    this._clk = setInterval(() => {
+      sec++; if (sec >= 60) { sec = 0; min++; }
+      this.setState({ clock: String(min).padStart(2, '0') + ':' + String(sec).padStart(2, '0') });
+    }, 1000);
+    if (this.props.autoAdvance ?? true) {
+      this._t1 = setTimeout(() => this.setState({ step4Done: true }), 12000);
+      this._t2 = setTimeout(() => this.setState(s => ({ curStep: Math.min(5, Math.max(s.curStep, 5)), step4Done: true })), 26000);
+      this._t3 = setTimeout(() => this.setState({ curStep: 6 }), 48000);
+    }
+  }
+  componentWillUnmount() {
+    clearInterval(this._clk); clearTimeout(this._t1); clearTimeout(this._t2); clearTimeout(this._t3); clearTimeout(this._ai);
+    document.removeEventListener('keydown', this._esc);
+    document.removeEventListener('fullscreenchange', this._fsc);
+  }
+
+  toast(msg) {
+    this.setState({ toastMsg: '', toastKey: Date.now() });
+    setTimeout(() => this.setState({ toastMsg: msg }), 20);
+  }
+
+  choosePreset(p) {
+    this.setState({ preset: p, pickerOpen: false, railCollapsed: p === 'two', qrOpen: p === 'two', videoHidden: false });
+  }
+
+  copyStep(step) {
+    this.setState({ composer: step.prompt, fromStepN: step.n, copiedN: step.n });
+    this.toast('Đã chép prompt Bước ' + step.n + ' vào ô của bạn — sửa rồi gửi');
+    setTimeout(() => this.setState({ copiedN: 0 }), 1800);
+  }
+
+  send() {
+    const txt = (this.state.composer || '').trim();
+    if (!txt || this.state.aiTyping) return;
+    const stepN = this.state.fromStepN;
+    this.setState(s => ({
+      messages: s.messages.concat([{ role: 'me', step: stepN || 0, text: txt }]),
+      composer: '', fromStepN: 0, aiTyping: true,
+      studentStep: stepN ? Math.max(s.studentStep, stepN) : s.studentStep
+    }));
+    this._ai = setTimeout(() => {
+      const reply = this.aiReplies[stepN] || 'Đã xử lý theo yêu cầu của bạn. Bạn muốn tôi trình bày chi tiết hơn phần nào?';
+      this.setState(s => ({ messages: s.messages.concat([{ role: 'ai', text: reply }]), aiTyping: false }));
+    }, 1400);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const preset = s.preset ?? (this.props.defaultPreset ?? 'focus');
+    const pickerOpen = s.pickerOpen ?? (this.props.showPicker ?? true);
+    const curStep = s.curStep;
+    const behind = Math.max(0, curStep - s.studentStep);
+    const railCollapsed = s.railCollapsed;
+    const railOpen = !railCollapsed;
+    const twoDevice = preset === 'two';
+    const split = preset === 'split';
+    const focus = preset === 'focus';
+    const teacherView = s.teacherSide;
+    const embedded = !!this.props.embedded;
+    const fixOrAbs = embedded ? 'absolute' : 'fixed';
+    const fontBase = "font-family:'Montserrat',Arial,sans-serif;color:#3A2C22;display:flex;flex-direction:column;overflow:hidden;";
+    const isFull = s.isFull;
+    const rootStyle = embedded
+      ? (isFull
+          ? fontBase + 'position:fixed;inset:0;z-index:300;background:#F7F2EB;box-shadow:0 0 0 100vmax #F7F2EB'
+          : fontBase + 'height:76vh;min-height:580px;position:relative;background:#F7F2EB;border:1px solid #E3D8C8;border-radius:16px;box-shadow:0 2px 10px rgba(58,44,34,.07)')
+      : fontBase + 'height:100vh';
+
+    /* ── preset chips ── */
+    const chipOn = 'border:none;border-radius:999px;padding:6px 13px;font-family:Montserrat,Arial,sans-serif;font-size:10.5px;font-weight:800;cursor:pointer;white-space:nowrap;background:#3A2C22;color:#F2CE73';
+    const chipOff = 'border:none;border-radius:999px;padding:6px 13px;font-family:Montserrat,Arial,sans-serif;font-size:10.5px;font-weight:700;cursor:pointer;white-space:nowrap;background:transparent;color:#6B5044';
+
+    /* ── layout styles ── */
+    const bodyRowStyle = 'display:flex;flex:1;min-height:0;position:relative';
+    const aiPanelStyle = split
+      ? 'flex:1;min-width:0;display:flex;padding:14px 0 14px 16px'
+      : 'flex:1;min-width:0;display:flex;padding:14px 16px' + (focus && railOpen ? ';padding-right:332px' : '');
+    const railBase = 'display:flex;flex-direction:column;min-height:0;';
+    const railStyle = split
+      ? railBase + 'width:min(34%,400px);min-width:300px;flex-shrink:0;margin:14px 16px;background:#F2EBE1;border:1px solid #E3D8C8;border-radius:16px;box-shadow:0 2px 10px rgba(58,44,34,.08);animation:cmRailIn .25s ease'
+      : railBase + 'position:absolute;top:14px;right:16px;bottom:14px;width:300px;background:#F2EBE1;border:1px solid #E3D8C8;border-radius:16px;box-shadow:0 16px 44px rgba(58,44,34,.24);z-index:40;animation:cmRailIn .25s ease';
+
+    /* ── timeline dots ── */
+    const dots = this.steps.map((st, i) => {
+      const n = st.n;
+      const isLive = n === curStep;
+      const done = n < curStep;
+      const mine = n === s.studentStep;
+      const base = 'flex-shrink:0;width:24px;height:24px;border-radius:50%;font-family:Montserrat,Arial,sans-serif;font-size:10px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;';
+      let style;
+      if (isLive) style = base + 'border:none;background:#F97300;color:#fff;box-shadow:0 0 0 3px rgba(249,115,0,.25);animation:gbPulse 2s ease infinite';
+      else if (done) style = base + 'border:none;background:#3A2C22;color:#F2CE73';
+      else style = base + 'border:1.5px dashed #B3A595;background:transparent;color:#8A7B6D;cursor:default';
+      if (mine && !isLive) style += ';box-shadow:0 0 0 2.5px #C0685B';
+      return {
+        label: String(n),
+        title: n > curStep ? 'Bước ' + n + ' — thầy chưa tới' : 'Bước ' + n + ': ' + st.title + (mine ? ' (bạn ở đây)' : ''),
+        style,
+        click: () => { if (n <= curStep) this.setState({ focusStep: n, railCollapsed: false }); },
+        hasLine: i < this.steps.length - 1,
+        lineStyle: 'flex:1;height:2px;border-radius:2px;background:' + (n < curStep ? '#3A2C22' : '#D9CDBC')
+      };
+    });
+
+    /* ── rail step cards (newest first) ── */
+    const railCards = this.steps.slice(0, curStep).reverse().map(st => {
+      const isLive = st.n === curStep;
+      const focused = st.n === s.focusStep;
+      const doneByMe = st.n <= s.studentStep;
+      const copied = s.copiedN === st.n;
+      let cardStyle = 'background:#fff;border-radius:12px;padding:11px 12px;border:1px solid #E3D8C8;animation:gbPop .3s ease';
+      if (isLive) cardStyle = 'background:#fff;border-radius:12px;padding:11px 12px;border:1.5px solid #F97300;box-shadow:0 4px 14px rgba(249,115,0,.14);animation:gbPop .3s ease';
+      else if (focused) cardStyle += ';box-shadow:0 0 0 2px #3A2C22';
+      const liveDone = !isLive || s.step4Done || curStep > 4;
+      return {
+        n: st.n, title: st.title, time: st.time, prompt: st.prompt,
+        ai: isLive && !liveDone ? st.ai.slice(0, 46) + '…' : st.ai,
+        hasAi: true,
+        live: isLive, notLive: !isLive,
+        cardStyle,
+        stepChipStyle: 'flex-shrink:0;border-radius:999px;padding:2px 9px;font-size:9px;font-weight:800;white-space:nowrap;' + (isLive ? 'background:#F97300;color:#fff' : 'background:#EDE4D8;color:#6B5044'),
+        copy: () => this.copyStep(st),
+        copyLabel: copied ? '✓ Đã chép' : '⧉ Dùng prompt này',
+        copyStyle: 'border:none;border-radius:999px;padding:6px 13px;font-family:Montserrat,Arial,sans-serif;font-size:10px;font-weight:800;cursor:pointer;white-space:nowrap;' + (copied ? 'background:#DBEFE3;color:#256A47' : 'background:#3A2C22;color:#fff'),
+        doneByMe
+      };
+    });
+
+    /* ── teacher video body (shared by floating window + rail dock) ── */
+    const face = s.videoMode === 'face';
+    const R = React.createElement;
+    const waveBar = d => R('span', { key: d, style: { width: 3, height: 12, background: '#F2CE73', borderRadius: 2, animation: 'cmWave .9s ease ' + d + 's infinite', transformOrigin: 'bottom' } });
+    const videoBody = R('div', { style: { background: '#3A2C22', borderRadius: 12, overflow: 'hidden', boxShadow: '0 12px 32px rgba(58,44,34,.3)' } },
+      face
+        ? R('div', { style: { height: 108, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 7 } },
+            R('span', { style: { width: 40, height: 40, borderRadius: '50%', background: 'linear-gradient(180deg,#C9A24E,#9A7328)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 800 } }, 'HT'),
+            s.videoMuted
+              ? R('span', { style: { fontSize: 9, fontWeight: 800, color: '#B3A595' } }, '🔇 đã tắt tiếng')
+              : R('div', { style: { display: 'flex', alignItems: 'flex-end', gap: 2, height: 12 } }, waveBar(0), waveBar(.15), waveBar(.3), waveBar(.45)))
+        : R('div', { style: { height: 108, background: '#F7F2EB', display: 'flex', flexDirection: 'column', gap: 4, padding: 9, boxSizing: 'border-box' } },
+            R('div', { style: { fontSize: 8, fontWeight: 800, color: '#8A7B6D', fontFamily: 'ui-monospace,Menlo,monospace' } }, '🖥 màn hình thầy · chat.openai.com'),
+            R('div', { style: { alignSelf: 'flex-end', background: '#3A2C22', color: '#fff', borderRadius: 7, padding: '4px 7px', fontSize: 8, fontFamily: 'ui-monospace,Menlo,monospace', maxWidth: '88%' } }, this.steps[curStep - 1].prompt.slice(0, 52) + '…'),
+            R('div', { style: { alignSelf: 'flex-start', background: '#EDE4D8', borderRadius: 7, padding: '4px 7px', fontSize: 8, maxWidth: '88%' } }, this.steps[curStep - 1].ai.slice(0, 48) + '…')),
+      R('div', { style: { display: 'flex', alignItems: 'center', gap: 6, padding: '6px 9px' } },
+        R('span', { style: { fontSize: 9.5, fontWeight: 800, color: '#EDE4D8', flex: 1, minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }, face ? 'GV Hương Trà · đang nói' : 'Màn hình thầy · trực tiếp'),
+        R('button', { onClick: () => this.setState({ videoMode: face ? 'screen' : 'face' }), title: face ? 'Xem màn hình thầy' : 'Về mặt + giọng', style: { background: 'rgba(247,242,235,.14)', border: 'none', color: '#EDE4D8', borderRadius: 999, padding: '3px 9px', fontSize: 9.5, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap' } }, face ? '🖥 màn hình' : '🙂 mặt thầy'),
+        R('button', { onClick: () => this.setState(p => ({ videoMuted: !p.videoMuted })), title: 'Tắt/bật tiếng', style: { background: 'rgba(247,242,235,.14)', border: 'none', color: '#EDE4D8', borderRadius: 999, width: 22, height: 22, fontSize: 10, cursor: 'pointer', fontFamily: 'inherit', lineHeight: 1, padding: 0 } }, s.videoMuted ? '🔇' : '🔊')));
+
+    const videoFloating = focus && !s.videoHidden && !teacherView;
+    const videoRight = railOpen ? 332 : 60;
+    const videoWinStyle = 'position:' + fixOrAbs + ';bottom:16px;right:' + videoRight + 'px;width:196px;z-index:44;animation:gbPop .3s ease';
+
+    /* ── student chat messages ── */
+    const messages = s.messages.map(m => {
+      const me = m.role === 'me';
+      return {
+        rowStyle: 'display:flex;flex-direction:column;gap:4px;' + (me ? 'align-items:flex-end' : 'align-items:flex-start'),
+        chipOn: !!(me && m.step),
+        chip: '⑂ theo Bước ' + m.step + ' của thầy',
+        chipStyle: 'background:#ECD8AC;border-radius:999px;padding:2px 9px;font-size:9px;font-weight:800;white-space:nowrap',
+        bubbleStyle: me
+          ? 'max-width:78%;background:#3A2C22;color:#fff;border-radius:14px 14px 4px 14px;padding:11px 15px;font-size:12.5px;line-height:1.65;font-family:ui-monospace,Menlo,monospace;animation:gbPop .25s ease'
+          : 'max-width:78%;background:#EDE4D8;color:#3A2C22;border-radius:14px 14px 14px 4px;padding:11px 15px;font-size:13px;line-height:1.65;animation:gbPop .25s ease',
+        text: m.text
+      };
+    });
+
+    /* ── teacher roster ── */
+    const tRoster = this.roster.map(st => {
+      const at = st.at === -1 ? s.studentStep : Math.min(st.at, curStep);
+      const gap = curStep - at;
+      const slow = gap >= 2;
+      return {
+        name: st.name, init: st.init,
+        avStyle: 'width:22px;height:22px;border-radius:50%;background:' + st.grad + ';color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0',
+        stepLabel: slow ? 'chậm ' + gap + ' bước' : 'bước ' + at,
+        stepStyle: 'border-radius:999px;padding:3px 10px;font-size:9.5px;font-weight:800;white-space:nowrap;' + (slow ? 'background:#ECD8AC;color:#8A5A00' : 'background:#DBEFE3;color:#256A47'),
+        slow,
+        nudge: () => this.toast('Đã gửi lời nhắc thân thiện cho ' + st.name)
+      };
+    });
+    const tOkCount = 12 - tRoster.filter(r => r.slow).length * 1 - 2; // 6 shown of 12; extrapolate
+
+    /* ── QR cells (deterministic pseudo-random) ── */
+    const qrCells = [];
+    let seed = 7;
+    for (let i = 0; i < 169; i++) {
+      seed = (seed * 137 + 11) % 251;
+      const r = Math.floor(i / 13), c = i % 13;
+      const finder = (r < 4 && c < 4) || (r < 4 && c > 8) || (r > 8 && c < 4);
+      qrCells.push({ bg: finder ? ((r === 0 || r === 3 || c === 0 || c === 3 || r === 12 || r === 9 || c === 12 || c === 9) && !(r > 0 && r < 3 && c > 0 && c < 3) ? '#3A2C22' : (r > 0 && r < 3 ? '#3A2C22' : '#F7F2EB')) : (seed % 5 < 2 ? '#3A2C22' : '#F7F2EB') });
+    }
+
+    const liveStep = this.steps[curStep - 1];
+
+    return {
+      /* header */
+      clock: s.clock,
+      chipFocus: focus ? chipOn : chipOff,
+      chipSplit: split ? chipOn : chipOff,
+      chipTwo: twoDevice ? chipOn : chipOff,
+      pickFocus: () => this.choosePreset('focus'),
+      pickSplit: () => this.choosePreset('split'),
+      pickTwo: () => this.choosePreset('two'),
+      toggleFull: () => {
+        if (embedded) { this.setState(p => ({ isFull: !p.isFull })); return; }
+        if (document.fullscreenElement) { document.exitFullscreen(); this.setState({ isFull: false }); }
+        else { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); this.setState({ isFull: true }); }
+      },
+      fullLabel: isFull ? '🗗 Màn hình web' : '⛶ Toàn màn hình',
+      fullBtnStyle: isFull
+        ? "background:#3A2C22;color:#F2CE73;border:none;border-radius:999px;padding:8px 15px;font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:800;cursor:pointer;white-space:nowrap"
+        : "background:transparent;border:1px solid #B3A595;border-radius:999px;padding:7px 14px;font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:700;color:#6B5044;cursor:pointer;white-space:nowrap",
+      toggleSide: () => this.setState(p => ({ teacherSide: !p.teacherSide })),
+      sideLabel: teacherView ? '⇄ Xem phía học sinh' : '⇄ Xem phía giáo viên',
+      studentView: !teacherView,
+      teacherView,
+
+      /* layout */
+      rootStyle,
+      notEmbedded: !embedded,
+      toastStyle: 'position:' + fixOrAbs + ';top:' + (embedded ? '12px' : '74px') + ';left:50%;transform:translateX(-50%);z-index:200;background:#3A2C22;color:#fff;border-radius:999px;padding:10px 20px;font-size:12.5px;font-weight:800;box-shadow:0 10px 30px rgba(58,44,34,.3);animation:gbToast 2s ease forwards;white-space:nowrap',
+      twoChipStyle: 'position:' + fixOrAbs + ';left:16px;bottom:16px;z-index:70;background:#3A2C22;color:#fff;border-radius:999px;padding:9px 9px 9px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 28px rgba(58,44,34,.3);animation:gbPop .3s ease',
+      overlayWrapStyle: 'position:' + fixOrAbs + ';inset:0;z-index:150;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box',
+      overlayWrapStyle2: 'position:' + fixOrAbs + ';inset:0;z-index:160;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box',
+      bodyRowStyle, aiPanelStyle, railStyle,
+      railOpen: railOpen && !teacherView,
+      railCollapsed: railCollapsed && !teacherView,
+      collapseRail: () => this.setState({ railCollapsed: true }),
+      expandRail: () => this.setState({ railCollapsed: false }),
+
+      /* rail */
+      curStep, dots, railCards,
+      stepsLeft: 6 - curStep,
+      dotHintLeft: 'bấm số để xem lại bước cũ',
+      behind, behindOn: behind >= 1 && !teacherView,
+      caughtUp: behind === 0 && !teacherView,
+      catchUp: () => {
+        const next = this.steps[Math.min(s.studentStep, 5)];
+        this.setState({ focusStep: next.n, railCollapsed: false });
+        this.copyStep(next);
+      },
+
+      /* student AI */
+      messages, aiTyping: s.aiTyping,
+      studentStep: s.studentStep,
+      myStepChipStyle: 'margin-left:auto;flex-shrink:0;border-radius:999px;padding:3px 10px;font-size:9.5px;font-weight:800;white-space:nowrap;' + (behind >= 2 ? 'background:#F2CE73;color:#3A2C22' : 'background:rgba(247,242,235,.14);color:#EDE4D8'),
+      composer: s.composer,
+      composerType: e => this.setState({ composer: e.target.value }),
+      fromStepOn: s.fromStepN > 0,
+      fromStepN: s.fromStepN,
+      clearFrom: () => this.setState({ fromStepN: 0 }),
+      send: () => this.send(),
+
+      /* video */
+      videoBody,
+      videoInRail: split && railOpen && !teacherView,
+      videoFloating,
+      videoWinStyle,
+
+      /* two-device + QR */
+      twoDevice: twoDevice && !teacherView,
+      qrOpen: s.qrOpen,
+      openQr: () => this.setState({ qrOpen: true }),
+      closeQr: () => this.setState({ qrOpen: false }),
+      qrPaired: () => { this.setState({ qrOpen: false }); this.toast('Đã ghép — video thầy đang phát trên điện thoại của bạn'); },
+      qrFallback: () => { this.choosePreset('focus'); this.toast('Đã chuyển về bố cục Focus'); },
+      qrCells,
+
+      /* picker */
+      pickerOpen: pickerOpen && !teacherView,
+
+      /* toast */
+      toastOn: !!s.toastMsg, toastMsg: s.toastMsg,
+
+      /* teacher view */
+      liveTitle: liveStep.title,
+      livePrompt: liveStep.prompt,
+      tNextStep: () => {
+        if (curStep >= 6) { this.toast('Đã hết 6 bước — kết thúc phần hướng dẫn'); return; }
+        this.setState({ curStep: curStep + 1, step4Done: true });
+        this.toast('Đã phát Bước ' + (curStep + 1) + ' cho cả lớp');
+      },
+      tNextLabel: curStep >= 6 ? '✓ Hết 6 bước' : 'Chốt & sang Bước ' + (curStep + 1) + ' →',
+      tFace: s.tFaceMode, tScreen: !s.tFaceMode,
+      tSetFace: () => this.setState({ tFaceMode: true }),
+      tSetScreen: () => this.setState({ tFaceMode: false }),
+      tFaceChip: 'flex:1;' + (s.tFaceMode ? chipOn : chipOff),
+      tScreenChip: 'flex:1;' + (s.tFaceMode ? chipOff : chipOn),
+      tRoster,
+      tOkCount: Math.max(6, tOkCount)
+    };
+  }
+}
+</script>
+</body>
+</html>
