@@ -1306,7 +1306,7 @@ textarea:focus-visible, [tabindex]:focus-visible {
             </sc-if>
             
             <sc-if value="{{ !isYtVideo }}">
-              <video id="html5-player" src="{{ videoUrl }}" style="width:100%;height:100%;position:absolute;top:0;left:0;z-index:1;background:#000;"></video>
+              <video id="html5-player" preload="none" src="{{ videoUrl }}" style="width:100%;height:100%;position:absolute;top:0;left:0;z-index:1;background:#000;"></video>
             </sc-if>
             
             <!-- Custom Controller Overlay (Z-Index: 2) -->
