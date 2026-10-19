@@ -134,6 +134,8 @@ image-slot#space-photo-1{display:block!important;width:100%!important;height:100
   .gb-m-full  { width: 100% !important; box-sizing: border-box !important; }
   .gb-m-close { width: 44px !important; height: 44px !important; } /* circular ✕ buttons: grow but stay round */
   .gb-m-mini  { min-height: 0 !important; } /* tiny inline glossary ? chips: exempt from the 44px blanket */
+  .gb-m-hide  { display: none !important; } /* header: name text (+ learner logout) hidden on phones (Q1 = B, T-022) */
+  .gb-m-avatar { padding-right: 0 !important; margin-right: 0 !important; } /* avatar pill: no trailing pad once the name is hidden */
   /* ── Mobile type scale ──────────────────────────────────────────────────
      The 48–55 ICP could not read the 11–12px body copy (persona C1). Lift the
      floor to 14px, preserving hierarchy. Scoped to screen content
@@ -437,24 +439,25 @@ textarea:focus-visible, [tabindex]:focus-visible {
       <sc-if value="{{ isLoggedIn }}" hint-placeholder-val="{{ true }}">
       <div style="display:flex;align-items:center;gap:10px">
         <sc-if value="{{ isTeacher }}" hint-placeholder-val="{{ false }}">
-        <div onClick="{{ goTeacher }}" onKeyDown="{{ kbActivate }}" tabIndex="0" role="button" style="display:flex;align-items:center;gap:9px;cursor:pointer;border-radius:999px;padding:3px 10px 3px 3px;margin:-3px -10px -3px -3px;min-width:0" style-hover="background:#EDE4D8">
+        <div class="gb-m-avatar" onClick="{{ goTeacher }}" onKeyDown="{{ kbActivate }}" tabIndex="0" role="button" style="display:flex;align-items:center;gap:9px;cursor:pointer;border-radius:999px;padding:3px 10px 3px 3px;margin:-3px -10px -3px -3px;min-width:0" style-hover="background:#EDE4D8">
           <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,#C9A24E,#9A7328);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0">HT</span>
-          <span style="display:flex;flex-direction:column;line-height:1.2;min-width:0">
+          <span class="gb-m-hide" style="display:flex;flex-direction:column;line-height:1.2;min-width:0">
             <span style="font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">GV Hương Trà</span>
             <span style="font-size:10.5px;color:#6F6152;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ headerRoleLabel }}</span>
           </span>
         </div>
+        <button onClick="{{ handleLogout }}" style="background:transparent;border:1px solid #B3A595;border-radius:999px;padding:6px 14px;font-family:'Montserrat',Arial,sans-serif;font-size:11.5px;font-weight:800;color:#6B5044;cursor:pointer;white-space:nowrap" style-hover="background:#EDE4D8;color:#3A2C22">Đăng xuất</button>
         </sc-if>
         <sc-if value="{{ isNotTeacher }}" hint-placeholder-val="{{ true }}">
-        <div onClick="{{ goProfile }}" onKeyDown="{{ kbActivate }}" tabIndex="0" role="button" style="display:flex;align-items:center;gap:9px;cursor:pointer;border-radius:999px;padding:3px 10px 3px 3px;margin:-3px -10px -3px -3px;min-width:0" style-hover="background:#EDE4D8">
+        <div class="gb-m-avatar" onClick="{{ goProfile }}" onKeyDown="{{ kbActivate }}" tabIndex="0" role="button" style="display:flex;align-items:center;gap:9px;cursor:pointer;border-radius:999px;padding:3px 10px 3px 3px;margin:-3px -10px -3px -3px;min-width:0" style-hover="background:#EDE4D8">
           <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,#D08A5E,#B5673C);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0">{{ userInitial }}</span>
-          <span style="display:flex;flex-direction:column;line-height:1.2;min-width:0">
+          <span class="gb-m-hide" style="display:flex;flex-direction:column;line-height:1.2;min-width:0">
             <span style="font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ userName }}</span>
             <span class="gb-hide-1500" style="font-size:10.5px;color:#6F6152;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Level: Beginner · {{ clsPrefix }} {{ clsLabel }}</span>
           </span>
         </div>
+        <button class="gb-m-hide" onClick="{{ handleLogout }}" style="background:transparent;border:1px solid #B3A595;border-radius:999px;padding:6px 14px;font-family:'Montserrat',Arial,sans-serif;font-size:11.5px;font-weight:800;color:#6B5044;cursor:pointer;white-space:nowrap" style-hover="background:#EDE4D8;color:#3A2C22">Đăng xuất</button>
         </sc-if>
-        <button onClick="{{ handleLogout }}" style="background:transparent;border:1px solid #B3A595;border-radius:999px;padding:6px 14px;font-family:'Montserrat',Arial,sans-serif;font-size:11.5px;font-weight:800;color:#6B5044;cursor:pointer;white-space:nowrap" style-hover="background:#EDE4D8;color:#3A2C22">Đăng xuất</button>
       </div>
       </sc-if>
       <sc-if value="{{ isLoggedOut }}" hint-placeholder-val="{{ false }}">
@@ -3382,7 +3385,7 @@ textarea:focus-visible, [tabindex]:focus-visible {
             </div>
             <div style="border-top:1px solid #D9CDBC;padding-top:12px;display:flex;gap:8px;flex-wrap:wrap">
               <button style="background:transparent;border:1px solid #B3A595;border-radius:999px;padding:7px 15px;font-family:'Montserrat',Arial,sans-serif;font-size:11.5px;font-weight:700;color:#6B5044;cursor:pointer" style-hover="border-color:#6B5044;color:#3A2C22">Đổi mật khẩu</button>
-              <button style="background:transparent;border:1px solid #B3A595;border-radius:999px;padding:7px 15px;font-family:'Montserrat',Arial,sans-serif;font-size:11.5px;font-weight:700;color:#D72638;cursor:pointer" style-hover="border-color:#D72638">Đăng xuất</button>
+              <button onClick="{{ handleLogout }}" style="background:transparent;border:1px solid #B3A595;border-radius:999px;padding:7px 15px;font-family:'Montserrat',Arial,sans-serif;font-size:11.5px;font-weight:700;color:#D72638;cursor:pointer" style-hover="border-color:#D72638">Đăng xuất</button>
             </div>
           </div>
         </div>
