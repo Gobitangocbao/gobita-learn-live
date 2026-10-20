@@ -136,6 +136,10 @@ image-slot#space-photo-1{display:block!important;width:100%!important;height:100
   .gb-m-mini  { min-height: 0 !important; } /* tiny inline glossary ? chips: exempt from the 44px blanket */
   .gb-m-hide  { display: none !important; } /* header: name text (+ learner logout) hidden on phones (Q1 = B, T-022) */
   .gb-m-avatar { padding-right: 0 !important; margin-right: 0 !important; } /* avatar pill: no trailing pad once the name is hidden */
+  /* T-502 (Q9 = A): invisible 44px touch target around small header controls; the visible box is unchanged */
+  .gb-m-hit { position: relative; }
+  .gb-m-hit::after { content: ''; position: absolute; left: 50%; top: 50%; width: max(100%, 44px); height: max(100%, 44px); transform: translate(-50%, -50%); }
+  .gb-m-hit-r::after { left: auto; right: 0; transform: translateY(-50%); } /* right-edge controls (avatar): grow leftwards only, never past the viewport */
   /* ── Mobile type scale ──────────────────────────────────────────────────
      The 48–55 ICP could not read the 11–12px body copy (persona C1). Lift the
      floor to 14px, preserving hierarchy. Scoped to screen content
@@ -351,11 +355,11 @@ textarea:focus-visible, [tabindex]:focus-visible {
 
   <!-- ═══════════ TOP BAR ═══════════ -->
   <div style="display:flex;align-items:center;flex-wrap:wrap;row-gap:6px;gap:12px;padding:12px 16px;background:rgba(247,242,235,.92);backdrop-filter:blur(8px);border-bottom:1px solid #E3D8C8;position:sticky;top:0;z-index:var(--gb-z-sticky)">
-    <div data-tour="brand" style="display:flex;align-items:center;gap:9px;cursor:pointer" onClick="{{ goHome }}">
+    <div class="gb-m-hit" data-tour="brand" style="display:flex;align-items:center;gap:9px;cursor:pointer" onClick="{{ goHome }}">
       <img src="./assets/gobita-mark-color.png" alt="Gobita" style="height:26px;width:auto;display:block">
       <span style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#6F6152;text-transform:uppercase;border-left:1px solid #D9CDBC;padding-left:9px">Learn</span>
     </div>
-    <button onClick="{{ toggleNavMenu }}" style="{{ hamburgerStyle }}" aria-label="Menu">☰</button>
+    <button class="gb-m-hit" onClick="{{ toggleNavMenu }}" style="{{ hamburgerStyle }}" aria-label="Menu">☰</button>
     <div style="{{ navRowStyle }}">
       <button style="{{ navHomeStyle }}" onClick="{{ goHome }}">{{ navHomeLabel }}</button>
       <button style="{{ navLessonStyle }}" onClick="{{ goLibrary }}">{{ navLibraryLabel }}</button>
@@ -367,10 +371,10 @@ textarea:focus-visible, [tabindex]:focus-visible {
       <button style="{{ navGuideStyle }}" onClick="{{ goGuide }}">{{ navGuideLabel }}</button>
     </div>
     <div style="display:flex;align-items:center;gap:10px;min-width:0">
-      <button onClick="{{ openGlobalSearch }}" style="width:34px;height:34px;border-radius:50%;border:none;background:#EDE4D8;color:#3A2C22;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Montserrat',Arial,sans-serif" style-hover="background:#E3D6C4" aria-label="Tìm kiếm bài học, bài viết, prompt" title="Tìm kiếm">🔍</button>
+      <button class="gb-m-hit" onClick="{{ openGlobalSearch }}" style="width:34px;height:34px;border-radius:50%;border:none;background:#EDE4D8;color:#3A2C22;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Montserrat',Arial,sans-serif" style-hover="background:#E3D6C4" aria-label="Tìm kiếm bài học, bài viết, prompt" title="Tìm kiếm">🔍</button>
       <div data-tour="lang" style="display:flex;background:#EDE4D8;border-radius:999px;padding:3px;flex-shrink:0" title="Ngôn ngữ / Language">
-        <button onClick="{{ setLangVi }}" style="{{ langViChip }}">VI</button>
-        <button onClick="{{ setLangEn }}" style="{{ langEnChip }}">EN</button>
+        <button class="gb-m-hit" onClick="{{ setLangVi }}" style="{{ langViChip }}">VI</button>
+        <button class="gb-m-hit" onClick="{{ setLangEn }}" style="{{ langEnChip }}">EN</button>
       </div>
       <sc-if value="{{ showPointsAndNotif }}" hint-placeholder-val="{{ true }}">
       <div style="position:relative;flex-shrink:0">
@@ -405,7 +409,7 @@ textarea:focus-visible, [tabindex]:focus-visible {
       </sc-if>
       <sc-if value="{{ showPointsAndNotif }}" hint-placeholder-val="{{ true }}">
       <div style="position:relative;flex-shrink:0">
-        <button onClick="{{ notifToggle }}" style="{{ notifBtnStyle }}" style-hover="background:#E3D6C4" aria-label="{{ notifAriaLabel }}" title="Thông báo">
+        <button class="gb-m-hit" onClick="{{ notifToggle }}" style="{{ notifBtnStyle }}" style-hover="background:#E3D6C4" aria-label="{{ notifAriaLabel }}" title="Thông báo">
           🔔
           <sc-if value="{{ notifHasUnread }}" hint-placeholder-val="{{ false }}">
             <span style="{{ notifBadgeStyle }}">{{ notifUnreadLabel }}</span>
@@ -439,17 +443,17 @@ textarea:focus-visible, [tabindex]:focus-visible {
       <sc-if value="{{ isLoggedIn }}" hint-placeholder-val="{{ true }}">
       <div style="display:flex;align-items:center;gap:10px">
         <sc-if value="{{ isTeacher }}" hint-placeholder-val="{{ false }}">
-        <div class="gb-m-avatar" onClick="{{ goTeacher }}" onKeyDown="{{ kbActivate }}" tabIndex="0" role="button" style="display:flex;align-items:center;gap:9px;cursor:pointer;border-radius:999px;padding:3px 10px 3px 3px;margin:-3px -10px -3px -3px;min-width:0" style-hover="background:#EDE4D8">
+        <div class="gb-m-hit gb-m-hit-r gb-m-avatar" onClick="{{ goTeacher }}" onKeyDown="{{ kbActivate }}" tabIndex="0" role="button" style="display:flex;align-items:center;gap:9px;cursor:pointer;border-radius:999px;padding:3px 10px 3px 3px;margin:-3px -10px -3px -3px;min-width:0" style-hover="background:#EDE4D8">
           <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,#C9A24E,#9A7328);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0">HT</span>
           <span class="gb-m-hide" style="display:flex;flex-direction:column;line-height:1.2;min-width:0">
             <span style="font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">GV Hương Trà</span>
             <span style="font-size:10.5px;color:#6F6152;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ headerRoleLabel }}</span>
           </span>
         </div>
-        <button onClick="{{ handleLogout }}" style="background:transparent;border:1px solid #B3A595;border-radius:999px;padding:6px 14px;font-family:'Montserrat',Arial,sans-serif;font-size:11.5px;font-weight:800;color:#6B5044;cursor:pointer;white-space:nowrap" style-hover="background:#EDE4D8;color:#3A2C22">Đăng xuất</button>
+        <button class="gb-m-hit" onClick="{{ handleLogout }}" style="background:transparent;border:1px solid #B3A595;border-radius:999px;padding:6px 14px;font-family:'Montserrat',Arial,sans-serif;font-size:11.5px;font-weight:800;color:#6B5044;cursor:pointer;white-space:nowrap" style-hover="background:#EDE4D8;color:#3A2C22">Đăng xuất</button>
         </sc-if>
         <sc-if value="{{ isNotTeacher }}" hint-placeholder-val="{{ true }}">
-        <div class="gb-m-avatar" onClick="{{ goProfile }}" onKeyDown="{{ kbActivate }}" tabIndex="0" role="button" style="display:flex;align-items:center;gap:9px;cursor:pointer;border-radius:999px;padding:3px 10px 3px 3px;margin:-3px -10px -3px -3px;min-width:0" style-hover="background:#EDE4D8">
+        <div class="gb-m-hit gb-m-hit-r gb-m-avatar" onClick="{{ goProfile }}" onKeyDown="{{ kbActivate }}" tabIndex="0" role="button" style="display:flex;align-items:center;gap:9px;cursor:pointer;border-radius:999px;padding:3px 10px 3px 3px;margin:-3px -10px -3px -3px;min-width:0" style-hover="background:#EDE4D8">
           <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,#D08A5E,#B5673C);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0">{{ userInitial }}</span>
           <span class="gb-m-hide" style="display:flex;flex-direction:column;line-height:1.2;min-width:0">
             <span style="font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ userName }}</span>
