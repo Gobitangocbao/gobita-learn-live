@@ -108,6 +108,10 @@
     return loadP;
   }
 
+  // Gobita T-118: the app replaces the stored slots (another account's photo, or the copy from the learner's account)
+  // and asks every slot on the page to re-read them.
+  window.__gbSlotsReload = function () { slots = {}; tombstones.clear(); loaded = false; loadP = null; load(); };
+
   // Serialize writes so two near-simultaneous drops on different slots
   // can't reorder at the backend and leave the sidecar with only the
   // first. A save requested mid-flight just marks dirty and re-fires on
