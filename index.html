@@ -6800,7 +6800,7 @@ const API_BASE='https://script.google.com/macros/s/AKfycbxDx5x-9LOgM4956WVjEUJpF
 // Both empty = Demo (live today). T-107 fills both.
 const GOOGLE_CLIENT_ID='335112134982-2f70q7ogr32nqvs37c0a3mpvefde3em7.apps.googleusercontent.com';const GOOGLE_AUTH=!!(API_BASE&&GOOGLE_CLIENT_ID);// T-307 (Q42 = A): Firebase Realtime Database for the real Live Room (Web API key + database URL — identify the project, not secrets;
 // access is decided by backend-firebase/database.rules.json). Empty = off: Demo, tests, other agents. Deploy fills both (apply_prod_config.py).
-const RT_API_KEY='';const RT_DB_URL='';// Sample video for every sample-lesson video block (Q7b = A1, test link from the owner 20/10). Real Gobita video = change this one line.
+const RT_API_KEY='AIzaSyDXBVEMxNdeP1xAUVdn1j-ZqqHRPazfa2M';const RT_DB_URL='https://gobita-learn-live-default-rtdb.asia-southeast1.firebasedatabase.app';// Sample video for every sample-lesson video block (Q7b = A1, test link from the owner 20/10). Real Gobita video = change this one line.
 const GOBITA_SAMPLE_VIDEO='https://www.youtube.com/watch?v=COr5YV6PFKY';const SUGGESTION_PACKS={vi:{clear:["Tóm tắt","So sánh","Viết thư","Phân tích","Lập danh sách"],verifiable:["thành 5 gạch đầu dòng","dưới 100 từ","dưới dạng bảng","gồm 3 bước"],specific:["cho sếp","cho giám đốc","cho khách hàng mới","dành cho học sinh"]},en:{clear:["Summarize","Compare","Draft an email","Analyze","Create a list"],verifiable:["into 5 bullet points","under 100 words","as a table","in 3 steps"],specific:["for my boss","for a new customer","for students"]}};/**
  * Injects a phrase into an existing text prompt based on insertion type.
  * @param {string} currentText - The existing prompt in the textarea.
