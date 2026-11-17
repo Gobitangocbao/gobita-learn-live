@@ -1,4 +1,4 @@
-version: v0.1.104
-source_commit: 39984881e3fdb548ce6c2c1ce0aa7ea9bb526d45
-built: 2026-11-10 10:13 +0700
+version: v0.1.105
+source_commit: 7b91deb3959652ff99a82d4aaebecfbd14b8a9ff
+built: 2026-11-17 08:33 +0700
 source: private repo Gobitangocbao/gobita-learn-ai-platform

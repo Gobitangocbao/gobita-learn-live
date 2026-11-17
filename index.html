@@ -236,6 +236,13 @@ textarea:focus-visible, [tabindex]:focus-visible {
   box-shadow: 0 2px 6px rgba(58,44,34,.12);
 }
 
+/* T-516 (Q61 = A): phones narrower than 375px — the header's right group (🔍 · VI/EN · points · 🔔 · avatar = 322px)
+   did not fit the 328px row (body overflow 18px at 360). Spacing only, 375px+ unchanged: gaps 10→4 (−24) + points pill side padding 11→6 (−10). */
+@media (max-width: 374px){
+  .gb-m-hdr-r { gap: 4px !important; }
+  .gb-m-hdr-pts { padding-left: 6px !important; padding-right: 6px !important; }
+}
+
 @media (prefers-reduced-motion: reduce){
   *, *::before, *::after {
     animation: none !important;
@@ -403,7 +410,7 @@ textarea:focus-visible, [tabindex]:focus-visible {
       </sc-if>
       <button style="{{ navGuideStyle }}" onClick="{{ goGuide }}">{{ navGuideLabel }}</button>
     </div>
-    <div style="display:flex;align-items:center;gap:10px;min-width:0">
+    <div class="gb-m-hdr-r" style="display:flex;align-items:center;gap:10px;min-width:0">
       <button class="gb-m-hit" onClick="{{ openGlobalSearch }}" style="width:34px;height:34px;border-radius:50%;border:none;background:#EDE4D8;color:#3A2C22;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Montserrat',Arial,sans-serif" style-hover="background:#E3D6C4" aria-label="Tìm kiếm bài học, bài viết, prompt" title="Tìm kiếm">🔍</button>
       <div data-tour="lang" style="display:flex;background:#EDE4D8;border-radius:999px;padding:3px;flex-shrink:0" title="Ngôn ngữ / Language">
         <button class="gb-m-hit" onClick="{{ setLangVi }}" style="{{ langViChip }}">VI</button>
@@ -411,7 +418,7 @@ textarea:focus-visible, [tabindex]:focus-visible {
       </div>
       <sc-if value="{{ showPointsAndNotif }}" hint-placeholder-val="{{ true }}">
       <div style="position:relative;flex-shrink:0">
-      <div data-tour="points" onClick="{{ pointsLedgerToggle }}" style="display:flex;align-items:center;gap:6px;background:#EDE4D8;border-radius:999px;padding:6px 11px;box-shadow:0 1px 2px rgba(58,44,34,.08);cursor:pointer" style-hover="background:#E3D6C4">
+      <div class="gb-m-hdr-pts" data-tour="points" onClick="{{ pointsLedgerToggle }}" style="display:flex;align-items:center;gap:6px;background:#EDE4D8;border-radius:999px;padding:6px 11px;box-shadow:0 1px 2px rgba(58,44,34,.08);cursor:pointer" style-hover="background:#E3D6C4">
         <span style="width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,#C9A24E,#9A7328)"></span>
         <span key="{{ ptsAnimKey }}" style="font-size:13px;font-weight:700;display:inline-block;animation:gbGemPop .45s ease">{{ points }}</span>
         <span style="font-size:11px;color:#6F6152;font-weight:500">{{ pointsUnit }}</span>
