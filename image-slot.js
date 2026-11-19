@@ -603,6 +603,21 @@
       else { this._local = v; }
     }
 
+    // Gobita T-345 (Q67 = A): the app's larger "Chỉnh vị trí" editor reads the current framing and writes a new one —
+    // the same {s, x, y} the double-click reframe mode stores, so both paths stay interchangeable.
+    gbGetView() {
+      const g = this._geom();
+      if (!g || !this._reframes()) return null;
+      return { s: this._view.s, x: this._view.x, y: this._view.y, iw: g.iw, ih: g.ih, fw: g.fw, fh: g.fh, src: this._img.getAttribute('src') || '' };
+    }
+    gbSetView(v) {
+      if (!v || !this._reframes()) return;
+      this._view = { s: clampS(Number(v.s) || 1), x: Number(v.x) || 0, y: Number(v.y) || 0 };
+      this._clampView();
+      this._applyView();
+      this._commitView();
+    }
+
     // Localizable chrome. The empty-state "or browse files" hint and the
     // Replace/Remove button labels are otherwise hard-coded English; a host
     // page (e.g. this VI-first app) sets these attributes per language so the
