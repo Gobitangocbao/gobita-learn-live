@@ -125,7 +125,7 @@ image-slot#space-photo-1{display:block!important;width:100%!important;height:100
 @keyframes gbBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
 @keyframes gbPopupUp{0%{opacity:0;transform:translate(-50%,4px) scale(.7)}25%{opacity:1;transform:translate(-50%,-6px) scale(1.05)}100%{opacity:0;transform:translate(-50%,-34px) scale(1)}}
 /* Header fit: below 1500px hide the student identity subtitle so the 8-item nav stays on one line (name + avatar kept). Above 1500px everything shows. */
-@media (max-width: 1500px){ .gb-hide-1500 { display: none !important; } }
+@media (max-width: 1680px){ .gb-hide-1680 { display: none !important; } } /* T-341 (Q66 = A): was 1500 — a long "Level: …" line wrapped the nav menu up to 1615px */
 /* T-315 (Q51 = A): learner Live Room with the teacher's YouTube screen — side by side on wide screens only.
    The classes are set by app.ts (rtWideCls / rtSplitCls) only for a learner in a room with YouTube who kept "side by side". */
 .gb-rt-wideonly { display: none; }
@@ -554,9 +554,9 @@ textarea:focus-visible, [tabindex]:focus-visible {
           <span class="gb-m-hide" style="display:flex;flex-direction:column;line-height:1.2;min-width:0">
             <span style="font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ userName }}</span>
             <sc-if value="{{ rankIsDemo }}" hint-placeholder-val="{{ true }}">
-            <span class="gb-hide-1500" style="font-size:10.5px;color:#6F6152;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Level: Beginner · {{ clsPrefix }} {{ clsLabel }}</span>
+            <span class="gb-hide-1680" style="font-size:10.5px;color:#6F6152;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Level: Beginner · {{ clsPrefix }} {{ clsLabel }}</span>
             </sc-if><sc-if value="{{ rankIsReal }}" hint-placeholder-val="{{ false }}">
-            <span class="gb-hide-1500" style="font-size:10.5px;color:#6F6152;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Level: {{ rankCurName }}{{ rankMentor }} · {{ clsPrefix }} {{ clsLabel }}</span>
+            <span class="gb-hide-1680" style="font-size:10.5px;color:#6F6152;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Level: {{ rankCurName }}{{ rankMentor }} · {{ clsPrefix }} {{ clsLabel }}</span>
             </sc-if>
           </span>
         </div>
