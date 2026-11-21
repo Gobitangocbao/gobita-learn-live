@@ -120,15 +120,29 @@
     <circle cx="60" cy="18" r="5" fill="#C0685B" stroke="#3A2C22" stroke-width="2.5"></circle>
   </g>
   </sc-if>
+
+  <!-- ── TỔ ONG TRI THỨC (hive) — golden hex crown + fact-check lens ── -->
+  <sc-if value="{{ isHive }}" hint-placeholder-val="{{ false }}">
+  <g>
+    <path d="M29 43 Q60 29 91 43 L91 34 Q60 22 29 34 Z" fill="#F2CE73" stroke="#3A2C22" stroke-width="2.6" stroke-linejoin="round"></path>
+    <polygon points="60,14 69,19 69,29 60,34 51,29 51,19" fill="#F97300" stroke="#3A2C22" stroke-width="2.4" stroke-linejoin="round"></polygon>
+    <circle cx="60" cy="24" r="3" fill="#FFF3C4"></circle>
+    <g transform="translate(103 82) rotate(26)">
+      <circle cx="0" cy="-6" r="9" fill="#F7F2EB" stroke="#3A2C22" stroke-width="3"></circle>
+      <circle cx="0" cy="-6" r="5" fill="#FCEBB8"></circle>
+      <line x1="0" y1="3" x2="0" y2="14" stroke="#C9A24E" stroke-width="4" stroke-linecap="round"></line>
+    </g>
+  </g>
+  </sc-if>
 </svg>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:140,&quot;height&quot;:150},&quot;outfit&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;climb&quot;,&quot;race&quot;,&quot;memory&quot;,&quot;blitz&quot;,&quot;mine&quot;,&quot;prompt&quot;,&quot;wall&quot;],&quot;default&quot;:&quot;climb&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:140,&quot;height&quot;:150},&quot;outfit&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;climb&quot;,&quot;race&quot;,&quot;memory&quot;,&quot;blitz&quot;,&quot;mine&quot;,&quot;prompt&quot;,&quot;wall&quot;,&quot;hive&quot;],&quot;default&quot;:&quot;climb&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     const o = this.props.outfit || 'climb';
     return {
       isClimb: o === 'climb', isRace: o === 'race', isMemory: o === 'memory',
-      isBlitz: o === 'blitz', isMine: o === 'mine', isPrompt: o === 'prompt', isWall: o === 'wall',
+      isBlitz: o === 'blitz', isMine: o === 'mine', isPrompt: o === 'prompt', isWall: o === 'wall', isHive: o === 'hive',
     };
   }
 }

@@ -137,6 +137,30 @@
       <g transform="translate(266 80)"><ellipse cx="0" cy="11" rx="10" ry="2.8" fill="#3A2C22" opacity=".28"></ellipse><ellipse cx="0" cy="0" rx="12" ry="11" fill="#E19A6B"></ellipse><path d="M-8 -10 l2 5 M8 -10 l-2 5" stroke="#C1794C" stroke-width="2" stroke-linecap="round"></path><circle cx="-4" cy="-2" r="3.2" fill="#fff"></circle><circle cx="4" cy="-2" r="3.2" fill="#fff"></circle><circle cx="-4" cy="-1.5" r="1.5" fill="#3A2C22"></circle><circle cx="4" cy="-1.5" r="1.5" fill="#3A2C22"></circle></g>
     </g>
     </sc-if>
+
+    <!-- ══ HIVE · golden honeycomb strategy board ══ -->
+    <sc-if value="{{ isHive }}" hint-placeholder-val="{{ false }}">
+    <g>
+      <rect x="0" y="0" width="320" height="112" fill="#3A2C22"></rect>
+      <ellipse cx="148" cy="58" rx="135" ry="62" fill="url(#lampGlow)"></ellipse>
+      <line x1="22" y1="18" x2="22" y2="94" stroke="#F2CE73" stroke-width="4" stroke-linecap="round"></line>
+      <line x1="226" y1="18" x2="226" y2="94" stroke="#F2CE73" stroke-width="4" stroke-linecap="round"></line>
+      <line x1="56" y1="12" x2="192" y2="12" stroke="#C0685B" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 5"></line>
+      <line x1="56" y1="100" x2="192" y2="100" stroke="#C0685B" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 5"></line>
+      <g stroke="#3A2C22" stroke-width="2.2" stroke-linejoin="round">
+        <polygon points="74,26 90,35 90,53 74,62 58,53 58,35" fill="#F2CE73"></polygon>
+        <polygon points="110,26 126,35 126,53 110,62 94,53 94,35" fill="#F7F2EB"></polygon>
+        <polygon points="146,26 162,35 162,53 146,62 130,53 130,35" fill="#C0685B"></polygon>
+        <polygon points="182,26 198,35 198,53 182,62 166,53 166,35" fill="#EDE4D8"></polygon>
+        <polygon points="92,55 108,64 108,82 92,91 76,82 76,64" fill="#F2CE73"></polygon>
+        <polygon points="128,55 144,64 144,82 128,91 112,82 112,64" fill="#FCEBB8" stroke="#F97300" stroke-width="2.6"></polygon>
+        <polygon points="164,55 180,64 180,82 164,91 148,82 148,64" fill="#F2CE73"></polygon>
+        <polygon points="200,55 216,64 216,82 200,91 184,82 184,64" fill="#C9A24E"></polygon>
+      </g>
+      <polyline points="24,44 74,44 92,73 128,73 164,73 200,73 224,64" fill="none" stroke="#FFF3C4" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" opacity=".9"></polyline>
+      <circle cx="128" cy="73" r="4.5" fill="#F97300"></circle>
+    </g>
+    </sc-if>
   </svg>
 
   <div style="position:absolute;right:16px;bottom:-4px;width:74px;height:78px;filter:drop-shadow(0 3px 5px rgba(58,44,34,.28))">
@@ -144,14 +168,14 @@
   </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:260,&quot;height&quot;:112},&quot;game&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;climb&quot;,&quot;race&quot;,&quot;memory&quot;,&quot;blitz&quot;,&quot;mine&quot;,&quot;prompt&quot;,&quot;wall&quot;],&quot;default&quot;:&quot;climb&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:260,&quot;height&quot;:112},&quot;game&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;climb&quot;,&quot;race&quot;,&quot;memory&quot;,&quot;blitz&quot;,&quot;mine&quot;,&quot;prompt&quot;,&quot;wall&quot;,&quot;hive&quot;],&quot;default&quot;:&quot;climb&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     const g = this.props.game || 'climb';
     return {
       outfit: g,
       isClimb: g === 'climb', isRace: g === 'race', isMemory: g === 'memory',
-      isBlitz: g === 'blitz', isMine: g === 'mine', isPrompt: g === 'prompt', isWall: g === 'wall',
+      isBlitz: g === 'blitz', isMine: g === 'mine', isPrompt: g === 'prompt', isWall: g === 'wall', isHive: g === 'hive',
     };
   }
 }
