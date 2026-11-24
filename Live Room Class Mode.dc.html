@@ -3,6 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gobita Learn — Live Room</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gobita Learn">
+<meta property="og:title" content="Gobita Learn — Học AI bằng thực hành">
+<meta property="og:description" content="Học AI bằng thực hành cho người đi làm, chủ doanh nghiệp và sinh viên: bài ngắn 3–6 phút, Live Room cùng giảng viên, trò chơi ôn tập.">
+<meta property="og:image" content="https://gobitangocbao.github.io/gobita-learn-live/materials/brand/og-gobita-2026.png">
+<meta property="og:image:secure_url" content="https://gobitangocbao.github.io/gobita-learn-live/materials/brand/og-gobita-2026.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gobitangocbao.github.io/gobita-learn-live/materials/brand/og-gobita-2026.png">
+<link rel="image_src" href="https://gobitangocbao.github.io/gobita-learn-live/materials/brand/og-gobita-2026.png">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -27,6 +40,13 @@ a:hover{color:#C55B00}
 @keyframes gbToast{0%{opacity:0;transform:translate(-50%,-14px) scale(.92)}12%{opacity:1;transform:translate(-50%,0) scale(1)}82%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-8px)}}
 @keyframes cmWave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
 @keyframes cmRailIn{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+.gb-ico{display:inline-block;width:1.08em;height:1.08em;min-width:12px;min-height:12px;vertical-align:-0.16em;flex-shrink:0;background-color:currentColor;-webkit-mask:var(--gb-i) no-repeat center/contain;mask:var(--gb-i) no-repeat center/contain;pointer-events:none}
+.gb-ico-minimize{--gb-i:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.75'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M4%2014h6v6M20%2010h-6V4M14%2010l6-6M10%2014l-6%206'/%3E%3C/svg%3E");}
+.gb-ico-monitor{--gb-i:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.75'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3.4'%20y='4.6'%20width='17.2'%20height='11.6'%20rx='2'/%3E%3Cpath%20d='M8.6%2019.6h6.8M12%2016.2v3.4'/%3E%3C/svg%3E");}
+.gb-ico-mute{--gb-i:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.75'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M11%205.4%206.8%209H4.2v6h2.6L11%2018.6z'/%3E%3Cpath%20d='m15.4%209.6%204.8%204.8M20.2%209.6l-4.8%204.8'/%3E%3C/svg%3E");}
+.gb-ico-person{--gb-i:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.75'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='8'%20r='3.8'/%3E%3Cpath%20d='M4.8%2020.2a7.4%207.4%200%200%201%2014.4%200'/%3E%3C/svg%3E");}
+.gb-ico-phone{--gb-i:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.75'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='6.8'%20y='3.4'%20width='10.4'%20height='17.2'%20rx='2.2'/%3E%3Cpath%20d='M10.8%2017.6h2.4'/%3E%3C/svg%3E");}
+.gb-ico-volume{--gb-i:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.75'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M11%205.4%206.8%209H4.2v6h2.6L11%2018.6z'/%3E%3Cpath%20d='M15.2%209.2a4.4%204.4%200%200%201%200%205.6M17.8%206.8a7.8%207.8%200%200%201%200%2010.4'/%3E%3C/svg%3E");}
 </style>
 </helmet>
 
@@ -60,7 +80,7 @@ a:hover{color:#C55B00}
       <div style="display:flex;gap:4px;background:#EDE4D8;border-radius:999px;padding:4px" title="Bố cục — chọn 1, không cần sắp xếp cửa sổ">
         <button onClick="{{ pickFocus }}" style="{{ chipFocus }}">◱ Focus</button>
         <button onClick="{{ pickSplit }}" style="{{ chipSplit }}">◫ Chia đôi</button>
-        <button onClick="{{ pickTwo }}" style="{{ chipTwo }}">▯📱 2 thiết bị</button>
+        <button onClick="{{ pickTwo }}" style="{{ chipTwo }}">▯<i class="gb-ico gb-ico-phone" aria-hidden="true" style="margin-right:4px"></i>2 thiết bị</button>
       </div>
       </sc-if>
       <button onClick="{{ toggleFull }}" style="{{ fullBtnStyle }}" style-hover="filter:brightness(1.05)" title="Phóng to hết cỡ cho dễ nhìn — bấm lần nữa (hoặc Esc) để về màn hình web">{{ fullLabel }}</button>
@@ -209,7 +229,7 @@ a:hover{color:#C55B00}
     <sc-if value="{{ twoDevice }}" hint-placeholder-val="{{ false }}">
     <div style="{{ twoChipStyle }}">
       <span style="width:7px;height:7px;border-radius:50%;background:#74AA9C;flex-shrink:0"></span>
-      <span style="font-size:11px;font-weight:800;white-space:nowrap">📱 Video thầy đang phát trên điện thoại của bạn</span>
+      <span style="font-size:11px;font-weight:800;white-space:nowrap"><i class="gb-ico gb-ico-phone" aria-hidden="true" style="margin-right:4px"></i>Video thầy đang phát trên điện thoại của bạn</span>
       <button onClick="{{ openQr }}" style="background:rgba(247,242,235,.15);border:none;color:#F2CE73;border-radius:999px;padding:5px 13px;font-family:'Montserrat',Arial,sans-serif;font-size:10.5px;font-weight:800;cursor:pointer;white-space:nowrap" style-hover="background:rgba(247,242,235,.28)">QR / đổi</button>
     </div>
     </sc-if>
@@ -274,8 +294,8 @@ a:hover{color:#C55B00}
             </sc-if>
           </div>
           <div style="display:flex;gap:4px;background:#F7F2EB;border-radius:999px;padding:4px">
-            <button onClick="{{ tSetFace }}" style="{{ tFaceChip }}">🙂 Mặt + giọng</button>
-            <button onClick="{{ tSetScreen }}" style="{{ tScreenChip }}">🖥 Màn hình</button>
+            <button onClick="{{ tSetFace }}" style="{{ tFaceChip }}"><i class="gb-ico gb-ico-person" aria-hidden="true" style="margin-right:4px"></i>Mặt + giọng</button>
+            <button onClick="{{ tSetScreen }}" style="{{ tScreenChip }}"><i class="gb-ico gb-ico-monitor" aria-hidden="true" style="margin-right:4px"></i>Màn hình</button>
           </div>
           <div style="font-size:10px;color:#8A7B6D;font-weight:600;line-height:1.5;margin-top:8px">Mặc định chỉ phát mặt + giọng (nhẹ mạng). Bật "Màn hình" khi cần cho lớp xem thao tác — cửa sổ nhỏ của học sinh tự đổi theo.</div>
         </div>
@@ -349,7 +369,7 @@ a:hover{color:#C55B00}
             <div style="position:absolute;top:10px;right:8px;width:26px;height:54px;background:#3A2C22;border-radius:6px;display:flex;align-items:center;justify-content:center"><span style="width:14px;height:10px;background:#C9A24E;border-radius:2px"></span></div>
           </div>
           <div>
-            <div style="font-size:13px;font-weight:800;margin-bottom:3px">▯📱 Hai thiết bị</div>
+            <div style="font-size:13px;font-weight:800;margin-bottom:3px">▯<i class="gb-ico gb-ico-phone" aria-hidden="true" style="margin-right:4px"></i>Hai thiết bị</div>
             <div style="font-size:10.5px;color:#6B5044;line-height:1.5;font-weight:600">Quét QR — video thầy sang điện thoại, laptop dành trọn cho AI. Thẻ bước vẫn ở mép phải.</div>
           </div>
           <span style="align-self:flex-start;background:#3A2C22;color:#fff;border-radius:999px;padding:6px 16px;font-size:10.5px;font-weight:800">Chọn Hai thiết bị</span>
@@ -372,7 +392,7 @@ a:hover{color:#C55B00}
       <div style="min-width:0">
         <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#F2CE73;margin-bottom:7px">Hai thiết bị · ghép điện thoại</div>
         <div style="font-size:16px;font-weight:800;line-height:1.35;margin-bottom:8px">Quét bằng camera điện thoại — video thầy phát bên đó, laptop này dành trọn cho AI.</div>
-        <div style="font-size:11.5px;color:#B3A595;line-height:1.6;margin-bottom:14px">① Quét QR · ② Video + giọng thầy hiện trên điện thoại · ③ Muốn xem màn hình thầy? Chạm nút 🖥 ngay trên điện thoại.</div>
+        <div style="font-size:11.5px;color:#B3A595;line-height:1.6;margin-bottom:14px">① Quét QR · ② Video + giọng thầy hiện trên điện thoại · ③ Muốn xem màn hình thầy? Chạm nút <i class="gb-ico gb-ico-monitor" aria-hidden="true" style="margin-right:4px"></i>ngay trên điện thoại.</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button onClick="{{ qrPaired }}" style="background:#F97300;color:#fff;border:none;border-radius:999px;padding:9px 18px;font-family:'Montserrat',Arial,sans-serif;font-size:11.5px;font-weight:800;cursor:pointer;white-space:nowrap" style-hover="filter:brightness(1.06)">✓ Đã quét xong</button>
           <button onClick="{{ qrFallback }}" style="background:transparent;border:1px solid #6B5044;color:#EDE4D8;border-radius:999px;padding:9px 16px;font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap" style-hover="border-color:#B3A595">Không có điện thoại? → Focus</button>
@@ -600,16 +620,16 @@ class Component extends DCLogic {
         ? R('div', { style: { height: 108, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 7 } },
             R('span', { style: { width: 40, height: 40, borderRadius: '50%', background: 'linear-gradient(180deg,#C9A24E,#9A7328)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 800 } }, 'HT'),
             s.videoMuted
-              ? R('span', { style: { fontSize: 9, fontWeight: 800, color: '#B3A595' } }, '🔇 đã tắt tiếng')
+              ? R('span', { style: { fontSize: 9, fontWeight: 800, color: '#B3A595' } }, R('span', null, R('i', { className: 'gb-ico gb-ico-mute', style: { marginRight: 3 } }), 'đã tắt tiếng'))
               : R('div', { style: { display: 'flex', alignItems: 'flex-end', gap: 2, height: 12 } }, waveBar(0), waveBar(.15), waveBar(.3), waveBar(.45)))
         : R('div', { style: { height: 108, background: '#F7F2EB', display: 'flex', flexDirection: 'column', gap: 4, padding: 9, boxSizing: 'border-box' } },
-            R('div', { style: { fontSize: 8, fontWeight: 800, color: '#8A7B6D', fontFamily: 'ui-monospace,Menlo,monospace' } }, '🖥 màn hình thầy · chat.openai.com'),
+            R('div', { style: { fontSize: 8, fontWeight: 800, color: '#8A7B6D', fontFamily: 'ui-monospace,Menlo,monospace' } }, 'Màn hình thầy · chat.openai.com'),
             R('div', { style: { alignSelf: 'flex-end', background: '#3A2C22', color: '#fff', borderRadius: 7, padding: '4px 7px', fontSize: 8, fontFamily: 'ui-monospace,Menlo,monospace', maxWidth: '88%' } }, this.steps[curStep - 1].prompt.slice(0, 52) + '…'),
             R('div', { style: { alignSelf: 'flex-start', background: '#EDE4D8', borderRadius: 7, padding: '4px 7px', fontSize: 8, maxWidth: '88%' } }, this.steps[curStep - 1].ai.slice(0, 48) + '…')),
       R('div', { style: { display: 'flex', alignItems: 'center', gap: 6, padding: '6px 9px' } },
         R('span', { style: { fontSize: 9.5, fontWeight: 800, color: '#EDE4D8', flex: 1, minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }, face ? 'GV Hương Trà · đang nói' : 'Màn hình thầy · trực tiếp'),
-        R('button', { onClick: () => this.setState({ videoMode: face ? 'screen' : 'face' }), title: face ? 'Xem màn hình thầy' : 'Về mặt + giọng', style: { background: 'rgba(247,242,235,.14)', border: 'none', color: '#EDE4D8', borderRadius: 999, padding: '3px 9px', fontSize: 9.5, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap' } }, face ? '🖥 màn hình' : '🙂 mặt thầy'),
-        R('button', { onClick: () => this.setState(p => ({ videoMuted: !p.videoMuted })), title: 'Tắt/bật tiếng', style: { background: 'rgba(247,242,235,.14)', border: 'none', color: '#EDE4D8', borderRadius: 999, width: 22, height: 22, fontSize: 10, cursor: 'pointer', fontFamily: 'inherit', lineHeight: 1, padding: 0 } }, s.videoMuted ? '🔇' : '🔊')));
+        R('button', { onClick: () => this.setState({ videoMode: face ? 'screen' : 'face' }), title: face ? 'Xem màn hình thầy' : 'Về mặt + giọng', style: { background: 'rgba(247,242,235,.14)', border: 'none', color: '#EDE4D8', borderRadius: 999, padding: '3px 9px', fontSize: 9.5, fontWeight: 800, cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap' } }, face ? 'Màn hình' : 'Mặt thầy'),
+        R('button', { onClick: () => this.setState(p => ({ videoMuted: !p.videoMuted })), title: 'Tắt/bật tiếng', style: { background: 'rgba(247,242,235,.14)', border: 'none', color: '#EDE4D8', borderRadius: 999, width: 22, height: 22, fontSize: 10, cursor: 'pointer', fontFamily: 'inherit', lineHeight: 1, padding: 0 } }, R('i', { className: 'gb-ico gb-ico-' + (s.videoMuted ? 'mute' : 'volume') }))));
 
     const videoFloating = focus && !s.videoHidden && !teacherView;
     const videoRight = railOpen ? 332 : 60;
@@ -672,7 +692,7 @@ class Component extends DCLogic {
         if (document.fullscreenElement) { document.exitFullscreen(); this.setState({ isFull: false }); }
         else { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); this.setState({ isFull: true }); }
       },
-      fullLabel: isFull ? '🗗 Màn hình web' : '⛶ Toàn màn hình',
+      fullLabel: isFull ? 'Màn hình web' : '⛶ Toàn màn hình',
       fullBtnStyle: isFull
         ? "background:#3A2C22;color:#F2CE73;border:none;border-radius:999px;padding:8px 15px;font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:800;cursor:pointer;white-space:nowrap"
         : "background:transparent;border:1px solid #B3A595;border-radius:999px;padding:7px 14px;font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:700;color:#6B5044;cursor:pointer;white-space:nowrap",
