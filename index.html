@@ -540,9 +540,10 @@ textarea:focus-visible, [tabindex]:focus-visible {
 .gb-ico-video { --gb-i: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.75'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3.6'%20y='6.4'%20width='12'%20height='11.2'%20rx='2.2'/%3E%3Cpath%20d='M15.6%2010.8%2020.4%208.2v7.6l-4.8-2.6z'/%3E%3C/svg%3E"); }
 .gb-ico-volume { --gb-i: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='1.75'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M11%205.4%206.8%209H4.2v6h2.6L11%2018.6z'/%3E%3Cpath%20d='M15.2%209.2a4.4%204.4%200%200%201%200%205.6M17.8%206.8a7.8%207.8%200%200%201%200%2010.4'/%3E%3C/svg%3E"); }
 
-/* ═══════════ T-381 (Q111–Q116 = A): GOBITA LIVING ATELIER v3.0 · Dual-Theme Scoped System ═══════════
-   All rules below apply ONLY when [data-gb-theme="atelier-v3"] is active.
-   Switching to [data-gb-theme="classic"] restores Classic Gobita v1 (v0.1.156) byte-for-byte. */
+/* ═══════════ T-381 & T-382: GOBITA LIVING ATELIER v3.0 + SIGNATURE v4.0 · Tri-Theme Scoped System ═══════════
+   [data-gb-theme="classic"]      -> Classic Gobita v1 (v0.1.156) byte-for-byte
+   [data-gb-theme="atelier-v3"]   -> Gobita Living Atelier v3.0 (v0.1.157) byte-for-byte
+   [data-gb-theme="signature-v4"] -> Gobita Signature Convergence v4.0 (M5 · Airy Luxury Asian Editorial + Chibi Boutique) */
 :root {
   --gb-spring: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -553,6 +554,18 @@ textarea:focus-visible, [tabindex]:focus-visible {
 @keyframes gbHereHalo {
   0%, 100% { box-shadow: 0 10px 28px rgba(233, 124, 29, 0.14), 0 0 0 1px rgba(233, 124, 29, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.94); }
   50% { box-shadow: 0 14px 34px rgba(233, 124, 29, 0.24), 0 0 0 2px rgba(249, 115, 0, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.98); }
+}
+@keyframes gbMarqueeGlide {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes gbSealSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes gbMascotFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-3deg); }
+  50% { transform: translate3d(0, -5px, 0) rotate(2deg); }
 }
 
 html[data-gb-theme="atelier-v3"] body,
@@ -565,95 +578,136 @@ body[data-gb-theme="atelier-v3"] {
   background-attachment: scroll;
 }
 
+/* Signature v4.0 Canvas — Ultra-bright, airy, clean Silk-Alabaster (#FDFBF7) with sunlit champagne aura */
+html[data-gb-theme="signature-v4"] body,
+body[data-gb-theme="signature-v4"] {
+  background-color: #FDFBF7;
+  background-image:
+    radial-gradient(980px 460px at 10% -8%, rgba(250, 212, 92, 0.15), transparent 70%),
+    radial-gradient(820px 420px at 92% 2%, rgba(249, 115, 0, 0.06), transparent 68%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='125' viewBox='0 0 64 111'%3E%3Cg fill='none' stroke='%23C9A24E' stroke-opacity='0.085' stroke-width='0.8'%3E%3Cpath d='M32 2 60 18v32L32 66 4 50V18z'/%3E%3Cpath d='M32 57.5 60 73.5v32L32 121.5 4 105.5v-32z'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: scroll;
+}
+
 /* Optical Glass Top Dock — preserves exact height/width geometry for T-341 (1509px) & T-516 (360px) */
-[data-gb-theme="atelier-v3"] .gb-top-dock {
-  background-color: rgba(255, 252, 247, 0.85) !important;
+[data-gb-theme="atelier-v3"] .gb-top-dock,
+[data-gb-theme="signature-v4"] .gb-top-dock {
+  background-color: rgba(255, 253, 249, 0.88) !important;
   -webkit-backdrop-filter: blur(16px) saturate(145%);
   backdrop-filter: blur(16px) saturate(145%);
-  border-bottom: 1px solid rgba(216, 179, 106, 0.42) !important;
-  box-shadow: 0 6px 24px rgba(58, 44, 34, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid rgba(216, 179, 106, 0.40) !important;
+  box-shadow: 0 6px 24px rgba(58, 44, 34, 0.045), inset 0 1px 0 rgba(255, 255, 255, 0.96);
 }
 
 /* #/login 2-Column Editorial Split Cover */
-[data-gb-theme="atelier-v3"] .gb-login-wrap {
+[data-gb-theme="atelier-v3"] .gb-login-wrap,
+[data-gb-theme="signature-v4"] .gb-login-wrap {
   max-width: 980px !important;
   padding: 24px 20px 36px !important;
 }
-[data-gb-theme="atelier-v3"] .gb-login-split {
+[data-gb-theme="atelier-v3"] .gb-login-split,
+[data-gb-theme="signature-v4"] .gb-login-split {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(350px, 420px);
   gap: 22px;
   align-items: stretch;
 }
-[data-gb-theme="atelier-v3"] .gb-login-hero {
+[data-gb-theme="atelier-v3"] .gb-login-hero,
+[data-gb-theme="signature-v4"] .gb-login-hero {
   position: relative;
   border-radius: 26px;
   overflow: hidden;
-  border: 1px solid rgba(216, 179, 106, 0.48);
-  background: linear-gradient(155deg, #FBF5EA 0%, #F4E6CE 54%, #EBD6B3 100%);
-  box-shadow: 0 18px 44px rgba(58, 44, 34, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(216, 179, 106, 0.46);
+  background: linear-gradient(155deg, #FFFDF9 0%, #FBF3E4 58%, #F3E2C3 100%);
+  box-shadow: 0 18px 44px rgba(58, 44, 34, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 440px;
 }
-[data-gb-theme="atelier-v3"] .gb-login-hero-img {
+[data-gb-theme="atelier-v3"] .gb-login-hero-img,
+[data-gb-theme="signature-v4"] .gb-login-hero-img {
   width: 100%;
   height: 252px;
   object-fit: cover;
   display: block;
 }
-[data-gb-theme="atelier-v3"] .gb-login-hero-body {
+[data-gb-theme="signature-v4"] .gb-login-hero-img {
+  height: 262px;
+  object-position: center 24%;
+}
+[data-gb-theme="atelier-v3"] .gb-login-hero-body,
+[data-gb-theme="signature-v4"] .gb-login-hero-body {
   padding: 20px 24px 22px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: linear-gradient(180deg, rgba(255, 252, 247, 0.88) 0%, rgba(251, 244, 230, 0.96) 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.85);
+  background: linear-gradient(180deg, rgba(255, 253, 250, 0.92) 0%, rgba(252, 246, 235, 0.98) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.90);
   flex: 1;
 }
-[data-gb-theme="atelier-v3"] .gb-login-card {
-  background-color: rgba(255, 252, 247, 0.88) !important;
+[data-gb-theme="atelier-v3"] .gb-login-card,
+[data-gb-theme="signature-v4"] .gb-login-card {
+  background-color: rgba(255, 253, 250, 0.92) !important;
   -webkit-backdrop-filter: blur(18px) saturate(145%);
   backdrop-filter: blur(18px) saturate(145%);
-  border: 1px solid rgba(216, 179, 106, 0.46) !important;
+  border: 1px solid rgba(216, 179, 106, 0.44) !important;
   border-radius: 26px !important;
-  box-shadow: 0 18px 44px rgba(58, 44, 34, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 18px 44px rgba(58, 44, 34, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
   justify-content: center;
 }
 @media (max-width: 879px) {
-  [data-gb-theme="atelier-v3"] .gb-login-wrap {
+  [data-gb-theme="atelier-v3"] .gb-login-wrap,
+  [data-gb-theme="signature-v4"] .gb-login-wrap {
     max-width: 460px !important;
     margin: 10px auto !important;
     padding: 12px 14px 24px !important;
   }
-  [data-gb-theme="atelier-v3"] .gb-login-split {
+  [data-gb-theme="atelier-v3"] .gb-login-split,
+  [data-gb-theme="signature-v4"] .gb-login-split {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-  [data-gb-theme="atelier-v3"] .gb-login-hero {
+  [data-gb-theme="atelier-v3"] .gb-login-hero,
+  [data-gb-theme="signature-v4"] .gb-login-hero {
     min-height: 0;
     border-radius: 20px;
   }
   [data-gb-theme="atelier-v3"] .gb-login-hero-img {
-    height: 104px;
+    height: 112px;
+  }
+  [data-gb-theme="signature-v4"] .gb-login-hero-img {
+    height: 120px;
+    object-position: center 20%;
+  }
+  [data-gb-theme="signature-v4"] .gb-sig-seal {
+    width: 40px;
+    height: 40px;
   }
   [data-gb-theme="atelier-v3"] .gb-login-hero-body {
     padding: 12px 16px 13px;
     gap: 6px;
   }
-  [data-gb-theme="atelier-v3"] .gb-login-hero-pillars {
+  [data-gb-theme="signature-v4"] .gb-login-hero-body {
+    padding: 10px 16px 11px;
+    gap: 4px;
+  }
+  [data-gb-theme="signature-v4"] .gb-login-hero-sub,
+  [data-gb-theme="atelier-v3"] .gb-login-hero-pillars,
+  [data-gb-theme="signature-v4"] .gb-login-hero-pillars {
     display: none !important;
   }
-  [data-gb-theme="atelier-v3"] .gb-login-card {
+  [data-gb-theme="atelier-v3"] .gb-login-card,
+  [data-gb-theme="signature-v4"] .gb-login-card {
     padding: 22px 20px !important;
     border-radius: 22px !important;
   }
 }
 
-/* Sunlit Caustic Veil on #/home + Editorial Gallery Banners on #/library & #/arcade */
-[data-gb-theme="atelier-v3"] .gb-home-veil {
+/* Sunlit Caustic Hexagon Prism Veil on #/home + Editorial Gallery Banners on #/library & #/arcade */
+[data-gb-theme="atelier-v3"] .gb-home-veil,
+[data-gb-theme="signature-v4"] .gb-home-veil {
   position: absolute;
   top: 6px;
   right: 16px;
@@ -667,65 +721,85 @@ body[data-gb-theme="atelier-v3"] {
   mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.85) 34%, #000 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.85) 34%, #000 100%);
 }
-[data-gb-theme="atelier-v3"] .gb-home-veil img {
+[data-gb-theme="signature-v4"] .gb-home-veil {
+  top: 48px;
+}
+[data-gb-theme="atelier-v3"] .gb-home-veil img,
+[data-gb-theme="signature-v4"] .gb-home-veil img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   animation: gbCausticDrift 18s ease-in-out infinite;
 }
-[data-gb-theme="atelier-v3"] .gb-atelier-banner {
+
+[data-gb-theme="atelier-v3"] .gb-atelier-banner,
+[data-gb-theme="signature-v4"] .gb-atelier-banner {
   position: relative;
   margin: 14px 0 18px;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(216, 179, 106, 0.46);
-  background: linear-gradient(135deg, #FBF4E6 0%, #F3E3C4 100%);
-  box-shadow: 0 10px 28px rgba(58, 44, 34, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  background: linear-gradient(135deg, #FFFDF9 0%, #FBF3E4 62%, #F3E3C4 100%);
+  box-shadow: 0 10px 28px rgba(58, 44, 34, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(240px, 0.88fr);
   align-items: stretch;
-  min-height: 108px;
+  min-height: 112px;
 }
-[data-gb-theme="atelier-v3"] .gb-atelier-banner-copy {
+[data-gb-theme="signature-v4"] .gb-atelier-banner.gb-popout-banner {
+  overflow: visible;
+  margin-top: 22px;
+}
+[data-gb-theme="atelier-v3"] .gb-atelier-banner-copy,
+[data-gb-theme="signature-v4"] .gb-atelier-banner-copy {
   padding: 16px 22px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
 }
-[data-gb-theme="atelier-v3"] .gb-atelier-banner-media {
+[data-gb-theme="atelier-v3"] .gb-atelier-banner-media,
+[data-gb-theme="signature-v4"] .gb-atelier-banner-media {
   position: relative;
   overflow: hidden;
-  min-height: 108px;
+  min-height: 112px;
+  border-radius: 0 19px 19px 0;
 }
-[data-gb-theme="atelier-v3"] .gb-atelier-banner-media img {
+[data-gb-theme="atelier-v3"] .gb-atelier-banner-media img,
+[data-gb-theme="signature-v4"] .gb-atelier-banner-media img {
   width: 100%;
   height: 100%;
-  max-height: 124px;
+  max-height: 132px;
   object-fit: cover;
   display: block;
 }
 @media (max-width: 680px) {
-  [data-gb-theme="atelier-v3"] .gb-atelier-banner {
+  [data-gb-theme="atelier-v3"] .gb-atelier-banner,
+  [data-gb-theme="signature-v4"] .gb-atelier-banner {
     grid-template-columns: 1fr;
   }
   [data-gb-theme="atelier-v3"] .gb-atelier-banner-media,
-  [data-gb-theme="atelier-v3"] .gb-atelier-banner-media img {
-    height: 88px;
-    min-height: 88px;
+  [data-gb-theme="signature-v4"] .gb-atelier-banner-media,
+  [data-gb-theme="atelier-v3"] .gb-atelier-banner-media img,
+  [data-gb-theme="signature-v4"] .gb-atelier-banner-media img {
+    height: 96px;
+    min-height: 96px;
+    border-radius: 0 0 19px 19px;
   }
 }
 
-/* Shape 1: .gb-card-chamfer — Frosted Alabaster Card with 120° Brass Corner Accent */
-[data-gb-theme="atelier-v3"] .gb-card-chamfer {
+/* Shape 1: .gb-card-chamfer — Frosted Alabaster Card (Polygon Cut-Corner in Signature v4.0!) */
+[data-gb-theme="atelier-v3"] .gb-card-chamfer,
+[data-gb-theme="signature-v4"] .gb-card-chamfer {
   position: relative;
-  background-color: rgba(255, 252, 247, 0.88) !important;
+  background-color: rgba(255, 253, 249, 0.92) !important;
   border: 1px solid rgba(216, 179, 106, 0.42) !important;
-  box-shadow: 0 8px 24px rgba(58, 44, 34, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.94) !important;
+  box-shadow: 0 8px 24px rgba(58, 44, 34, 0.055), inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
   transition: transform 0.28s var(--gb-spring), box-shadow 0.28s var(--gb-spring), border-color 0.22s ease !important;
 }
-[data-gb-theme="atelier-v3"] .gb-card-chamfer::after {
+[data-gb-theme="atelier-v3"] .gb-card-chamfer::after,
+[data-gb-theme="signature-v4"] .gb-card-chamfer::after {
   content: "";
   position: absolute;
   top: 0;
@@ -735,51 +809,84 @@ body[data-gb-theme="atelier-v3"] {
   background: linear-gradient(225deg, rgba(216, 179, 106, 0.34) 0%, rgba(216, 179, 106, 0.10) 48%, transparent 50%);
   pointer-events: none;
 }
-[data-gb-theme="atelier-v3"] .gb-card-chamfer[data-mx-muted="1"] {
-  background-color: #F2EBE0 !important;
-  border-color: rgba(217, 205, 188, 0.75) !important;
-  box-shadow: 0 2px 8px rgba(58, 44, 34, 0.03) !important;
+[data-gb-theme="signature-v4"] .gb-card-chamfer {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
 }
-[data-gb-theme="atelier-v3"] .gb-card-chamfer.gb-cell-here {
-  background: linear-gradient(155deg, rgba(255, 253, 248, 0.96) 0%, rgba(251, 242, 224, 0.92) 100%) !important;
-  border: 1.5px solid rgba(233, 124, 29, 0.62) !important;
+[data-gb-theme="atelier-v3"] .gb-card-chamfer[data-mx-muted="1"],
+[data-gb-theme="signature-v4"] .gb-card-chamfer[data-mx-muted="1"] {
+  background-color: #F5EFE6 !important;
+  border-color: rgba(217, 205, 188, 0.72) !important;
+  box-shadow: 0 2px 8px rgba(58, 44, 34, 0.025) !important;
+}
+[data-gb-theme="atelier-v3"] .gb-card-chamfer.gb-cell-here,
+[data-gb-theme="signature-v4"] .gb-card-chamfer.gb-cell-here {
+  background: linear-gradient(155deg, rgba(255, 254, 251, 0.98) 0%, rgba(251, 243, 226, 0.95) 100%) !important;
+  border: 1.5px solid rgba(249, 115, 0, 0.62) !important;
   animation: gbHereHalo 4.6s ease-in-out infinite;
 }
 
-/* Shape 2: .gb-ticket-stub — Perforated 7-Day Check-in Pass */
-[data-gb-theme="atelier-v3"] .gb-ticket-stub {
+/* Shape 2: .gb-ticket-stub + .gb-wax-seal — Perforated 7-Day Check-in Pass */
+[data-gb-theme="atelier-v3"] .gb-ticket-stub,
+[data-gb-theme="signature-v4"] .gb-ticket-stub {
   position: relative;
+  background:
+    radial-gradient(circle at 0 50%, #FDFBF7 9px, transparent 9.5px),
+    radial-gradient(circle at 100% 50%, #FDFBF7 9px, transparent 9.5px),
+    linear-gradient(135deg, rgba(255, 253, 250, 0.96) 0%, rgba(251, 244, 229, 0.94) 100%) !important;
+  border: 1px solid rgba(216, 179, 106, 0.52) !important;
+  border-radius: 20px !important;
+  padding: 18px 24px !important;
+  box-shadow: 0 10px 28px rgba(58, 44, 34, 0.055), inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
+}
+[data-gb-theme="atelier-v3"] .gb-ticket-stub {
   background:
     radial-gradient(circle at 0 50%, #FAF6F0 9px, transparent 9.5px),
     radial-gradient(circle at 100% 50%, #FAF6F0 9px, transparent 9.5px),
     linear-gradient(135deg, rgba(255, 252, 247, 0.94) 0%, rgba(251, 243, 227, 0.92) 100%) !important;
-  border: 1px solid rgba(216, 179, 106, 0.55) !important;
-  border-radius: 20px !important;
-  padding: 18px 24px !important;
-  box-shadow: 0 10px 28px rgba(58, 44, 34, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+[data-gb-theme="signature-v4"] .gb-wax-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px;
+  background: linear-gradient(135deg, #FAD45C 0%, #E7B94B 55%, #D59B2D 100%);
+  color: #3A2C22;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  box-shadow: 0 4px 12px rgba(213, 155, 45, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
-/* Shape 3: .gb-vitrine-box — Collector's Museum Vitrine (#/arcade & #/shop) */
-[data-gb-theme="atelier-v3"] .gb-vitrine-box {
-  background: linear-gradient(180deg, rgba(255, 253, 249, 0.94) 0%, rgba(248, 241, 229, 0.92) 100%) !important;
-  border: 1px solid rgba(216, 179, 106, 0.46) !important;
+/* Shape 3: .gb-vitrine-box & .gb-arch-dome — Collector's Curatorial Arch Vitrine (#/arcade & #/shop) */
+[data-gb-theme="atelier-v3"] .gb-vitrine-box,
+[data-gb-theme="signature-v4"] .gb-vitrine-box {
+  background: linear-gradient(180deg, rgba(255, 254, 251, 0.96) 0%, rgba(249, 243, 232, 0.94) 100%) !important;
+  border: 1px solid rgba(216, 179, 106, 0.44) !important;
   border-radius: 22px 22px 16px 16px !important;
-  box-shadow: 0 10px 28px rgba(58, 44, 34, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 10px 28px rgba(58, 44, 34, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
   transition: transform 0.28s var(--gb-spring), box-shadow 0.28s var(--gb-spring), border-color 0.22s ease;
 }
-[data-gb-theme="atelier-v3"] .gb-vitrine-box:hover {
-  transform: translateY(-3px);
-  border-color: rgba(201, 162, 78, 0.72) !important;
-  box-shadow: 0 16px 36px rgba(58, 44, 34, 0.12), inset 0 1px 0 #ffffff !important;
+[data-gb-theme="signature-v4"] .gb-vitrine-box {
+  border-radius: 28px 28px 18px 18px !important;
 }
-[data-gb-theme="atelier-v3"] .gb-vitrine-tag {
-  background: linear-gradient(135deg, #FBF4E6 0%, #F1DFB8 100%) !important;
+[data-gb-theme="atelier-v3"] .gb-vitrine-box:hover,
+[data-gb-theme="signature-v4"] .gb-vitrine-box:hover {
+  transform: translateY(-4px);
+  border-color: rgba(249, 115, 0, 0.48) !important;
+  box-shadow: 0 16px 36px rgba(58, 44, 34, 0.10), inset 0 1px 0 #ffffff !important;
+}
+[data-gb-theme="atelier-v3"] .gb-vitrine-tag,
+[data-gb-theme="signature-v4"] .gb-vitrine-tag {
+  background: linear-gradient(135deg, #FFFDF9 0%, #F4E4C3 100%) !important;
   color: #5C3D0E !important;
-  border: 1px solid rgba(201, 162, 78, 0.58) !important;
+  border: 1px solid rgba(201, 162, 78, 0.55) !important;
 }
 
-/* Shape 4: .gb-ico-jewel — Dual-Layer Glass & Brushed Brass Icon Medallion */
-[data-gb-theme="atelier-v3"] .gb-ico-jewel {
+/* Shape 4: .gb-ico-jewel & .gb-shop-jewel-stage — 3D Amber-Crystal & Brushed-Brass Collector Plinth */
+[data-gb-theme="atelier-v3"] .gb-ico-jewel,
+[data-gb-theme="signature-v4"] .gb-ico-jewel {
   width: 38px;
   height: 38px;
   border-radius: 12px;
@@ -792,26 +899,56 @@ body[data-gb-theme="atelier-v3"] {
   color: #8F3D18;
   box-shadow: 0 4px 12px rgba(58, 44, 34, 0.08), inset 0 1px 0 #ffffff;
 }
+[data-gb-theme="signature-v4"] .gb-shop-jewel-stage {
+  width: 72px;
+  height: 72px;
+  border-radius: 36px 36px 18px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #FBF4E6;
+  background-image: url("./materials/signature-v4/shop-3d-pedestal-v4.webp");
+  background-size: cover;
+  background-position: center bottom;
+  border: 1px solid rgba(216, 179, 106, 0.62);
+  box-shadow: 0 10px 22px rgba(58, 44, 34, 0.09), inset 0 2px 0 rgba(255, 255, 255, 0.92);
+  color: #8F3D18;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
 
-/* Shape 5: Champagne-Gold Spotlight Surfaces on #/home (replaces heavy #3A2C22 boxes with >= 6.1:1 WCAG AA+ contrast) */
+/* Shape 5: Luminous Champagne-Pearl Surfaces (replaces ALL heavy #3A2C22 slabs so UI stays bright, clean & airy!) */
 [data-gb-theme="atelier-v3"] .gb-home-live-spot,
-[data-gb-theme="atelier-v3"] .gb-home-calc-spot {
+[data-gb-theme="atelier-v3"] .gb-home-calc-spot,
+[data-gb-theme="signature-v4"] .gb-home-live-spot,
+[data-gb-theme="signature-v4"] .gb-home-calc-spot {
   background:
-    linear-gradient(145deg, #FBF4E6 0%, #F5E6C8 56%, #ECD8AC 100%) !important;
-  border: 1px solid #D8B36A !important;
+    linear-gradient(145deg, #FFFDF9 0%, #FBF3E2 56%, #F1DFBA 100%) !important;
+  border: 1px solid rgba(216, 179, 106, 0.68) !important;
   border-radius: 18px !important;
   color: #3A2C22 !important;
-  box-shadow: 0 10px 28px rgba(58, 44, 34, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+  box-shadow: 0 10px 28px rgba(58, 44, 34, 0.065), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
 }
 [data-gb-theme="atelier-v3"] .gb-home-live-spot > div,
-[data-gb-theme="atelier-v3"] .gb-home-calc-spot > div {
+[data-gb-theme="atelier-v3"] .gb-home-calc-spot > div,
+[data-gb-theme="signature-v4"] .gb-home-live-spot > div,
+[data-gb-theme="signature-v4"] .gb-home-calc-spot > div {
   color: #5C4336 !important;
 }
-[data-gb-theme="atelier-v3"] .gb-home-live-spot > div:nth-child(2) {
+[data-gb-theme="atelier-v3"] .gb-home-live-spot > div:nth-child(2),
+[data-gb-theme="signature-v4"] .gb-home-live-spot > div:nth-child(2) {
   color: #3A2C22 !important;
 }
-[data-gb-theme="atelier-v3"] .gb-home-calc-spot > div:nth-child(2) {
+[data-gb-theme="atelier-v3"] .gb-home-calc-spot > div:nth-child(2),
+[data-gb-theme="signature-v4"] .gb-home-calc-spot > div:nth-child(2) {
   color: #8F3D18 !important;
+}
+[data-gb-theme="atelier-v3"] .gb-home-live-spot button,
+[data-gb-theme="signature-v4"] .gb-home-live-spot button {
+  background: #F97300 !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(249, 115, 0, 0.24);
 }
 [data-gb-theme="atelier-v3"] .gb-home-live-spot button {
   background: #3A2C22 !important;
@@ -819,17 +956,192 @@ body[data-gb-theme="atelier-v3"] {
   box-shadow: 0 6px 16px rgba(58, 44, 34, 0.18);
 }
 
+/* Eliminate remaining heavy dark #3A2C22 slabs on #/library, #/community & #/shop in Signature v4.0 */
+[data-gb-theme="signature-v4"] .gb-lib-resume-card,
+[data-gb-theme="signature-v4"] .gb-comm-digest-card,
+[data-gb-theme="signature-v4"] .gb-comm-nudge-bar,
+[data-gb-theme="signature-v4"] .gb-comm-soc-card,
+[data-gb-theme="signature-v4"] .gb-shop-bal-card {
+  background: linear-gradient(145deg, #FFFDF9 0%, #FBF3E2 60%, #F3E2C0 100%) !important;
+  border: 1px solid rgba(216, 179, 106, 0.65) !important;
+  color: #3A2C22 !important;
+  box-shadow: 0 10px 28px rgba(58, 44, 34, 0.065), inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
+}
+[data-gb-theme="signature-v4"] .gb-lib-resume-card span,
+[data-gb-theme="signature-v4"] .gb-lib-resume-card div,
+[data-gb-theme="signature-v4"] .gb-comm-digest-card span,
+[data-gb-theme="signature-v4"] .gb-comm-digest-card div,
+[data-gb-theme="signature-v4"] .gb-comm-nudge-bar > span > span:first-child,
+[data-gb-theme="signature-v4"] .gb-comm-soc-card > div:nth-child(2) > span:first-child,
+[data-gb-theme="signature-v4"] .gb-shop-bal-card span {
+  color: #3A2C22 !important;
+}
+[data-gb-theme="signature-v4"] .gb-comm-nudge-bar > span > span:last-child,
+[data-gb-theme="signature-v4"] .gb-comm-soc-card > div:nth-child(3) {
+  color: #5C4336 !important;
+}
+[data-gb-theme="signature-v4"] .gb-comm-soc-card > div:nth-child(1) span {
+  color: #8F3D18 !important;
+}
+[data-gb-theme="signature-v4"] .gb-comm-soc-card > div:nth-child(4) {
+  color: #6F6152 !important;
+}
+[data-gb-theme="signature-v4"] .gb-comm-soc-card .gb-comm-soc-delta {
+  background: #DCFCE7 !important;
+  color: #14532D !important;
+  border: 1px solid rgba(20, 83, 45, 0.20) !important;
+}
+[data-gb-theme="signature-v4"] .gb-comm-soc-card .gb-comm-soc-badges > span[style*="dashed"] {
+  background: rgba(255, 253, 249, 0.86) !important;
+  color: #5C4336 !important;
+  border-color: rgba(180, 145, 78, 0.58) !important;
+}
+[data-gb-theme="signature-v4"] .gb-comm-nudge-bar .gb-m-close {
+  color: #5C4336 !important;
+  border-color: rgba(58, 44, 34, 0.22) !important;
+}
+[data-gb-theme="signature-v4"] .gb-lib-resume-card button {
+  color: #ffffff !important;
+}
+
+/* Signature v4.0 Exclusive Elements: [1 Glowing Orange Keyword], Sunlit Kinetic Marquee, Seal, Cut-Corner Accordion & Golden Thread */
+[data-gb-theme="signature-v4"] .gb-h1-accent {
+  color: #F97300;
+}
+
+[data-gb-theme="signature-v4"] .gb-sig-marquee {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 253, 249, 0.94), rgba(251, 242, 223, 0.95), rgba(255, 253, 249, 0.94));
+  border: 1px solid rgba(216, 179, 106, 0.50);
+  box-shadow: 0 4px 16px rgba(58, 44, 34, 0.04), inset 0 1px 0 #ffffff;
+  padding: 7px 0;
+  margin-bottom: 18px;
+}
+[data-gb-theme="signature-v4"] .gb-sig-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 24px;
+  animation: gbMarqueeGlide 36s linear infinite;
+  will-change: transform;
+}
+[data-gb-theme="signature-v4"] .gb-sig-marquee:hover .gb-sig-marquee-track {
+  animation-play-state: paused;
+}
+
+[data-gb-theme="signature-v4"] .gb-sig-seal {
+  width: 68px;
+  height: 68px;
+  animation: gbSealSpin 24s linear infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(58, 44, 34, 0.14));
+}
+
+[data-gb-theme="signature-v4"] .gb-popout-mascot {
+  position: absolute;
+  right: 18px;
+  top: -18px;
+  width: 62px;
+  height: 62px;
+  z-index: 4;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 18px rgba(58, 44, 34, 0.18));
+  animation: gbMascotFloat 4.2s ease-in-out infinite;
+}
+[data-gb-theme="signature-v4"] .gb-popout-mascot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* 45° Asymmetric Cut-Corner Progressive Accordion (Ali. / M5 style) */
+[data-gb-theme="signature-v4"] .gb-cut-panel {
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+}
+[data-gb-theme="signature-v4"] .gb-sig-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 18px 0 6px;
+}
+[data-gb-theme="signature-v4"] .gb-sig-acc-row {
+  background: rgba(255, 253, 250, 0.92);
+  border: 1px solid rgba(216, 179, 106, 0.45);
+  padding: 11px 16px;
+  transition: background 0.25s var(--gb-spring), border-color 0.22s ease, transform 0.25s var(--gb-spring);
+  cursor: pointer;
+}
+[data-gb-theme="signature-v4"] .gb-sig-acc-row[data-sig-open="1"] {
+  background: linear-gradient(135deg, #FFFDF9 0%, #FBF2DE 62%, #F4E2BE 100%);
+  border-color: rgba(249, 115, 0, 0.55);
+  padding: 14px 18px;
+}
+[data-gb-theme="signature-v4"] .gb-arrow-orb {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FBF4E6;
+  border: 1px solid rgba(216, 179, 106, 0.65);
+  color: #3A2C22;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+  transition: transform 0.24s var(--gb-spring), background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+}
+[data-gb-theme="signature-v4"] .gb-sig-acc-row:hover .gb-arrow-orb,
+[data-gb-theme="signature-v4"] .gb-sig-acc-row[data-sig-open="1"] .gb-arrow-orb {
+  transform: rotate(-45deg);
+  background: #F97300;
+  border-color: #F97300;
+  color: #ffffff;
+}
+
+/* Staggered Editorial Trio + Flowing Golden SVG Thread on #/home */
+[data-gb-theme="signature-v4"] .gb-stagger-wrap {
+  position: relative;
+}
+[data-gb-theme="signature-v4"] .gb-golden-thread {
+  position: absolute;
+  left: 2%;
+  right: 2%;
+  top: 50%;
+  width: 96%;
+  height: 68px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.72;
+}
+[data-gb-theme="signature-v4"] .gb-stagger-trio {
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 900px) {
+  [data-gb-theme="signature-v4"] .gb-stagger-trio > div:nth-child(2) {
+    transform: translateY(-8px);
+  }
+}
+
 /* Translucent Alabaster Glass Surfaces & Community Filter Deck */
 [data-gb-theme="atelier-v3"] .gb-surface-glass,
-[data-gb-theme="atelier-v3"] .gb-comm-filter-deck {
-  background-color: rgba(255, 252, 247, 0.86) !important;
+[data-gb-theme="atelier-v3"] .gb-comm-filter-deck,
+[data-gb-theme="signature-v4"] .gb-surface-glass,
+[data-gb-theme="signature-v4"] .gb-comm-filter-deck {
+  background-color: rgba(255, 253, 249, 0.90) !important;
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
   border: 1px solid rgba(216, 179, 106, 0.40) !important;
   border-radius: 18px !important;
-  box-shadow: 0 8px 24px rgba(58, 44, 34, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.94) !important;
+  box-shadow: 0 8px 24px rgba(58, 44, 34, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
 }
-[data-gb-theme="atelier-v3"] .gb-comm-filter-deck {
+[data-gb-theme="atelier-v3"] .gb-comm-filter-deck,
+[data-gb-theme="signature-v4"] .gb-comm-filter-deck {
   padding: 14px 16px;
   margin-bottom: 18px;
 }
@@ -837,12 +1149,20 @@ body[data-gb-theme="atelier-v3"] {
 [data-gb-theme="atelier-v3"] [data-screen-label="Ma trận kỹ năng (Home)"] [style*="position:sticky"][style*="left:0"] {
   background-color: #FAF6F0 !important;
 }
+[data-gb-theme="signature-v4"] [data-screen-label="Ma trận kỹ năng (Home)"] [style*="position: sticky"][style*="left: 0"],
+[data-gb-theme="signature-v4"] [data-screen-label="Ma trận kỹ năng (Home)"] [style*="position:sticky"][style*="left:0"] {
+  background-color: #FDFBF7 !important;
+}
 
 @media (prefers-reduced-transparency: reduce) {
   [data-gb-theme="atelier-v3"] .gb-top-dock,
   [data-gb-theme="atelier-v3"] .gb-login-card,
   [data-gb-theme="atelier-v3"] .gb-surface-glass,
-  [data-gb-theme="atelier-v3"] .gb-comm-filter-deck {
+  [data-gb-theme="atelier-v3"] .gb-comm-filter-deck,
+  [data-gb-theme="signature-v4"] .gb-top-dock,
+  [data-gb-theme="signature-v4"] .gb-login-card,
+  [data-gb-theme="signature-v4"] .gb-surface-glass,
+  [data-gb-theme="signature-v4"] .gb-comm-filter-deck {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
     background-color: #FFFDF9 !important;
@@ -852,7 +1172,10 @@ body[data-gb-theme="atelier-v3"] {
 @media (prefers-reduced-motion: reduce) {
   [data-gb-theme="atelier-v3"] *,
   [data-gb-theme="atelier-v3"] *::before,
-  [data-gb-theme="atelier-v3"] *::after {
+  [data-gb-theme="atelier-v3"] *::after,
+  [data-gb-theme="signature-v4"] *,
+  [data-gb-theme="signature-v4"] *::before,
+  [data-gb-theme="signature-v4"] *::after {
     animation: none !important;
     transition: none !important;
   }
@@ -1345,6 +1668,7 @@ body[data-gb-theme="atelier-v3"] {
   <!-- ═══════════ SCREEN 1 · MATRIX HOME ═══════════ -->
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
   <div data-screen-label="Ma trận kỹ năng (Home)" style="position:relative;max-width:1240px;width:100%;margin:0 auto;padding:36px 32px 64px;box-sizing:border-box;animation:gbPop .25s ease">
+    {{ homeSigMarqueeEl }}
     {{ homeAtelierVeilEl }}
     <div style="position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;row-gap:28px;flex-wrap:wrap;margin-bottom:26px">
       <div style="flex:1;min-width:340px">
@@ -1413,7 +1737,7 @@ body[data-gb-theme="atelier-v3"] {
           <div style="font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6F6152;display:flex;align-items:center;gap:6px"><i class="gb-ico gb-ico-calendar" aria-hidden="true"></i><span>{{ checkinKicker }}</span></div>
           <div class="gb-m-body" style="font-size:14px;font-weight:800;color:#3A2C22;margin-top:4px;line-height:1.4">{{ checkinTitle }}</div>
         </div>
-        <button data-checkin="btn" class="gb-m-tap" onClick="{{ checkinClick }}" style="{{ checkinBtnStyle }}">{{ checkinBtnLabel }}</button>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">{{ checkinWaxSealEl }}<button data-checkin="btn" class="gb-m-tap" onClick="{{ checkinClick }}" style="{{ checkinBtnStyle }}">{{ checkinBtnLabel }}</button></div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:8px">
         <sc-for list="{{ checkinDays }}" as="cd" hint-placeholder-count="7">
@@ -1561,8 +1885,12 @@ body[data-gb-theme="atelier-v3"] {
     </div>
     </div>
 
+    {{ homeSigAccordionEl }}
+
     <!-- bottom strip: next actions -->
-    <div class="gb-m-stack" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px;margin-top:26px">
+    <div class="gb-stagger-wrap">
+    {{ homeGoldenThreadEl }}
+    <div class="gb-m-stack gb-stagger-trio" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px;margin-top:26px">
       <div class="gb-home-live-spot" style="background:#3A2C22;border-radius:14px;padding:20px 22px;color:#fff;display:flex;flex-direction:column;gap:10px;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cg fill='none' stroke='%23F2CE73' stroke-opacity='0.12'%3E%3Cpath d='M28 2 52 16v28L28 58 4 44V16z'/%3E%3Cpath d='M28 50.5 52 64.5v28L28 106.5 4 92.5v-28z'/%3E%3C/g%3E%3C/svg%3E&quot;)">
         <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A7B6D">{{ bottomTonightLabel }}</div>
         <div style="font-size:17px;font-weight:800;line-height:1.3">{{ bottomLiveTitle }}</div>
@@ -1581,6 +1909,7 @@ body[data-gb-theme="atelier-v3"] {
         <div style="font-size:12px;color:#6B5044;line-height:1.5">{{ bottomCrossExploreDesc }}</div>
         <div style="font-size:12px;font-weight:700;color:#6B5044;margin-top:auto">{{ bottomCrossExploreLink }}</div>
       </div>
+    </div>
     </div>
 
     <!-- value calculator -->
@@ -1751,7 +2080,7 @@ body[data-gb-theme="atelier-v3"] {
 
     <!-- Tiếp tục học · resume the last lesson at the exact block -->
     <sc-if value="{{ libHasResume }}" hint-placeholder-val="{{ true }}">
-    <div style="margin-top:20px;background:linear-gradient(135deg,#3A2C22,#4A3728);border-radius:20px;padding:20px 22px;box-shadow:0 8px 26px rgba(58,44,34,.22);display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+    <div class="gb-lib-resume-card" style="margin-top:20px;background:linear-gradient(135deg,#3A2C22,#4A3728);border-radius:20px;padding:20px 22px;box-shadow:0 8px 26px rgba(58,44,34,.22);display:flex;align-items:center;gap:20px;flex-wrap:wrap">
       <div style="{{ libResume.thumbStyle }}"><span style="filter:drop-shadow(0 3px 8px rgba(0,0,0,.4))">{{ libResume.icon }}</span></div>
       <div style="flex:1;min-width:240px;display:flex;flex-direction:column;gap:8px">
         <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
@@ -4132,7 +4461,7 @@ body[data-gb-theme="atelier-v3"] {
 
     <!-- gentle nudge: share to earn social points -->
     <sc-if value="{{ nudgeVisible }}" hint-placeholder-val="{{ false }}">
-    <div style="background:linear-gradient(100deg,#3A2C22,#5A4231);border-radius:14px;padding:15px 20px;margin-bottom:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:#fff;box-shadow:0 6px 18px rgba(58,44,34,.18);animation:gbPop .25s ease">
+    <div class="gb-comm-nudge-bar" style="background:linear-gradient(100deg,#3A2C22,#5A4231);border-radius:14px;padding:15px 20px;margin-bottom:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:#fff;box-shadow:0 6px 18px rgba(58,44,34,.18);animation:gbPop .25s ease">
       <span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(180deg,#F2CE73,#C9A24E);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0"><i class="gb-ico gb-ico-sprout" aria-hidden="true"></i></span>
       <span style="display:flex;flex-direction:column;line-height:1.4;flex:1;min-width:180px">
         <span style="font-size:13.5px;font-weight:800">Chia sẻ 1 giải pháp tuần này để nhận điểm.</span>
@@ -4357,7 +4686,7 @@ body[data-gb-theme="atelier-v3"] {
 
         <!-- pinned AI digest (sample; T-303 Q33 = A: hidden with the real Google feed) -->
         <sc-if value="{{ commSampleOn }}" hint-placeholder-val="{{ true }}">
-        <div style="background:#3A2C22;border-radius:16px;padding:22px;color:#fff;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cg fill='none' stroke='%23F2CE73' stroke-opacity='0.12'%3E%3Cpath d='M28 2 52 16v28L28 58 4 44V16z'/%3E%3Cpath d='M28 50.5 52 64.5v28L28 106.5 4 92.5v-28z'/%3E%3C/g%3E%3C/svg%3E&quot;)">
+        <div class="gb-comm-digest-card" style="background:#3A2C22;border-radius:16px;padding:22px;color:#fff;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cg fill='none' stroke='%23F2CE73' stroke-opacity='0.12'%3E%3Cpath d='M28 2 52 16v28L28 58 4 44V16z'/%3E%3Cpath d='M28 50.5 52 64.5v28L28 106.5 4 92.5v-28z'/%3E%3C/g%3E%3C/svg%3E&quot;)">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
             <span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(180deg,#C9A24E,#9A7328);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">AI</span>
             <span style="font-size:12px;font-weight:800">Bản tin AI hằng tuần</span>
@@ -4564,19 +4893,19 @@ body[data-gb-theme="atelier-v3"] {
         </div>
 
         <!-- SECOND status track: social points from sharing & helping -->
-        <div style="background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 3l4 11h11l-9 7 3 12-9-7-9 7 3-12-9-7h11z' fill='none' stroke='%23F2CE73' stroke-opacity='.05'/%3E%3C/svg%3E&quot;),linear-gradient(165deg,#42301F,#2C2016);border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(58,44,34,.2);color:#fff">
+        <div class="gb-comm-soc-card" style="background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 3l4 11h11l-9 7 3 12-9-7-9 7 3-12-9-7h11z' fill='none' stroke='%23F2CE73' stroke-opacity='.05'/%3E%3C/svg%3E&quot;),linear-gradient(165deg,#42301F,#2C2016);border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(58,44,34,.2);color:#fff">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
             <span style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F2CE73;flex:1">Điểm cộng đồng · chia sẻ &amp; giúp đỡ</span>
           </div>
           <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px">
             <span style="font-size:30px;font-weight:800;line-height:1;letter-spacing:-.02em;color:#fff">{{ socialPts }}</span>
             <sc-if value="{{ socialWeekDeltaOn }}" hint-placeholder-val="{{ true }}">
-            <span style="font-size:11.5px;font-weight:800;color:#A8E8C0;background:rgba(37,106,71,.6);border-radius:999px;padding:3px 9px">+{{ socialWeekDelta }} tuần này</span>
+            <span class="gb-comm-soc-delta" style="font-size:11.5px;font-weight:800;color:#A8E8C0;background:rgba(37,106,71,.6);border-radius:999px;padding:3px 9px">+{{ socialWeekDelta }} tuần này</span>
             </sc-if>
           </div>
           <div style="font-size:11.5px;color:#F3E9DA;font-weight:600;line-height:1.5;margin-bottom:13px">Song song với hạng năng lực — đăng bài và giúp bạn học là cách chính để tăng uy tín.</div>
           <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#F0E4D2;margin-bottom:8px">Huy hiệu giúp đỡ</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <div class="gb-comm-soc-badges" style="display:flex;gap:6px;flex-wrap:wrap">
             <sc-for list="{{ helperBadges }}" as="b" hint-placeholder-count="4">
               <span title="{{ b.hint }}" style="{{ b.badgeStyle }}">{{ b.icon }} {{ b.label }}</span>
             </sc-for>
@@ -6414,7 +6743,7 @@ body[data-gb-theme="atelier-v3"] {
         <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6F6152;margin-bottom:6px">Gobita Shop · đổi điểm lấy đồ xịn</div>
         <h1 style="margin:0;font-size:26px;font-weight:800;line-height:1.2">Nền, sticker, vé sự kiện &amp; công cụ AI</h1>
       </div>
-      <div style="background:#3A2C22;border-radius:14px;padding:13px 20px;color:#fff;display:flex;align-items:center;gap:13px">
+      <div class="gb-shop-bal-card" style="background:#3A2C22;border-radius:14px;padding:13px 20px;color:#fff;display:flex;align-items:center;gap:13px">
         <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,#C9A24E,#9A7328);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0">★</span>
         <span style="display:flex;flex-direction:column;line-height:1.3">
           <span style="font-size:17px;font-weight:800;color:#F2CE73;white-space:nowrap">{{ shopBalance }} điểm</span>
@@ -7964,6 +8293,8 @@ body[data-gb-theme="atelier-v3"] {
       <h1 style="margin:0 0 4px;font-size:26px;font-weight:800;line-height:1.2">Dùng Gobita Learn trong 5 phút</h1>
       <div style="font-size:12px;color:#6B5044;font-weight:600;margin-bottom:14px">Cho người bận và không rành công nghệ. Mỗi việc chỉ cần 1–3 nút bấm. Go Big · Take Action.</div>
 
+      {{ guideSigAccordionEl }}
+
       <div style="background:#EDE4D8;border-radius:12px;padding:12px 16px;margin-bottom:18px;font-weight:600;font-size:12px">
         Quy tắc duy nhất cần nhớ: <b>mọi thứ trên web đều xoay quanh Ma trận 4×4</b> — bạn học một ô, luyện trong Live Room, khoe lên Cộng đồng, nhận điểm, mở ô tiếp theo. Lặp lại.
       </div>
@@ -8743,15 +9074,15 @@ const API_BASE='https://script.google.com/macros/s/AKfycbwmwcnlhw31Gh1JzyMMH_tqg
 const GOOGLE_CLIENT_ID='335112134982-2f70q7ogr32nqvs37c0a3mpvefde3em7.apps.googleusercontent.com';const GOOGLE_AUTH=!!(API_BASE&&GOOGLE_CLIENT_ID);// T-307 (Q42 = A): Firebase Realtime Database for the real Live Room (Web API key + database URL — identify the project, not secrets;
 // access is decided by backend-firebase/database.rules.json). Empty = off: Demo, tests, other agents. Deploy fills both (apply_prod_config.py).
 const RT_API_KEY='AIzaSyDXBVEMxNdeP1xAUVdn1j-ZqqHRPazfa2M';const RT_DB_URL='https://gobita-learn-live-default-rtdb.asia-southeast1.firebasedatabase.app';// Sample video for every sample-lesson video block (Q7b = A1, test link from the owner 20/10). Real Gobita video = change this one line.
-const GOBITA_SAMPLE_VIDEO='https://www.youtube.com/watch?v=COr5YV6PFKY';// T-381 (Q111–Q116 = A): Default UI theme ('atelier-v3' = Gobita Living Atelier v3.0 · 'classic' = Classic Gobita v1 v0.1.156).
-const DEFAULT_UI_THEME='atelier-v3';function readInitialUiTheme(){try{if(typeof window!=='undefined'){const sp=new URLSearchParams(window.location.search||'');const hq=(window.location.hash||'').indexOf('?');const hp=hq>=0?new URLSearchParams((window.location.hash||'').slice(hq+1)):null;const raw=(sp.get('theme')||(hp?hp.get('theme'):'')||'').trim().toLowerCase();if(raw==='classic'||raw==='v1'||raw==='classic-v1'){try{localStorage.setItem('gobita_ui_theme','classic');}catch(e){}return'classic';}if(raw==='atelier'||raw==='atelier-v3'||raw==='v3'){try{localStorage.setItem('gobita_ui_theme','atelier-v3');}catch(e){}return'atelier-v3';}const saved=(localStorage.getItem('gobita_ui_theme')||'').trim();if(saved==='classic'||saved==='atelier-v3')return saved;}}catch(e){}return DEFAULT_UI_THEME;}const SUGGESTION_PACKS={vi:{clear:["Tóm tắt","So sánh","Viết thư","Phân tích","Lập danh sách"],verifiable:["thành 5 gạch đầu dòng","dưới 100 từ","dưới dạng bảng","gồm 3 bước"],specific:["cho sếp","cho giám đốc","cho khách hàng mới","dành cho học sinh"]},en:{clear:["Summarize","Compare","Draft an email","Analyze","Create a list"],verifiable:["into 5 bullet points","under 100 words","as a table","in 3 steps"],specific:["for my boss","for a new customer","for students"]}};/**
+const GOBITA_SAMPLE_VIDEO='https://www.youtube.com/watch?v=COr5YV6PFKY';// T-381 & T-382 (Q117 = M5, Q118–Q122 = A): Default UI theme ('signature-v4' = Gobita Signature v4.0 · 'atelier-v3' = Living Atelier v3.0 v0.1.157 · 'classic' = Classic Gobita v1 v0.1.156).
+const DEFAULT_UI_THEME='signature-v4';function readInitialUiTheme(){try{if(typeof window!=='undefined'){const sp=new URLSearchParams(window.location.search||'');const hq=(window.location.hash||'').indexOf('?');const hp=hq>=0?new URLSearchParams((window.location.hash||'').slice(hq+1)):null;const raw=(sp.get('theme')||(hp?hp.get('theme'):'')||'').trim().toLowerCase();if(raw==='classic'||raw==='v1'||raw==='classic-v1'){try{localStorage.setItem('gobita_ui_theme','classic');}catch(e){}return'classic';}if(raw==='atelier'||raw==='atelier-v3'||raw==='v3'){try{localStorage.setItem('gobita_ui_theme','atelier-v3');}catch(e){}return'atelier-v3';}if(raw==='signature'||raw==='signature-v4'||raw==='v4'||raw==='m5'){try{localStorage.setItem('gobita_ui_theme','signature-v4');}catch(e){}return'signature-v4';}const saved=(localStorage.getItem('gobita_ui_theme')||'').trim();if(saved==='classic'||saved==='atelier-v3'||saved==='signature-v4')return saved;}}catch(e){}return DEFAULT_UI_THEME;}const SUGGESTION_PACKS={vi:{clear:["Tóm tắt","So sánh","Viết thư","Phân tích","Lập danh sách"],verifiable:["thành 5 gạch đầu dòng","dưới 100 từ","dưới dạng bảng","gồm 3 bước"],specific:["cho sếp","cho giám đốc","cho khách hàng mới","dành cho học sinh"]},en:{clear:["Summarize","Compare","Draft an email","Analyze","Create a list"],verifiable:["into 5 bullet points","under 100 words","as a table","in 3 steps"],specific:["for my boss","for a new customer","for students"]}};/**
  * Injects a phrase into an existing text prompt based on insertion type.
  * @param {string} currentText - The existing prompt in the textarea.
  * @param {string} phrase - The suggestion text to insert.
  * @param {'prepend' | 'append'} position - Where to inject the phrase.
  * @returns {string} - The resulting prompt.
  */function injectPhrase(currentText,phrase,position){const trimmed=(currentText||"").trim();if(position==="prepend"){return trimmed?`${phrase} ${trimmed.charAt(0).toLowerCase()}${trimmed.slice(1)}`:`${phrase} `;}if(position==="append"){// Avoid double punctuation when appending
-const cleanText=trimmed.replace(/[.,!;]+$/,"");return cleanText?`${cleanText} ${phrase.toLowerCase()}`:phrase;}return currentText;}class Component extends DCLogic{state={uiTheme:readInitialUiTheme(),screen:null,role:null,lang:'vi',muted:false,paused:false,tab:'all',mxCell:null,mxCo:null,mxRegion:'all',mxInfo:null,isRevealed:null,linhVotes:9,posted:false,taDismissed:false,pointsInfoOpen:false,pointsLedgerOpen:false,pointsLedger:null,glossary:null,tour:0,name:null,email:'linh.nguyen@congty.vn',cls:'office',isLoggedIn:true,loginEmail:'',loginPassword:'',loginErr:null,loginLoading:false,cloudSession:null,cloudLedger:[],cloudPending:[],cloudSocial:null,cloudCheckin:null,checkinBusy:false,checkinPopupOpen:false,demoCheckinStep:0,// T-104 · T-119 · T-375 · T-376
+const cleanText=trimmed.replace(/[.,!;]+$/,"");return cleanText?`${cleanText} ${phrase.toLowerCase()}`:phrase;}return currentText;}class Component extends DCLogic{state={uiTheme:readInitialUiTheme(),sigAccIdx:-1,guideAccIdx:0,screen:null,role:null,lang:'vi',muted:false,paused:false,tab:'all',mxCell:null,mxCo:null,mxRegion:'all',mxInfo:null,isRevealed:null,linhVotes:9,posted:false,taDismissed:false,pointsInfoOpen:false,pointsLedgerOpen:false,pointsLedger:null,glossary:null,tour:0,name:null,email:'linh.nguyen@congty.vn',cls:'office',isLoggedIn:true,loginEmail:'',loginPassword:'',loginErr:null,loginLoading:false,cloudSession:null,cloudLedger:[],cloudPending:[],cloudSocial:null,cloudCheckin:null,checkinBusy:false,checkinPopupOpen:false,demoCheckinStep:0,// T-104 · T-119 · T-375 · T-376
 pfLiveList:null,pfLiveBusy:false,pfLiveSearch:'',pfLiveDlBusy:'',tOverview:null,tOverviewBusy:false,tOverviewErr:false,tTrackSearch:'',tTrackFilter:'all',// T-376 (Q105 = A)
 spBgFileId:null,cloudJournal:[],// T-118
 loginRole:'student',regName:'',regEmail:'',regPassword:'',regRole:'student',regErr:null,authMode:'login',modMode:false,postStatus:{},reportedByMe:{},clawedPts:0,notif:true,digest:true,rubricPassed:false,rubricText:'',rubricTries:0,rubricFb:null,keepsakeOpen:false,firstLessonDone:false,weekSealSeen:false,recapInsightIdx:0,recapNameMode:'short',celebrateId:null,celebrateLabel:'',calcHours:3,calcRate:150,panX:0,panY:0,dragging:false,rs:0,ra:0,rb:0,rq:0,rDone:null,rFlash:null,rBoost:false,rShield:0,rCarrotGot:false,rShieldGot:false,rBump:[0,0,0],rMsg:null,rPopup:null,mDeck:[],mUp:[],mDone:[],mMoves:0,mLock:false,mFly:null,mJustMatched:[],mExplain:null,cpOpen:false,cpType:'question',cpTitle:'',cpTags:[],cpClass:'office',cpImages:[],cpFiles:[],cpEmbed:null,cpLinkVal:'',cpPreview:false,cpBodyHtml:'',cpBodyText:'',cpErr:null,myPosts:[],threads:null,threadId:null,thDraft:'',replyTo:null,replyDraft:'',bT:60,bS:0,bStreak:0,bQ:3,bEnd:false,bFlash:null,bRecord:null,bBeatRecord:false,bPrevRecord:null,bPopup:null,pNext:0,pErr:0,pFlash:null,pTypeLen:0,dDepth:0,dLives:3,dGems:0,dQ:5,dEnd:false,dFlash:null,dMsg:null,dDigN:0,dShakeN:0,dGemN:0,dFloat:null,cView:'lobby',cJoined:0,cMode:'solo',cDur:180,cT:180,cM:0,cE:100,cBotM:[0,0,0,0,0],cMAt:0,cBotAt:[0,0,0,0,0],cQOpen:false,cQi:7,cFlash:null,cWin:null,cMsg:null,cCount:0,cHowto:0,cDisp:0,cFall:null,cStars:{},cFloaters:[],cPose:'idle',cHopN:0,cQBonus:false,cQOpenAt:0,hvPhase:'play',hvDiff:'medium',hvCells:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],hvTurn:'you',hvScore:0,hvStreak:0,hvMaxStreak:0,hvCorrect:0,hvAnswered:0,hvPower:0,hvSwapMode:false,hvDeck:[],hvTarget:-1,hvQCur:null,hvQLeft:20,hvQChoice:null,hvQTimedOut:false,hvShockCell:-1,hvWinWho:null,hvWinPath:[],hvWrongLog:[],hvHowtoOpen:false,hvBest:0,hvWins:0,hvReactYou:0,hvReactBot:0,hvToast:'',// T-354 (Q74 = A): Game #8 Tổ Ong Tri Thức + GobitaGameFX
@@ -8866,7 +9197,7 @@ isJoin:s.screen==='join',joinName2:jMeta.name,joinIsClimb:s.joinGame==='climb',j
 jEnterName:en?'Enter your name':'Nhập tên của bạn',jFreeChip:en?'Free play — no points':'Tự do — không ghi điểm',jCodeHintPrefix:en?'Room code':'Mã phòng',jCodeHintSuffix:en?'this name shows on the big screen.':'tên này sẽ hiện trên màn hình lớn.',jErrName:en?'Name not found in class roster — check spelling or ask teacher. '+Math.max(0,3-(s.joinAttempts||0))+' attempts left.':'Tên chưa khớp danh sách lớp — kiểm tra chính tả hoặc hỏi giáo viên. Còn '+Math.max(0,3-(s.joinAttempts||0))+' lần thử.',jErrLocked:en?'Too many attempts':'Đã thử quá nhiều lần',jErrLockedDesc:en?'Ask teacher to check your name in the class roster, or play in Free mode (no points).':'Nhờ giáo viên kiểm tra tên trong danh sách lớp, hoặc vào chơi ở chế độ Tự do (không ghi điểm).',jPlayFree:en?'Play Free →':'Chơi Tự do →',jNamePlaceholder:en?'Your name…':'Tên của bạn…',jEnterLobby:en?'Enter lobby →':'Vào phòng chờ →',jLeave:en?'Leave':'Thoát',jFullTitle:en?'Room is full':'Phòng đã đủ người',jFullDesc:en?'Room "'+jMeta.name+'" has reached '+this.JOIN_CAP+' players. Ask teacher to open another room, or try again later.':'Phòng "'+jMeta.name+'" đã đủ '+this.JOIN_CAP+' người chơi. Hỏi giáo viên mở thêm phòng, hoặc thử lại sau.',jBackArcade:en?'← Back to Arcade':'← Quay lại Arcade',jClosedTitle:en?'Round is closed':'Vòng chơi đã đóng',jClosedDesc:en?'Round "'+jMeta.name+'" has started or ended — no more entries. Ask teacher to open a new round.':'Vòng "'+jMeta.name+'" đã bắt đầu hoặc đã kết thúc — không thể vào thêm. Hỏi giáo viên mở vòng mới.',jInTitle:en?"You're in":'Bạn đã vào',jInDesc:en?'Look at the big screen — teacher will start soon.':'Nhìn lên màn hình lớn — giáo viên sẽ bắt đầu.',jWaiting:en?'Waiting for teacher to start '+jMeta.name+'…':'Đang chờ giáo viên bắt đầu '+jMeta.name+'…',jScreenOn:en?'Screen stays on during play':'Màn hình luôn sáng khi đang chơi',jLeaveRoom:en?'Leave room':'Rời phòng',resumeOn:!!this.state.resumeInfo,resumeName:this.state.resumeInfo?this.state.resumeInfo.joinName||this.state.name||'':'',resumeOutfit:this.state.resumeInfo?this.state.resumeInfo.joinGame||this.state.resumeInfo.hostGame:'climb',resumeGameName:this.state.resumeInfo?this.gameMeta(this.state.resumeInfo.joinGame||this.state.resumeInfo.hostGame).name:'',resumeDismiss:()=>{try{localStorage.removeItem('gobita-resume');}catch(e){}this.setState({resumeInfo:null});},resumeAccept:()=>{const r=this.state.resumeInfo;if(r&&r.hostGame){this.setState({resumeInfo:null});this.openRoom(r.hostGame,r.hostOpts);return;}this.setState({resumeInfo:null,screen:'join',joinGame:r.joinGame,joinName:r.joinName,joinDone:true,joinIsClass:!!r.joinIsClass,joinErr:null,joinAttempts:0,joinReturn:'arcade'});},// ── arcade code box ──
 arcadeCode:s.arcadeCode,setArcadeCode:e=>this.setState({arcadeCode:e.target.value,arcadeCodeErr:null}),arcadeJoin:()=>this.arcadeJoin(),arcadeCodeErr:s.arcadeCodeErr,arcadeCodeErrOn:!!s.arcadeCodeErr,hwDueLabel:hw?hw.dueLabel:'',climbHwOn:!!hw&&hw.key==='climb',climbHwOff:!(hw&&hw.key==='climb'),climbHwPlay:()=>this.gfPlayHomework('climb'),raceHwOn:!!hw&&hw.key==='race',raceHwOff:!(hw&&hw.key==='race'),raceHwPlay:()=>this.gfPlayHomework('race'),memoryHwOn:!!hw&&hw.key==='memory',memoryHwOff:!(hw&&hw.key==='memory'),memoryHwPlay:()=>this.gfPlayHomework('memory'),blitzHwOn:!!hw&&hw.key==='blitz',blitzHwOff:!(hw&&hw.key==='blitz'),blitzHwPlay:()=>this.gfPlayHomework('blitz'),promptHwOn:!!hw&&hw.key==='prompt',promptHwOff:!(hw&&hw.key==='prompt'),promptHwPlay:()=>this.gfPlayHomework('prompt'),mineHwOn:!!hw&&hw.key==='mine',mineHwOff:!(hw&&hw.key==='mine'),mineHwPlay:()=>this.gfPlayHomework('mine'),wallHwOn:!!hw&&hw.key==='wall',wallHwOff:!(hw&&hw.key==='wall'),wallHwPlay:()=>this.gfPlayHomework('wall'),hiveHwOn:!!hw&&hw.key==='hive',hiveHwOff:!(hw&&hw.key==='hive'),hiveHwPlay:()=>this.gfPlayHomework('hive'),openRoomClimb:()=>this.openRoom('climb'),openRoomRace:()=>this.openRoom('race'),openRoomMemory:()=>this.openRoom('memory'),openRoomBlitz:()=>this.openRoom('blitz'),openRoomPrompt:()=>this.openRoom('prompt'),openRoomMine:()=>this.openRoom('mine'),openRoomWall:()=>this.openRoom('wall'),openRoomHive:()=>this.openRoom('hive'),// ── arcade Sheet question set selector (T-352 · Google gas-20) ──
 arcadeQsetsOn:this.qsetsOn()&&s.cloudQsets.length>0,arcadeQsetsTitle:en?'Practice question sets (Google Sheet)':'Bộ câu hỏi luyện tập (Google Sheet)',arcadeQsetsFreeBadge:en?'Free · 0 pts':'Tự do · 0 điểm',arcadeQsetsLoading:!!s.qSetLoading,arcadeQsetsLoadingLabel:en?'Loading questions…':'Đang tải bộ câu hỏi…',arcadeQsetDocOn:!!s.qSetDocUrl&&/^https:\/\//i.test(s.qSetDocUrl),arcadeQsetDocUrl:s.qSetDocUrl||'',arcadeQsetDocLabel:en?'Source material ↗':'Tài liệu gốc ↗',arcadeQsetItems:this.qsetsOn()?[{id:'default',label:en?'Default · '+this.bank.length+' Qs':'Mặc định · '+this.bank.length+' câu',style:{padding:'7px 14px',border:!s.qSetId?'1px solid #3A2C22':'1px solid #D9CDBC',borderRadius:'999px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'11.5px',fontWeight:800,cursor:'pointer',background:!s.qSetId?'#3A2C22':'#F7F2EB',color:!s.qSetId?'#F2CE73':'#3A2C22',whiteSpace:'nowrap'},click:()=>this.cloudLoadQset('')}].concat(s.cloudQsets.map(qs=>({id:qs.set_id,label:(en&&qs.title_en?qs.title_en:qs.title_vi)+' · '+qs.count+(en?' Qs':' câu')+(!qs.arcade?en?' · Live only':' · Chỉ Live':''),style:{padding:'7px 14px',border:s.qSetId===qs.set_id?'1px solid #3A2C22':'1px solid #D9CDBC',borderRadius:'999px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'11.5px',fontWeight:800,cursor:'pointer',background:s.qSetId===qs.set_id?'#3A2C22':'#F7F2EB',color:s.qSetId===qs.set_id?'#F2CE73':'#3A2C22',whiteSpace:'nowrap'},click:()=>this.cloudLoadQset(qs.set_id)}))):[],// ── arcade home i18n ──
-aSubtitle:en?'Gobita Arcade · game-style practice':'Gobita Arcade · luyện tập kiểu trò chơi',aTagline1:en?'Learn by playing.':'Học mà như chơi.',aTagline2:en?'Quick review, fun first.':'Ôn nhanh, vui là chính.',aFreeInfoPre:en?'':'Chế độ ',aFreeInfoBold:en?'Free':'Tự do',aFreeInfoPost:en?' mode — results are not recorded. Teacher can open the same question set in Live Room.':' — kết quả không ghi vào hồ sơ. Giáo viên có thể mở cùng bộ câu hỏi này trong Live Room.',aCodeTitle:en?'Have a code? Jump in':'Có mã? Vào thẳng',aCodeDesc:en?'Teacher opens a game room and shares a code / link — enter the code to join directly, no need to pick a game.':'Giáo viên mở phòng trò chơi và đọc mã / gửi link — nhập mã là vào thẳng, không cần chọn trò.',aCodePlaceholder:en?'e.g. 3WE-APQ':'VD: 3WE-APQ',aCodeJoin:en?'Join room →':'Vào phòng →',aFreeChip:en?'Free play — no points':'Tự do — không ghi điểm',aOpenRoom:en?'Open room →':'Mở phòng →',aHwDue:en?'Play before '+(hw?hw.dueLabel:''):'Chơi trước '+(hw?hw.dueLabel:''),aClassMode:en?'Class mode':'Chế độ lớp',aHwNote:en?'This round counts toward your learning record.':'Vòng này được tính vào việc học của bạn.',aHwPlay:en?'▶ Play homework →':'▶ Chơi bài tập →',aJoinByLink:en?'Join via link / QR code':'Vào bằng link / mã QR',// game card titles, badges, descriptions
+aSubtitle:en?'Gobita Arcade · game-style practice':'Gobita Arcade · luyện tập kiểu trò chơi',aTagline1:en?'Learn by playing.':'Học mà như chơi.',aTagline2:this.sigAccent(en?'Quick review, fun first.':'Ôn nhanh, vui là chính.',3),aFreeInfoPre:en?'':'Chế độ ',aFreeInfoBold:en?'Free':'Tự do',aFreeInfoPost:en?' mode — results are not recorded. Teacher can open the same question set in Live Room.':' — kết quả không ghi vào hồ sơ. Giáo viên có thể mở cùng bộ câu hỏi này trong Live Room.',aCodeTitle:en?'Have a code? Jump in':'Có mã? Vào thẳng',aCodeDesc:en?'Teacher opens a game room and shares a code / link — enter the code to join directly, no need to pick a game.':'Giáo viên mở phòng trò chơi và đọc mã / gửi link — nhập mã là vào thẳng, không cần chọn trò.',aCodePlaceholder:en?'e.g. 3WE-APQ':'VD: 3WE-APQ',aCodeJoin:en?'Join room →':'Vào phòng →',aFreeChip:en?'Free play — no points':'Tự do — không ghi điểm',aOpenRoom:en?'Open room →':'Mở phòng →',aHwDue:en?'Play before '+(hw?hw.dueLabel:''):'Chơi trước '+(hw?hw.dueLabel:''),aClassMode:en?'Class mode':'Chế độ lớp',aHwNote:en?'This round counts toward your learning record.':'Vòng này được tính vào việc học của bạn.',aHwPlay:en?'▶ Play homework →':'▶ Chơi bài tập →',aJoinByLink:en?'Join via link / QR code':'Vào bằng link / mã QR',// game card titles, badges, descriptions
 aClimbBadge:en?'New · Live whole class':'Mới · Live cả lớp',aClimbTitle:en?'Knowledge Climb':'Leo Núi Tri Thức',aClimbDesc:en?'The whole class climbs the same mountain in real-time. Climbing costs energy — answer correctly to recharge, wrong drops you back to base.':'Cả lớp leo cùng một ngọn núi theo thời gian thực. Leo tốn năng lượng — trả lời đúng để nạp thêm, sai là rơi về chân núi.',aRaceBadge:en?'Best for teams':'Tốt nhất cho đội',aRaceTitle:en?'Knowledge Race':'Đua Kiến Thức',aRaceDesc:en?'Answer correctly to push your team to the finish before the other 2 teams. Speed and accuracy win.':'Trả lời đúng để đẩy đội bạn về đích trước 2 đội kia. Ai nhanh và chính xác hơn sẽ thắng.',aMemoryBadge:en?'Best for memory':'Tốt nhất cho trí nhớ',aMemoryTitle:en?'AI Card Match':'Lật Thẻ AI',aMemoryDesc:en?'Match AI terms with correct definitions. Fewer flips = more stars.':'Ghép thuật ngữ AI với định nghĩa đúng. Càng ít lượt lật, càng nhiều sao.',aBlitzBadge:en?'Best for speed':'Tốt nhất cho tốc độ',aBlitzTitle:en?'Blitz 60s':'Blitz 60 giây',aBlitzDesc:en?'Answer as fast as you can in 60 seconds. Consecutive correct answers multiply points ×2, ×3.':'Trả lời nhanh nhất có thể trong 60 giây. Chuỗi đúng liên tiếp nhân điểm ×2, ×3.',aPromptBadge:en?'Best for prompt practice':'Tốt nhất để luyện prompt',aPromptTitle:en?'Perfect Prompt Builder':'Xếp Prompt Hoàn Hảo',aPromptDesc:en?'Arrange 5 pieces in order: role → task → audience → format → verification.':'Ghép 5 mảnh theo đúng thứ tự: vai trò → nhiệm vụ → đối tượng → định dạng → kiểm chứng.',aMineBadge:en?'Best for exploration':'Tốt nhất để khám phá',aMineTitle:en?'Knowledge Mine':'Hầm Mỏ Tri Thức',aMineDesc:en?'Each correct answer digs deeper and collects gems. 3 wrong = broken pickaxe — deeper levels = bigger points.':'Mỗi câu đúng đào sâu thêm một tầng và nhặt đá quý. Sai 3 lần là gãy cuốc — càng sâu điểm càng lớn.',aMineGoal:en?'Reach floor 8':'Chạm đáy tầng 8',aWallBadge:en?'New · Whole class co-op':'Mới · Cả lớp hợp sức',aWallTitle:en?'Hold the Wall':'Giữ Vững Bức Tường',aWallDescPre:en?'The whole class defends a wall through waves of monsters. Correct answers add bricks, wrong ones let monsters gnaw. ':'Cả lớp cùng thủ một bức tường qua từng đợt quái. Trả lời đúng thêm gạch, sai thì quái gặm mất một viên. ',aWallDescBold:en?'No ranking, nobody loses':'Không xếp hạng, không ai thua',aWallDescPost:en?' — great for shy classes & first sessions.':' — hợp lớp nhút nhát & buổi đầu.',aWallNote:en?'Nobody loses — the whole class wins together':'Không ai thua — cả lớp cùng thắng',aHiveBadge:en?'New · 3D Hex Strategy':'Mới · Đấu tổ ong 3D',aHiveTitle:en?'Knowledge Hive':'Tổ Ong Tri Thức',aHiveDesc:en?'Claim golden hex cells to connect Left ↔ Right before Hallucination Bot connects Top ↕ Bottom. 3-streak unlocks Spot Hallucination!':'Chiếm ô lục giác vàng nối Trái ↔ Phải trước khi Bot Ảo Giác nối Trên ↕ Dưới. Đúng 3 câu liên tiếp mở khóa Soi ảo giác!',aHiveGoal:en?'Connect Left ↔ Right':'Nối liền Trái ↔ Phải'};}lvVals(){const s=this.state;const seg=on=>({padding:'6px 14px',border:'none',borderRadius:'999px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'11px',fontWeight:800,cursor:'pointer',background:on?'#3A2C22':'transparent',color:on?'#fff':'#6B5044',whiteSpace:'nowrap'});const card={background:'#EDE4D8',borderRadius:'16px',padding:'20px',boxShadow:'0 2px 8px rgba(58,44,34,.08)'};const btnDark={width:'100%',background:'#3A2C22',color:'#fff',border:'none',borderRadius:'999px',padding:'11px 0',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'12.5px',fontWeight:800,cursor:'pointer'};const join=()=>{this.startLiveClock();this.setState({lvJoined:true,lvCodeErr:null,revealChoice:null});};const toolColor=t=>t==='ChatGPT'?'#74AA9C':t==='Claude'?'#D97757':'#8AB4F8';const url=t=>t==='ChatGPT'?'chatgpt.com':t==='Claude'?'claude.ai':'gemini.google.com';const tiles=this.lvStudents.map((st,i)=>{const off=i*9;const chars=Math.max(0,(s.lvTick-off)*4);const done=chars>=st.p.length;const aiChars=done?Math.max(0,(s.lvTick-off-Math.ceil(st.p.length/4)-6)*5):0;return{st,i,started:chars>0,prompt:st.p.slice(0,chars),typing:chars>0&&!done,hasAi:aiChars>0,ai:st.a.slice(0,aiChars)+(aiChars>0&&aiChars<st.a.length?'…':'')};});const spot=s.lvSpot!==null?tiles[s.lvSpot]:null;const role=s.lvRole??this.props.liveRole??'student';const joined=s.lvJoined??role==='host';// Reveal-consent: the class only ever sees YOUR own card go from private to
 // shown after you've chosen how it appears (see revealConsentOpen below) —
 // an anonymous choice swaps both the name and the avatar initial.
@@ -8915,7 +9246,7 @@ icon:this.lessonIco(l.icon,l.type,16),iconStyle:{width:'40px',height:'40px',flex
 const lastL=rt?rt.l:all.find(l=>l.id==='l1')||all[0]||this._emptyLesson;const lastM=CLS[lastL.cls]||CLS.office;const lastBlocksDone=lastL.blocks?Math.floor(lastL.prog/100*lastL.blocks):0;const lastBlockNo=rt?rt.idx+1:Math.min(lastL.blocks||1,lastBlocksDone+1);const lastPtsLeft=lastL.blocks?lastL.pts-Math.round(lastL.pts/lastL.blocks*lastBlocksDone):0;const hasRealCloudResume=!!rt&&((this.state.cloudV||0)<20||(this.state.cloudLedger||[]).some(x=>/^block:/.test(x.reason||''))||all.some(l=>l.prog>0));const libHasResume=s.role!=='teacher'&&(GOOGLE_AUTH?this.isCloud()?hasRealCloudResume:false:all.length>0);const resume={icon:this.lessonIco(lastL.icon,lastL.type,28),title:lastL.t,clsLabel:lastM.label,clsChipStyle:{background:'rgba(247,242,235,.16)',color:'#F7F2EB',borderRadius:'999px',padding:'4px 11px',fontSize:'10.5px',fontWeight:800,whiteSpace:'nowrap'},cell:lastL.cell,blockLabel:rt?'Block '+lastBlockNo+'/'+lastL.blocks+' · '+String(rt.block.name).replace(/^[^·]*·\s*/,''):en?'Block '+lastBlockNo+'/'+lastL.blocks+' · Document Summary':'Block '+lastBlockNo+'/'+lastL.blocks+' · Tóm tắt tài liệu',blockNo:lastBlockNo,prog:lastL.prog,pctLabel:lastL.prog+'%',ptsLeft:lastPtsLeft,lastSeen:rt?this.lastSeenLabel(rt.at,en):en?'Last active: today · 21:14':'Lần cuối: hôm nay · 21:14',thumbStyle:{position:'relative',width:'92px',height:'92px',flexShrink:0,borderRadius:'18px',background:lastM.grad,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'40px',boxShadow:'0 6px 18px rgba(0,0,0,.28)'},barStyle:{width:lastL.prog+'%',height:'100%',background:'linear-gradient(90deg,#F97300,#F2CE73)',borderRadius:'999px'},resume:()=>this.resumeLast()};/* ── Đang học · every in-progress lesson (the shelf) ──────────────── */const learning=all.filter(l=>l.prog>0&&l.prog<100).sort((a,b)=>b.prog-a.prog).map(mk);/* ── Library-wide nudge · unclaimed points sitting in unfinished lessons ─
        Scoped to the whole library (every class), not just the student's
        current path — motivates finishing what's already started. */const nudgePts=learning.reduce((a,c)=>a+c.ptsLeft,0);const nudgeGo=()=>{const el=document.querySelector('[data-lib-section="dang-hoc"]');if(el){const y=el.getBoundingClientRect().top+window.scrollY-84;window.scrollTo({top:y,behavior:'smooth'});}};/* ── Để dành · reorderable reading queue (drag or ↑↓) ─────────────── */const savedIds=s.savedIds||[];const savedList=savedIds.map(id=>all.find(l=>l.id===id)).filter(Boolean);const savedQueue=savedList.map((l,i)=>{const m=CLS[l.cls],tp=TYPES[l.type];const svDone=l.prog>=100;const svEarned=svDone?l.pts:Math.round(l.pts/l.blocks*blocksDoneOf(l));const isDragging=s.dragSaveId===l.id;const isOver=s.dragOverSaveId===l.id&&s.dragSaveId&&s.dragSaveId!==l.id;const iconBtn=(dir,enabled)=>({width:'26px',height:'24px',borderRadius:'7px',border:'1px solid #E3D8C8',background:enabled?'#FCFAF6':'#F3ECE1',color:enabled?'#6B5044':'#CFC3B2',fontSize:'11px',fontWeight:800,cursor:enabled?'pointer':'default',padding:0,display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Montserrat',Arial,sans-serif"});return{key:'sv-'+l.id,pos:i+1,icon:this.lessonIco(l.icon,l.type,18),iconStyle:{width:'46px',height:'46px',flexShrink:0,borderRadius:'12px',background:m.grad,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'22px',boxShadow:'0 2px 6px rgba(58,44,34,.18)'},title:l.t,clsLabel:m.label,clsChipStyle:{background:m.chipBg,color:m.chipC,borderRadius:'999px',padding:'3px 9px',fontSize:'11px',fontWeight:800,whiteSpace:'nowrap'},cell:l.cell,meta:tp.label+' · '+l.blocks+(en?' blocks · ':' block · ')+l.dur,pts:svEarned+'/'+l.pts+(en?' pts':' điểm'),posStyle:{width:'24px',height:'24px',flexShrink:0,borderRadius:'50%',background:'#3A2C22',color:'#F2CE73',fontSize:'11px',fontWeight:800,display:'flex',alignItems:'center',justifyContent:'center'},gripStyle:{flexShrink:0,color:isDragging?'#B5673C':'#B3A595',fontSize:'17px',lineHeight:1,cursor:'grab',userSelect:'none',padding:'0 2px'},rowStyle:{display:'flex',alignItems:'center',gap:'12px',background:'#FCFAF6',border:isOver?'2px solid #F97300':'1px solid #E3D8C8',borderRadius:'15px',padding:isOver?'11px 13px':'12px 14px',opacity:isDragging?0.45:1,boxShadow:isDragging?'0 12px 26px rgba(58,44,34,.2)':'0 1px 4px rgba(58,44,34,.05)',transition:'opacity .12s ease, border-color .12s ease'},draggable:true,onDragStart:()=>this.setState({dragSaveId:l.id}),onDragOver:e=>{e.preventDefault();if(this.state.dragOverSaveId!==l.id)this.setState({dragOverSaveId:l.id});},onDrop:e=>{e.preventDefault();this.reorderSaved(l.id);},onDragEnd:()=>this.setState({dragSaveId:null,dragOverSaveId:null}),isFirst:i===0,isLast:i===savedList.length-1,upStyle:iconBtn(-1,i!==0),downStyle:iconBtn(1,i!==savedList.length-1),up:e=>this.moveSaved(l.id,-1,e),down:e=>this.moveSaved(l.id,1,e),remove:e=>this.removeSaved(l.id,e),open};});return{libResume:resume,libHasResume,libCatalogEmpty:GOOGLE_AUTH&&all.length===0,libHasCatalog:!(GOOGLE_AUTH&&all.length===0),showLibUploadBtn:!GOOGLE_AUTH||s.role==='teacher',libReadyKicker:en?'Gobita Learn · Official Curriculum':'Gobita Learn · Giáo trình chính thức',libReadyTitle:en?'Library is ready — awaiting the first lesson':'Thư viện sẵn sàng — Giảng viên đang cập nhật bài học đầu tiên',libReadySub:en?'All demo lessons have been cleared for Go-Live. New lessons published by your instructor will appear right here.':'Toàn bộ bài học mẫu thử nghiệm đã được dọn sạch. Các bài giảng thực chiến do giảng viên đăng tải sẽ xuất hiện ngay tại đây.',libLearning:learning,libHasLearning:s.role!=='teacher'&&learning.length>0,libLearnCount:learning.length,libNudgeHas:s.role!=='teacher'&&nudgePts>0,libNudgePts:nudgePts,libNudgePtsLabel:nudgePts+(en?' pts':' điểm'),libNudgeCount:learning.length,libNudgeCountLabel:learning.length+(en?' lessons':' bài'),libNudgeGo:nudgeGo,libSaved:savedQueue,libHasSaved:s.role!=='teacher'&&savedQueue.length>0,libSavedEmpty:s.role!=='teacher'&&savedQueue.length===0,libSavedCount:savedQueue.length,libProgClass:clsInfo.label,libProgPct:pgPct,libProgPctLabel:pgPct+'%',libProgRingStyle:{width:'78px',height:'78px',flexShrink:0,borderRadius:'50%',background:'conic-gradient(#C97B4E '+pgPct*3.6+'deg,#E3D8C8 0)',display:'flex',alignItems:'center',justifyContent:'center'},libProgPtsLeft:pgPtsTotal-pgPtsEarned,libProgStats:pgStats,libProgUnfinished:pgUnfinished,libProgHasUnfinished:pgUnfinished.length>0,libProgUnfinCount:pgUnfinished.length,libGuide:guidePicks,libGuideHas:s.role!=='teacher'&&guidePicks.length>0,libGuidePosCell:curTag,libGuidePosClass:clsInfo.label,libGuideGoMatrix:()=>{this.stopTimers();this.setState({screen:'home'});},libContinue:cont,libHasContinue:cont.length>0,libSuggest:suggest,libNew:newest,libBrowse:browse,libBrowseEmpty:browse.length===0,libCount:en?all.length+' lessons · 4 classes · '+all.reduce((a,l)=>a+l.blocks,0)+' short 3–6 min blocks':all.length+' bài học · 4 lớp · '+all.reduce((a,l)=>a+l.blocks,0)+' block nhỏ 3–6 phút',libResultLabel:browse.length+(en?' results':' kết quả')+(filtersActive?en?' (filtered / '+all.length+' lessons)':' (đã lọc / '+all.length+' bài)':en?' — filter by class, matrix cell, format or search by name':' — lọc theo lớp, ô ma trận, định dạng hoặc tìm theo tên'),libSuggestNote:en?'Because you are at Consumer · Basic — Beginner, unlocking Researcher next':'Vì bạn đang ở Consumer · Basic — Beginner, sắp mở khóa Researcher',libChips:[chip('all',en?'All':'Tất cả'),chip('office','Office'),chip('management','Management'),chip('creativity','Creativity'),chip('affiliate','Affiliate')],libCellOptions:cellOptions,libTypeOptions:typeOptions,libQ:s.libQ??'',libCell:cell,libType:type,libSort:sort,libFiltersActive:filtersActive,libClearFilters:clearFilters,libSetQ:e=>this.setState({libQ:e.target.value}),libSetCell:e=>this.setState({libCell:e.target.value}),libSetType:e=>this.setState({libType:e.target.value}),libSetSort:e=>this.setState({libSort:e.target.value}),// ── Library HTML labels ──
-libTitleLabel:en?'Lesson Library':'Thư viện bài học',libUploadBtnLabel:en?'＋ Upload Lesson · Teacher':'＋ Tải bài giảng lên · GV',libUploadBtnTitle:en?'For teachers — AI cuts video/doc into 3–6 min blocks for review & publishing':'Dành cho giáo viên — AI cắt file thành block 3–6 phút, duyệt rồi đăng',libNudgeText1:en?'Library is holding':'Thư viện đang giữ',libNudgeText2:en?'unclaimed —':'chưa lấy —',libNudgeText3:en?'in progress — complete to claim points':'đang dang dở, học nốt để chốt điểm',libNudgeCta:en?'Resume now →':'Học nốt ngay →',libResumeTag:en?'▶ CONTINUE LEARNING':'▶ Tiếp tục học',libResumeCtaPrefix:en?'Continue at Block ':'Tiếp tục ở Block ',libResumePtsLeftLabel:en?'pts remaining to finish block':'điểm để chốt block',libProgTitleLabel:en?'Your '+clsInfo.label+' class progress':'Tiến độ lớp '+clsInfo.label+' của bạn',libProgDescPre:en?'You have covered ':'Bạn đã đi được ',libProgDescMid:en?' of the journey — ':' chặng đường — còn ',libProgDescPost:en?' pts left to complete the class.':' điểm nữa để hoàn tất lớp.',libUnfinTitle:en?'Unfinished lessons':'Bài chưa xong',libUnfinSub:en?'— finish to claim points':'— học nốt để chốt điểm',libLearningHeader:en?'In Progress':'Đang học',libLearningSub:en?'Complete unfinished blocks — points are only awarded upon block completion':'Học nốt block dở — điểm chỉ tính khi xong cả block',libContinueBtn:en?'Continue →':'Tiếp tục →',libSavedHeader:en?'Saved Queue':'Để dành',libSavedSub:en?'Your self-study queue — drag or use ▲▼ to reorder':'Hàng đợi tự học của bạn — kéo thả hoặc ↑↓ để sắp thứ tự',libSavedLearnBtn:en?'Learn →':'Học →',libSavedEmptyTextPre:en?'No saved lessons yet. Click the ':'Chưa có bài nào để dành. Bấm dấu ',libSavedEmptyTextMid:en?'bookmark':'đánh dấu',libSavedEmptyTextPost:en?' icon on any lesson card to add it to your self-study queue — then drag and drop to reorder.':' trên bất kỳ thẻ bài học nào để thêm vào hàng đợi tự học — rồi kéo thả để sắp thứ tự học.',libGuideHeader:en?'Gobita Recommendations for You':'Gobita gợi ý cho bạn',libGuideSubPre:en?'You are at ':'Bạn đang ở ',libGuideSubMid:en?' · class ':' · lớp ',libGuideSubPost:en?' — this is your best next step.':' — đây là bước tiếp theo tốt nhất.',libGuideViewMatrixBtn:en?'View Matrix →':'Xem Ma trận →',libNewestHeader:en?'Latest Lessons':'Mới nhất',libNewestSub:en?'Newly published or recently updated by teachers':'Bài mới đăng hoặc vừa được giáo viên cập nhật',libBrowseHeader:en?'Browse by Class':'Duyệt theo lớp',libSearchPlaceholder:en?'Search by title, matrix cell…':'Tìm theo tên bài, ô ma trận…',libCellAllOption:en?'Matrix cell: All':'Ô ma trận: Tất cả',libTypeAllOption:en?'Format: All':'Định dạng: Tất cả',libSortNewestOption:en?'Sort: Newest':'Sắp xếp: Mới nhất',libSortPointsOption:en?'Sort: Most points':'Sắp xếp: Nhiều điểm nhất',libSortShortestOption:en?'Sort: Shortest':'Sắp xếp: Ngắn nhất',libClearFiltersBtn:en?'Clear filters':'Xóa bộ lọc',libNoResultsText:en?'No lessons match the selected filters — try different keywords or change class / cell / format.':'Không tìm thấy bài học nào khớp bộ lọc — thử từ khóa khác, hoặc đổi lớp / ô ma trận / định dạng.'};}/* Teacher honorific. Vietnamese has no neutral second person for a teacher:
+libTitleLabel:this.sigAccent(en?'Lesson Library':'Thư viện bài học',en?1:2),libUploadBtnLabel:en?'＋ Upload Lesson · Teacher':'＋ Tải bài giảng lên · GV',libUploadBtnTitle:en?'For teachers — AI cuts video/doc into 3–6 min blocks for review & publishing':'Dành cho giáo viên — AI cắt file thành block 3–6 phút, duyệt rồi đăng',libNudgeText1:en?'Library is holding':'Thư viện đang giữ',libNudgeText2:en?'unclaimed —':'chưa lấy —',libNudgeText3:en?'in progress — complete to claim points':'đang dang dở, học nốt để chốt điểm',libNudgeCta:en?'Resume now →':'Học nốt ngay →',libResumeTag:en?'▶ CONTINUE LEARNING':'▶ Tiếp tục học',libResumeCtaPrefix:en?'Continue at Block ':'Tiếp tục ở Block ',libResumePtsLeftLabel:en?'pts remaining to finish block':'điểm để chốt block',libProgTitleLabel:en?'Your '+clsInfo.label+' class progress':'Tiến độ lớp '+clsInfo.label+' của bạn',libProgDescPre:en?'You have covered ':'Bạn đã đi được ',libProgDescMid:en?' of the journey — ':' chặng đường — còn ',libProgDescPost:en?' pts left to complete the class.':' điểm nữa để hoàn tất lớp.',libUnfinTitle:en?'Unfinished lessons':'Bài chưa xong',libUnfinSub:en?'— finish to claim points':'— học nốt để chốt điểm',libLearningHeader:en?'In Progress':'Đang học',libLearningSub:en?'Complete unfinished blocks — points are only awarded upon block completion':'Học nốt block dở — điểm chỉ tính khi xong cả block',libContinueBtn:en?'Continue →':'Tiếp tục →',libSavedHeader:en?'Saved Queue':'Để dành',libSavedSub:en?'Your self-study queue — drag or use ▲▼ to reorder':'Hàng đợi tự học của bạn — kéo thả hoặc ↑↓ để sắp thứ tự',libSavedLearnBtn:en?'Learn →':'Học →',libSavedEmptyTextPre:en?'No saved lessons yet. Click the ':'Chưa có bài nào để dành. Bấm dấu ',libSavedEmptyTextMid:en?'bookmark':'đánh dấu',libSavedEmptyTextPost:en?' icon on any lesson card to add it to your self-study queue — then drag and drop to reorder.':' trên bất kỳ thẻ bài học nào để thêm vào hàng đợi tự học — rồi kéo thả để sắp thứ tự học.',libGuideHeader:en?'Gobita Recommendations for You':'Gobita gợi ý cho bạn',libGuideSubPre:en?'You are at ':'Bạn đang ở ',libGuideSubMid:en?' · class ':' · lớp ',libGuideSubPost:en?' — this is your best next step.':' — đây là bước tiếp theo tốt nhất.',libGuideViewMatrixBtn:en?'View Matrix →':'Xem Ma trận →',libNewestHeader:en?'Latest Lessons':'Mới nhất',libNewestSub:en?'Newly published or recently updated by teachers':'Bài mới đăng hoặc vừa được giáo viên cập nhật',libBrowseHeader:en?'Browse by Class':'Duyệt theo lớp',libSearchPlaceholder:en?'Search by title, matrix cell…':'Tìm theo tên bài, ô ma trận…',libCellAllOption:en?'Matrix cell: All':'Ô ma trận: Tất cả',libTypeAllOption:en?'Format: All':'Định dạng: Tất cả',libSortNewestOption:en?'Sort: Newest':'Sắp xếp: Mới nhất',libSortPointsOption:en?'Sort: Most points':'Sắp xếp: Nhiều điểm nhất',libSortShortestOption:en?'Sort: Shortest':'Sắp xếp: Ngắn nhất',libClearFiltersBtn:en?'Clear filters':'Xóa bộ lọc',libNoResultsText:en?'No lessons match the selected filters — try different keywords or change class / cell / format.':'Không tìm thấy bài học nào khớp bộ lọc — thử từ khóa khác, hoặc đổi lớp / ô ma trận / định dạng.'};}/* Teacher honorific. Vietnamese has no neutral second person for a teacher:
      "cô" is female, "thầy" male. Hard-coding "cô" across the teacher UI means
      the product misgenders a male teacher in his own dashboard from the day he
      signs up — there is no graceful degradation, it is simply wrong text.
@@ -8956,7 +9287,7 @@ screen='teacher';}}else if(userRole==='student'){if(screen==='teacher'){screen='
 ['checkinPopupOpen',()=>this.checkinDismissPopup()],// T-376: 24h Vietnam new-day login reward pop-up
 ['keepsakeOpen',()=>this.setState({keepsakeOpen:false})],['roleFlipConfirmOpen',()=>this.setState({roleFlipConfirmOpen:false})],['glossary',()=>this.setState({glossary:null})],['shopConfirm',()=>this.setState({shopConfirm:null})],['wardOpen',()=>this.setState({wardOpen:false})],// T-330
 ['hvHowtoOpen',()=>this.setState({hvHowtoOpen:false})],// T-354
-['globalSearchOpen',()=>this.setState({globalSearchOpen:false})],['pointsInfoOpen',()=>this.setState({pointsInfoOpen:false})],['pointsLedgerOpen',()=>this.setState({pointsLedgerOpen:false})],['notifOpen',()=>this.setState({notifOpen:false})],['aiConnectOpen',()=>this.setState({aiConnectOpen:false})],['lvInviteOpen',()=>this.setState({lvInviteOpen:false})],['tReviewOpen',()=>this.tCloseReview()],['tInviteOpen',()=>this.setState({tInviteOpen:false})],['tForm',()=>this.setState({tForm:null})],['spRatioOpen',()=>this.setState({spRatioOpen:false})],['spBgEditOpen',()=>this.setState({spBgEditOpen:false})],['spBgMenuOpen',()=>this.setState({spBgMenuOpen:false})],['cpOpen',()=>this.setState({cpOpen:false})],['mxInfo',()=>this.setState({mxInfo:null})],['mxCell',()=>this.setState({mxCell:null})],['rtImgZoom',()=>this.setState({rtImgZoom:null})],['navMenuOpen',()=>this.setState({navMenuOpen:false})]];onEscKey=e=>{if(e.key!=='Escape')return;for(const[flag,close]of this.ESC_LAYERS){if(this.state[flag]){e.preventDefault();close();return;}}};isAtelierTheme(){return(this.state.uiTheme||DEFAULT_UI_THEME)==='atelier-v3';}syncUiThemeDom(t){const th=(t||this.state.uiTheme||DEFAULT_UI_THEME)==='classic'?'classic':'atelier-v3';try{if(typeof document!=='undefined'){if(document.documentElement&&document.documentElement.getAttribute('data-gb-theme')!==th)document.documentElement.setAttribute('data-gb-theme',th);if(document.body&&document.body.getAttribute('data-gb-theme')!==th)document.body.setAttribute('data-gb-theme',th);}}catch(e){}}setUiTheme=next=>{const th=next==='classic'?'classic':'atelier-v3';try{localStorage.setItem('gobita_ui_theme',th);}catch(e){}this.syncUiThemeDom(th);this.setState({uiTheme:th});};atelierUiVals(){const en=this.state.lang==='en';const isAt=this.isAtelierTheme();const uiTheme=isAt?'atelier-v3':'classic';const h=React.createElement;const loginAtelierHeroEl=isAt?h('div',{'data-atelier':'login-hero',className:'gb-login-hero'},h('div',{style:{position:'relative',overflow:'hidden'}},h('img',{src:'./materials/atelier/login-atelier-hero.webp',alt:en?'Gobita Living Atelier sunlit study desk':'Không gian học AI sáng ấm Gobita Living Atelier',className:'gb-login-hero-img'}),h('span',{style:{position:'absolute',top:'14px',left:'16px',display:'inline-flex',alignItems:'center',gap:'6px',background:'rgba(255,252,247,0.90)',border:'1px solid rgba(216,179,106,0.65)',borderRadius:'999px',padding:'5px 12px',fontSize:'10.5px',fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#5C3D0E',boxShadow:'0 4px 12px rgba(58,44,34,.10)'}},this.ico('spark',13),'GO BIG · TAKE ACTION')),h('div',{className:'gb-login-hero-body'},h('div',{style:{fontSize:'11px',fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#8F3D18'}},en?'LIVING ATELIER · HANDS-ON AI STUDIO':'LIVING ATELIER · XƯỞNG THỰC HÀNH AI'),h('div',{style:{fontSize:'20px',fontWeight:800,lineHeight:1.28,color:'#3A2C22'}},en?'Learn AI through real action — ':'Học AI bằng thực hành — ',h('span',{style:{fontFamily:"Georgia,'Times New Roman',serif",fontStyle:'italic',fontWeight:700,color:'#8F3D18'}},en?'clear, warm, measurable.':'sáng rõ, tinh tế, đo được ngay.')),h('div',{className:'gb-login-hero-pillars',style:{display:'grid',gridTemplateColumns:'repeat(3, minmax(0, 1fr))',gap:'8px',marginTop:'auto',paddingTop:'6px'}},[['layers',en?'3–6 min blocks':'Bài 3–6 phút',en?'Zero fluff':'Thực chiến ngay'],['audience','Live Room',en?'Real-time coach':'Tương tác trực tiếp'],['trophy','8 AI Games',en?'60fps mastery':'Ôn bài 60fps']].map(([ic,t1,t2],idx)=>h('div',{key:idx,style:{background:'rgba(255,255,255,0.72)',border:'1px solid rgba(216,179,106,0.42)',borderRadius:'13px',padding:'9px 10px',display:'flex',flexDirection:'column',gap:'3px'}},h('span',{style:{color:'#8F3D18',display:'inline-flex',alignItems:'center',gap:'5px',fontSize:'11.5px',fontWeight:800}},this.ico(ic,14),t1),h('span',{style:{fontSize:'10.5px',fontWeight:600,color:'#6B5044'}},t2)))))):null;const homeAtelierVeilEl=isAt?h('div',{className:'gb-home-veil','aria-hidden':'true'},h('img',{src:'./materials/atelier/home-sunlit-caustic.webp',alt:''})):null;const libAtelierBannerEl=isAt?h('div',{'data-atelier':'lib-banner',className:'gb-atelier-banner'},h('div',{className:'gb-atelier-banner-copy'},h('div',{style:{display:'inline-flex',alignItems:'center',gap:'8px'}},h('span',{className:'gb-ico-jewel'},this.ico('book',17)),h('div',null,h('div',{style:{fontSize:'10.5px',fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#8F3D18'}},en?'CURATED AI FOLIO':'ẤN PHẨM HỌC LIỆU THỰC CHIẾN'),h('div',{style:{fontSize:'15px',fontWeight:800,color:'#3A2C22',marginTop:'2px'}},en?'Every block ends with a real artifact you can use at work today.':'Mỗi bài ngắn 3–6 phút khép lại bằng một sản phẩm dùng được ngay cho công việc.')))),h('div',{className:'gb-atelier-banner-media'},h('img',{loading:'lazy',src:'./materials/atelier/library-editorial-still.webp',alt:''}))):null;const arcadeAtelierBannerEl=isAt?h('div',{'data-atelier':'arcade-banner',className:'gb-atelier-banner'},h('div',{className:'gb-atelier-banner-copy'},h('div',{style:{display:'inline-flex',alignItems:'center',gap:'8px'}},h('span',{className:'gb-ico-jewel'},this.ico('trophy',17)),h('div',null,h('div',{style:{fontSize:'10.5px',fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#8F3D18'}},en?'COLLECTOR VITRINE · 8 WORLDS':'PHÒNG TRƯNG BÀY 8 THẾ GIỚI CHIBI 60FPS'),h('div',{style:{fontSize:'15px',fontWeight:800,color:'#3A2C22',marginTop:'2px'}},en?'Practice freely at 0 cost or enter Live Room competitions with your cohort.':'Luyện phản xạ AI tự do hoặc bước vào đấu trường Live Room cùng cả lớp.')))),h('div',{className:'gb-atelier-banner-media'},h('img',{loading:'lazy',src:'./materials/atelier/arcade-vitrine-pedestal.webp',alt:''}))):null;const shopSwatches=[{id:'linen',src:'./materials/atelier/shop-swatch-linen.webp',vi:'Vải Linen dệt tay',en:'Handwoven Linen'},{id:'atelier_dopaper',src:'./materials/atelier/shop-swatch-dopaper.webp',vi:'Giấy Dó thủ công',en:'Artisan Do Paper'},{id:'atelier_oak',src:'./materials/atelier/shop-swatch-oak.webp',vi:'Gỗ Sồi Bắc Âu',en:'Nordic Warm Oak'},{id:'atelier_travertine',src:'./materials/atelier/shop-swatch-travertine.webp',vi:'Đá Travertine Ý',en:'Warm Travertine'}];const shopAtelierSwatchesEl=isAt&&(this.state.shopTab==='all'||this.state.shopTab==='bg')?h('div',{'data-atelier':'shop-swatches',className:'gb-surface-glass',style:{padding:'14px 18px',marginBottom:'16px',display:'flex',flexDirection:'column',gap:'10px'}},h('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'10px',flexWrap:'wrap'}},h('div',{style:{display:'flex',alignItems:'center',gap:'9px'}},h('span',{className:'gb-ico-jewel'},this.ico('layers',16)),h('div',null,h('div',{style:{fontSize:'10.5px',fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#8F3D18'}},en?'ATELIER TACTILE DESK MATERIALS · FREE':'BỘ VẬT LIỆU MẶT BÀN ATELIER · MIỄN PHÍ'),h('div',{style:{fontSize:'12.5px',fontWeight:700,color:'#3A2C22'}},en?'Tap any natural material swatch to dress your Space study desk instantly.':'Chạm chọn mẫu chất liệu kiến trúc thật để lót ngay cho bàn học Space của bạn.'))),h('span',{style:{background:'#FBF4E6',border:'1px solid #D8B36A',color:'#5C3D0E',borderRadius:'999px',padding:'4px 11px',fontSize:'11px',fontWeight:800}},en?'4 natural textures':'4 chất liệu tự nhiên')),h('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(185px, 1fr))',gap:'10px'}},shopSwatches.map(sw=>{const active=this.state.spBg===sw.id;return h('button',{key:sw.id,type:'button','data-atelier-swatch':sw.id,onClick:()=>this.setState({screen:'space',spBg:sw.id}),style:{display:'flex',alignItems:'center',gap:'10px',padding:'8px 10px',borderRadius:'14px',border:active?'1.5px solid #8F3D18':'1px solid rgba(216,179,106,0.45)',background:active?'#FBF4E6':'rgba(255,255,255,0.78)',cursor:'pointer',textAlign:'left',fontFamily:"'Montserrat',Arial,sans-serif"}},h('img',{loading:'lazy',src:sw.src,alt:en?sw.en:sw.vi,style:{width:'44px',height:'44px',borderRadius:'10px',objectFit:'cover',flexShrink:0,border:'1px solid rgba(58,44,34,0.12)'}}),h('span',{style:{display:'flex',flexDirection:'column',gap:'2px',minWidth:0}},h('span',{style:{fontSize:'12px',fontWeight:800,color:'#3A2C22'}},en?sw.en:sw.vi),h('span',{style:{fontSize:'10.5px',fontWeight:700,color:active?'#8F3D18':'#6B5044'}},active?en?'✓ Active on Space':'✓ Đang dùng ở Space':en?'Apply in Space →':'Thử trên Space →')));}))):null;const pfThemeCardEl=h('div',{'data-pf':'theme-switch',className:'gb-surface-glass',style:{background:'#EDE4D8',borderRadius:'16px',padding:'18px 20px',boxShadow:'0 2px 8px rgba(58,44,34,.08)',marginBottom:'16px'}},h('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'10px',flexWrap:'wrap',marginBottom:'8px'}},h('div',{style:{fontSize:'13px',fontWeight:800,color:'#3A2C22',display:'flex',alignItems:'center',gap:'7px'}},this.ico('spark',15),en?'Visual Theme (Instant Switch)':'Giao diện hiển thị (Chuyển đổi tức thì)'),h('span',{style:{fontSize:'10.5px',fontWeight:800,padding:'3px 10px',borderRadius:'999px',background:isAt?'#FBF4E6':'#F7F2EB',border:'1px solid #D8B36A',color:'#5C3D0E'}},isAt?'Living Atelier v3.0':'Classic Gobita v1')),h('div',{style:{fontSize:'11.5px',fontWeight:600,color:'#6B5044',lineHeight:1.5,marginBottom:'11px'}},en?'Switch freely between Sunlit Frosted Atelier v3.0 and the preserved Classic v1 (v0.1.156) look anytime — 100% of your progress, points, and features stay intact.':'Chuyển qua lại bất cứ lúc nào giữa giao diện kính sương nắng ấm Living Atelier v3.0 và bản lưu thiết kế gốc Classic v1 (v0.1.156) — giữ nguyên 100% điểm, dữ liệu và tính năng.'),h('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(160px, 1fr))',gap:'8px'}},h('button',{type:'button','data-pf':'theme-atelier',className:'gb-m-tap',onClick:()=>this.setUiTheme('atelier-v3'),style:{padding:'10px 12px',borderRadius:'12px',border:isAt?'1.5px solid #3A2C22':'1px solid #D9CDBC',background:isAt?'#3A2C22':'#F7F2EB',color:isAt?'#F2CE73':'#3A2C22',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'12px',fontWeight:800,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',gap:'6px'}},this.ico('sun',14),en?'Living Atelier v3.0':'Living Atelier v3.0'),h('button',{type:'button','data-pf':'theme-classic',className:'gb-m-tap',onClick:()=>this.setUiTheme('classic'),style:{padding:'10px 12px',borderRadius:'12px',border:!isAt?'1.5px solid #3A2C22':'1px solid #D9CDBC',background:!isAt?'#3A2C22':'#F7F2EB',color:!isAt?'#F2CE73':'#3A2C22',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'12px',fontWeight:800,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',gap:'6px'}},this.ico('layers',14),en?'Classic Gobita v1':'Classic Gobita v1 (Gốc)')));return{uiTheme,isAtelier:isAt,loginAtelierHeroEl,homeAtelierVeilEl,libAtelierBannerEl,arcadeAtelierBannerEl,shopAtelierSwatchesEl,pfThemeCardEl};}componentDidMount(){const initTheme=readInitialUiTheme();if(initTheme!==this.state.uiTheme)this.setState({uiTheme:initTheme});this.syncUiThemeDom(initTheme);if(!this._builtinLessons)this._builtinLessons=this.libLessons.map(l=>({...l}));if(GOOGLE_AUTH)this.libLessons=[];// T-371 (Q99 = A): 0 built-in sample lessons in Google mode before sync
+['globalSearchOpen',()=>this.setState({globalSearchOpen:false})],['pointsInfoOpen',()=>this.setState({pointsInfoOpen:false})],['pointsLedgerOpen',()=>this.setState({pointsLedgerOpen:false})],['notifOpen',()=>this.setState({notifOpen:false})],['aiConnectOpen',()=>this.setState({aiConnectOpen:false})],['lvInviteOpen',()=>this.setState({lvInviteOpen:false})],['tReviewOpen',()=>this.tCloseReview()],['tInviteOpen',()=>this.setState({tInviteOpen:false})],['tForm',()=>this.setState({tForm:null})],['spRatioOpen',()=>this.setState({spRatioOpen:false})],['spBgEditOpen',()=>this.setState({spBgEditOpen:false})],['spBgMenuOpen',()=>this.setState({spBgMenuOpen:false})],['cpOpen',()=>this.setState({cpOpen:false})],['mxInfo',()=>this.setState({mxInfo:null})],['mxCell',()=>this.setState({mxCell:null})],['rtImgZoom',()=>this.setState({rtImgZoom:null})],['navMenuOpen',()=>this.setState({navMenuOpen:false})]];onEscKey=e=>{if(e.key!=='Escape')return;for(const[flag,close]of this.ESC_LAYERS){if(this.state[flag]){e.preventDefault();close();return;}}};normalizeUiTheme(t){const raw=t||this.state.uiTheme||DEFAULT_UI_THEME;return raw==='classic'?'classic':raw==='atelier-v3'?'atelier-v3':'signature-v4';}isSignatureTheme(){return this.normalizeUiTheme()==='signature-v4';}isAtelierTheme(){const th=this.normalizeUiTheme();return th==='atelier-v3'||th==='signature-v4';}sigAccent(text,words=1){if(!this.isSignatureTheme()||!text)return text;const parts=String(text).trim().split(/\s+/);if(parts.length<=words)return React.createElement('span',{className:'gb-h1-accent'},text);const head=parts.slice(0,parts.length-words).join(' ');const tail=parts.slice(parts.length-words).join(' ');return React.createElement(React.Fragment,null,head+' ',React.createElement('span',{className:'gb-h1-accent'},tail));}syncUiThemeDom(t){const th=this.normalizeUiTheme(t);try{if(typeof document!=='undefined'){if(document.documentElement&&document.documentElement.getAttribute('data-gb-theme')!==th)document.documentElement.setAttribute('data-gb-theme',th);if(document.body&&document.body.getAttribute('data-gb-theme')!==th)document.body.setAttribute('data-gb-theme',th);}}catch(e){}}setUiTheme=next=>{const th=this.normalizeUiTheme(next);try{localStorage.setItem('gobita_ui_theme',th);}catch(e){}this.syncUiThemeDom(th);this.setState({uiTheme:th});};atelierUiVals(){const en=this.state.lang==='en';const uiTheme=this.normalizeUiTheme();const isSig=uiTheme==='signature-v4';const isAt=uiTheme==='atelier-v3'||isSig;const h=React.createElement;const sigSealSvg=isSig?h('svg',{className:'gb-sig-seal',viewBox:'0 0 100 100','aria-hidden':'true'},h('defs',null,h('path',{id:'gb-seal-ring',d:'M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0'})),h('circle',{cx:'50',cy:'50',r:'46',fill:'rgba(255,253,249,0.94)',stroke:'#D8B36A',strokeWidth:'1.4',strokeDasharray:'4 2.5'}),h('circle',{cx:'50',cy:'50',r:'22',fill:'#F97300'}),h('path',{d:'M50 40 L52.6 47.4 L60 50 L52.6 52.6 L50 60 L47.4 52.6 L40 50 L47.4 47.4 Z',fill:'#FFFDF9'}),h('text',{fill:'#3A2C22',fontSize:'7.4',fontWeight:'800',letterSpacing:'1.6'},h('textPath',{href:'#gb-seal-ring',startOffset:'2%'},'GO BIG · TAKE ACTION · GOBITA AI ·'))):null;const loginAtelierHeroEl=isAt?h('div',{'data-atelier':'login-hero',className:'gb-login-hero'},h('div',{style:{position:'relative',overflow:'hidden'}},h('img',{src:isSig?'./materials/signature-v4/login-vn-lifestyle-v4.webp':'./materials/atelier/login-atelier-hero.webp',alt:en?'Gobita AI Studio in Vietnam & Asia':'Không gian học AI sáng thoáng Gobita Việt Nam & Châu Á',className:'gb-login-hero-img'}),h('span',{style:{position:'absolute',top:'14px',left:'16px',display:'inline-flex',alignItems:'center',gap:'6px',background:'rgba(255,253,250,0.92)',border:'1px solid rgba(216,179,106,0.65)',borderRadius:'999px',padding:'5px 12px',fontSize:'10.5px',fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#5C3D0E',boxShadow:'0 4px 12px rgba(58,44,34,.08)'}},this.ico('spark',13),isSig?en?'GOBITA SIGNATURE · ASIA':'GOBITA SIGNATURE · VIỆT NAM':'GO BIG · TAKE ACTION'),isSig?h('div',{style:{position:'absolute',right:'14px',bottom:'10px'}},sigSealSvg):null),h('div',{className:'gb-login-hero-body'},h('div',{style:{fontSize:'11px',fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#8F3D18'}},isSig?en?'MINIMALIST · WARM · PRACTICAL AI':'TỐI GIẢN · SÁNG THOÁNG · AI THỰC CHIẾN':en?'LIVING ATELIER · HANDS-ON AI STUDIO':'LIVING ATELIER · XƯỞNG THỰC HÀNH AI'),isSig?h('div',{style:{fontSize:'22px',fontWeight:800,lineHeight:1.18,letterSpacing:'-0.01em',color:'#3A2C22'}},'GO BIG. TAKE ',h('span',{className:'gb-h1-accent'},'ACTION.'),h('div',{className:'gb-login-hero-sub',style:{fontSize:'12.5px',fontWeight:600,color:'#6B5044',marginTop:'5px',lineHeight:1.5}},en?'Built for modern teams & learners across Vietnam and Asia — calm clarity, real output.':'Không gian học AI tinh gọn, an toàn và giàu năng lượng trẻ trung dành cho người đi làm & sinh viên Việt Nam.')):h('div',{style:{fontSize:'20px',fontWeight:800,lineHeight:1.28,color:'#3A2C22'}},en?'Learn AI through real action — ':'Học AI bằng thực hành — ',h('span',{style:{fontFamily:"Georgia,'Times New Roman',serif",fontStyle:'italic',fontWeight:700,color:'#8F3D18'}},en?'clear, warm, measurable.':'sáng rõ, tinh tế, đo được ngay.')),h('div',{className:'gb-login-hero-pillars',style:{display:'grid',gridTemplateColumns:'repeat(3, minmax(0, 1fr))',gap:'8px',marginTop:'auto',paddingTop:'6px'}},[['layers',en?'3–6 min blocks':'Bài 3–6 phút',en?'Zero fluff':'Thực chiến ngay'],['audience','Live Room',en?'Real-time coach':'Tương tác trực tiếp'],['trophy','8 AI Games',en?'60fps mastery':'Ôn bài 60fps']].map(([ic,t1,t2],idx)=>h('div',{key:idx,className:isSig?'gb-cut-panel':'',style:{background:'rgba(255,255,255,0.82)',border:'1px solid rgba(216,179,106,0.42)',borderRadius:isSig?'6px':'13px',padding:'9px 10px',display:'flex',flexDirection:'column',gap:'3px'}},h('span',{style:{color:'#8F3D18',display:'inline-flex',alignItems:'center',gap:'5px',fontSize:'11.5px',fontWeight:800}},this.ico(ic,14),t1),h('span',{style:{fontSize:'10.5px',fontWeight:600,color:'#6B5044'}},t2)))))):null;const marqueeItems=en?['GO BIG · TAKE ACTION','3–6 MIN PRACTICAL BLOCKS','LIVE ROOM CO-PILOT','8 CHIBI 60FPS WORLDS','50 PTS WEEKLY STREAK']:['GO BIG · TAKE ACTION','HỌC NHANH 3–6 PHÚT','LIVE ROOM THỰC CHIẾN','8 THẾ GIỚI CHIBI 60FPS','CHECK-IN 50 ĐIỂM/TUẦN'];const homeSigMarqueeEl=isSig?h('div',{'data-sig':'marquee',className:'gb-sig-marquee','aria-hidden':'true'},h('div',{className:'gb-sig-marquee-track'},marqueeItems.concat(marqueeItems).map((txt,idx)=>h('span',{key:idx,style:{display:'inline-flex',alignItems:'center',gap:'20px',fontSize:'10.5px',fontWeight:800,letterSpacing:'0.14em',color:'#3A2C22',whiteSpace:'nowrap'}},h('span',null,txt),h('span',{style:{color:'#F97300',fontSize:'12px'}},'✦'))))):null;const homeAtelierVeilEl=isAt?h('div',{className:'gb-home-veil','aria-hidden':'true'},h('img',{src:'./materials/atelier/home-sunlit-caustic.webp',alt:''})):null;const checkinWaxSealEl=isSig?h('span',{'data-sig':'wax-seal',className:'gb-wax-seal'},'✦ ',en?'+50 PTS PASS':'VÉ SÁP +50Đ'):null;const sigSteps=[{n:'01',title:en?'Micro-Lessons · 3–6 min':'Thư viện thực chiến · 3–6 phút',tags:en?['Slide & Video','AI Rubric +40 pts']:['Bài ngắn súc tích','AI chấm +40 điểm'],desc:en?'Zero long lectures — finish one focused block and walk away with a ready-to-use prompt.':'Không lý thuyết dài dòng — học gọn từng block 3–6 phút, làm xong 1 bài tập có ngay mẫu dùng cho công việc.',cta:en?'Open Library':'Mở Thư viện',go:()=>this.setState({screen:'library'})},{n:'02',title:en?'Live Room · Zero-Scroll Studio':'Live Room · Lớp học 1 màn hình',tags:en?['Zalo Poll','2-Part CSV Export']:['Bình chọn Zalo','Tải CSV 2 phần'],desc:en?'Follow the teacher board, submit prompts privately, vote live, and download your personal class notes.':'Xem bảng giáo viên, nộp bài kín đáo nhận góp ý riêng, bình chọn trực tiếp và tải biên bản CSV cá nhân cuối buổi.',cta:en?'Enter Live Room':'Vào Live Room',go:()=>this.setState({screen:'live'})},{n:'03',title:en?'Arcade · 8 Chibi Worlds (60fps)':'Arcade · 8 Thế giới Chibi 60fps',tags:en?['4 PvP + 4 PvE','Free Practice']:['4 PvP + 4 PvE','Ôn bài tự do'],desc:en?'Review AI concepts effortlessly through Climb, Hive, Race, Memory, and Prompt Builder.':'Biến kiến thức thành phản xạ tự nhiên qua Leo Núi, Tổ Ong, Đua Kiến Thức, Lật Thẻ và Xếp Prompt.',cta:en?'Play Arcade':'Vào Arcade',go:()=>this.setState({screen:'arcade'})},{n:'04',title:en?'Space & Boutique · Your Creative Desk':'Space & Shop · Góc học cá nhân',tags:en?['Natural Materials','2x Retina Shot']:['Chất liệu tự nhiên','Chụp góc học 2x'],desc:en?'Redeem earned points for tactile desk themes, frames, and stickers — never lose sealed weekly streaks.':'Đổi điểm tích lũy lấy nền bàn học tinh tế, khung ảnh và sticker để tạo góc cảm hứng của riêng bạn.',cta:en?'Visit Space':'Mở Space',go:()=>this.setState({screen:'space'})}];const renderCutAccordion=(attrName,curIdx,setIdx,heading)=>h('div',{'data-sig':attrName,className:'gb-sig-accordion'},h('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'10px',flexWrap:'wrap',marginBottom:'2px'}},h('div',{style:{fontSize:'11.5px',fontWeight:800,letterSpacing:'.1em',textTransform:'uppercase',color:'#6F6152',display:'inline-flex',alignItems:'center',gap:'6px'}},h('span',{style:{color:'#F97300'}},'✦'),heading),h('span',{style:{fontSize:'11px',fontWeight:600,color:'#8A7B6D'}},en?'Tap any step to expand':'Chạm từng mục để mở nhanh')),sigSteps.map((st,idx)=>{const open=curIdx===idx;return h('div',{key:st.n,'data-sig-row':String(idx),'data-sig-open':open?'1':'0',className:'gb-sig-acc-row gb-cut-panel',onClick:()=>setIdx(open?-1:idx),role:'button',tabIndex:0,onKeyDown:e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setIdx(open?-1:idx);}}},h('div',{style:{display:'flex',alignItems:'center',gap:'12px',flexWrap:'wrap'}},h('span',{style:{fontSize:'12px',fontWeight:800,color:open?'#F97300':'#8F3D18',fontFamily:'ui-monospace,Menlo,monospace',minWidth:'24px'}},st.n+'.'),h('span',{style:{fontSize:'13.5px',fontWeight:800,color:'#3A2C22',flex:1,minWidth:'160px'}},st.title),h('div',{style:{display:'flex',gap:'6px',flexWrap:'wrap'}},st.tags.map((tg,ti)=>h('span',{key:ti,style:{background:open?'rgba(255,255,255,0.88)':'#F7F2EB',border:'1px solid rgba(216,179,106,0.45)',borderRadius:'999px',padding:'3px 10px',fontSize:'10.5px',fontWeight:700,color:'#6B5044'}},tg))),h('span',{className:'gb-arrow-orb','aria-hidden':'true'},'→')),open?h('div',{style:{marginTop:'10px',paddingTop:'10px',borderTop:'1px dashed rgba(216,179,106,0.55)',display:'flex',alignItems:'center',justifyContent:'space-between',gap:'12px',flexWrap:'wrap'}},h('div',{style:{fontSize:'12px',fontWeight:600,color:'#5C4336',lineHeight:1.55,flex:1,minWidth:'220px'}},st.desc),h('button',{type:'button',className:'gb-m-tap',onClick:ev=>{ev.stopPropagation();st.go();},style:{background:'#F97300',color:'#fff',border:'none',borderRadius:'999px',padding:'8px 18px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'12px',fontWeight:800,cursor:'pointer',whiteSpace:'nowrap',boxShadow:'0 4px 12px rgba(249,115,0,0.25)'}},st.cta+' ↗')):null);}));const homeSigAccordionEl=isSig&&this.state.role!=='teacher'?renderCutAccordion('accordion',this.state.sigAccIdx,n=>this.setState({sigAccIdx:n}),en?'4-Step Gobita Rhythm · Minimalist Overview':'Nhịp Học Tinh Gọn 4 Bước · Chạm Để Xem Nhanh'):null;const guideSigAccordionEl=isSig?h('div',{style:{marginBottom:'20px'}},renderCutAccordion('guide-accordion',this.state.guideAccIdx,n=>this.setState({guideAccIdx:n}),en?'30-Second Interactive Summary (For Busy Learners)':'Tóm Tắt Tương Tác 30 Giây (Cho Người Bận Rộn)')):null;const homeGoldenThreadEl=isSig?h('svg',{className:'gb-golden-thread',viewBox:'0 0 1000 80',preserveAspectRatio:'none','aria-hidden':'true'},h('path',{d:'M 10,58 C 260,8 420,8 520,38 C 640,72 800,66 990,18',fill:'none',stroke:'#D8B36A',strokeWidth:'1.6',strokeDasharray:'6 5'})):null;const libAtelierBannerEl=isAt?h('div',{'data-atelier':'lib-banner',className:'gb-atelier-banner'},h('div',{className:'gb-atelier-banner-copy'},h('div',{style:{display:'inline-flex',alignItems:'center',gap:'10px'}},h('span',{className:'gb-ico-jewel'},this.ico('book',17)),h('div',null,h('div',{style:{fontSize:'10.5px',fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#8F3D18'}},en?'CURATED AI FOLIO':'ẤN PHẨM HỌC LIỆU THỰC CHIẾN'),h('div',{style:{fontSize:'15px',fontWeight:800,color:'#3A2C22',marginTop:'2px'}},en?'Every block ends with a real artifact you can use at work today.':'Mỗi bài ngắn 3–6 phút khép lại bằng một sản phẩm dùng được ngay cho công việc.')))),h('div',{className:'gb-atelier-banner-media'},h('img',{loading:'lazy',src:isSig?'./materials/signature-v4/lib-asian-editorial-v4.webp':'./materials/atelier/library-editorial-still.webp',alt:''}))):null;const arcadeAtelierBannerEl=isAt?h('div',{'data-atelier':'arcade-banner',className:'gb-atelier-banner'+(isSig?' gb-popout-banner':'')},isSig?h('div',{'data-sig':'arcade-mascot',className:'gb-popout-mascot','aria-hidden':'true'},h('img',{src:'./materials/games/hive/mascot-you.webp',alt:''})):null,h('div',{className:'gb-atelier-banner-copy'},h('div',{style:{display:'inline-flex',alignItems:'center',gap:'10px'}},h('span',{className:'gb-ico-jewel'},this.ico('trophy',17)),h('div',null,h('div',{style:{fontSize:'10.5px',fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#8F3D18'}},en?'LIVING CHIBI DIORAMA · 8 WORLDS':'PHÒNG TRƯNG BÀY 8 THẾ GIỚI CHIBI 60FPS'),h('div',{style:{fontSize:'15px',fontWeight:800,color:'#3A2C22',marginTop:'2px'}},en?'Practice freely at 0 cost or enter Live Room competitions with your cohort.':'Luyện phản xạ AI tự do hoặc bước vào đấu trường Live Room cùng cả lớp.')))),h('div',{className:'gb-atelier-banner-media'},h('img',{loading:'lazy',src:isSig?'./materials/signature-v4/arcade-chibi-gallery-v4.webp':'./materials/atelier/arcade-vitrine-pedestal.webp',alt:''}))):null;const shopSwatches=[{id:'linen',src:'./materials/atelier/shop-swatch-linen.webp',vi:'Vải Linen dệt tay',en:'Handwoven Linen'},{id:'atelier_dopaper',src:'./materials/atelier/shop-swatch-dopaper.webp',vi:'Giấy Dó thủ công',en:'Artisan Do Paper'},{id:'atelier_oak',src:'./materials/atelier/shop-swatch-oak.webp',vi:'Gỗ Sồi Bắc Âu',en:'Nordic Warm Oak'},{id:'atelier_travertine',src:'./materials/atelier/shop-swatch-travertine.webp',vi:'Đá Travertine Ý',en:'Warm Travertine'}];const shopAtelierSwatchesEl=isAt&&(this.state.shopTab==='all'||this.state.shopTab==='bg')?h('div',{'data-atelier':'shop-swatches',className:'gb-surface-glass',style:{padding:'14px 18px',marginBottom:'16px',display:'flex',flexDirection:'column',gap:'10px'}},h('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'10px',flexWrap:'wrap'}},h('div',{style:{display:'flex',alignItems:'center',gap:'9px'}},h('span',{className:'gb-ico-jewel'},this.ico('layers',16)),h('div',null,h('div',{style:{fontSize:'10.5px',fontWeight:800,letterSpacing:'.12em',textTransform:'uppercase',color:'#8F3D18'}},en?'ATELIER TACTILE DESK MATERIALS · FREE':'BỘ VẬT LIỆU MẶT BÀN ATELIER · MIỄN PHÍ'),h('div',{style:{fontSize:'12.5px',fontWeight:700,color:'#3A2C22'}},en?'Tap any natural material swatch to dress your Space study desk instantly.':'Chạm chọn mẫu chất liệu kiến trúc thật để lót ngay cho bàn học Space của bạn.'))),h('span',{style:{background:'#FBF4E6',border:'1px solid #D8B36A',color:'#5C3D0E',borderRadius:'999px',padding:'4px 11px',fontSize:'11px',fontWeight:800}},en?'4 natural textures':'4 chất liệu tự nhiên')),h('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(185px, 1fr))',gap:'10px'}},shopSwatches.map(sw=>{const active=this.state.spBg===sw.id;return h('button',{key:sw.id,type:'button','data-atelier-swatch':sw.id,onClick:()=>this.setState({screen:'space',spBg:sw.id}),style:{display:'flex',alignItems:'center',gap:'10px',padding:'8px 10px',borderRadius:'14px',border:active?'1.5px solid #8F3D18':'1px solid rgba(216,179,106,0.45)',background:active?'#FBF4E6':'rgba(255,255,255,0.85)',cursor:'pointer',textAlign:'left',fontFamily:"'Montserrat',Arial,sans-serif"}},h('img',{loading:'lazy',src:sw.src,alt:en?sw.en:sw.vi,style:{width:'44px',height:'44px',borderRadius:'10px',objectFit:'cover',flexShrink:0,border:'1px solid rgba(58,44,34,0.12)'}}),h('span',{style:{display:'flex',flexDirection:'column',gap:'2px',minWidth:0}},h('span',{style:{fontSize:'12px',fontWeight:800,color:'#3A2C22'}},en?sw.en:sw.vi),h('span',{style:{fontSize:'10.5px',fontWeight:700,color:active?'#8F3D18':'#6B5044'}},active?en?'✓ Active on Space':'✓ Đang dùng ở Space':en?'Apply in Space →':'Thử trên Space →')));}))):null;const themeBadgeLabel=isSig?'Gobita Signature v4.0':uiTheme==='atelier-v3'?'Living Atelier v3.0':'Classic Gobita v1';const mkThemeBtn=(id,attr,iconKey,lbl)=>{const on=uiTheme===id;return h('button',{type:'button','data-pf':attr,className:'gb-m-tap',onClick:()=>this.setUiTheme(id),style:{padding:'10px 10px',borderRadius:'12px',border:on?'1.5px solid #3A2C22':'1px solid #D9CDBC',background:on?'#3A2C22':'#F7F2EB',color:on?'#F2CE73':'#3A2C22',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'11.5px',fontWeight:800,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',gap:'6px'}},this.ico(iconKey,14),lbl);};const pfThemeCardEl=h('div',{'data-pf':'theme-switch',className:'gb-surface-glass',style:{background:'#EDE4D8',borderRadius:'16px',padding:'18px 20px',boxShadow:'0 2px 8px rgba(58,44,34,.08)',marginBottom:'16px'}},h('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'10px',flexWrap:'wrap',marginBottom:'8px'}},h('div',{style:{fontSize:'13px',fontWeight:800,color:'#3A2C22',display:'flex',alignItems:'center',gap:'7px'}},this.ico('spark',15),en?'Visual Theme (Instant 3-Way Switch)':'Giao diện hiển thị (Chuyển đổi tức thì)'),h('span',{style:{fontSize:'10.5px',fontWeight:800,padding:'3px 10px',borderRadius:'999px',background:isAt?'#FBF4E6':'#F7F2EB',border:'1px solid #D8B36A',color:'#5C3D0E'}},themeBadgeLabel)),h('div',{style:{fontSize:'11.5px',fontWeight:600,color:'#6B5044',lineHeight:1.5,marginBottom:'11px'}},en?'Switch freely between Signature v4.0 (Airy Asian Editorial + Chibi), Living Atelier v3.0 (v0.1.157), and Classic v1 (v0.1.156) anytime — 100% of your progress, points, and features stay intact.':'Chuyển tức thì giữa Gobita Signature v4.0 (Tối giản Sáng thoáng Châu Á), bản lưu Living Atelier v3.0 (v0.1.157) và bản gốc Classic v1 (v0.1.156) — giữ nguyên 100% điểm, dữ liệu và tính năng.'),h('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(145px, 1fr))',gap:'8px'}},mkThemeBtn('signature-v4','theme-signature','spark','Signature v4.0'),mkThemeBtn('atelier-v3','theme-atelier','sun','Atelier v3.0'),mkThemeBtn('classic','theme-classic','layers',en?'Classic v1':'Classic v1 (Gốc)')));return{uiTheme,isAtelier:isAt,isSignature:isSig,loginAtelierHeroEl,homeSigMarqueeEl,homeAtelierVeilEl,checkinWaxSealEl,homeSigAccordionEl,homeGoldenThreadEl,guideSigAccordionEl,libAtelierBannerEl,arcadeAtelierBannerEl,shopAtelierSwatchesEl,pfThemeCardEl};}componentDidMount(){const initTheme=readInitialUiTheme();if(initTheme!==this.state.uiTheme)this.setState({uiTheme:initTheme});this.syncUiThemeDom(initTheme);if(!this._builtinLessons)this._builtinLessons=this.libLessons.map(l=>({...l}));if(GOOGLE_AUTH)this.libLessons=[];// T-371 (Q99 = A): 0 built-in sample lessons in Google mode before sync
 this.rtInviteTake();// T-314 + T-371: ?room=CODE or #/live?room=CODE → keep the code, clean URL before anything reads hash
 setTimeout(()=>this.gsiCheck(),0);// T-102: login may be the first screen
 this._onHide=()=>this.spaceQueueNow();// T-118: a Space change made just before F5 / closing the tab is queued, not lost
@@ -9237,10 +9568,10 @@ const cat=b?b.cat:m.cat==='avatar'?'avatar':m.cat==='frame'?'afr':m.cat==='banne
 const items=list.filter(it=>s.shopTab==='all'||it.cat===s.shopTab||s.shopTab==='stk'&&it.cat==='meme');const rarL=en?['Common','Rare','Epic','Legendary']:['Thường','Hiếm','Quý','Huyền thoại'];const rarS=[{background:'#F7F2EB',color:'#6B5044'},{background:'#E3D8C8',color:'#3A2C22'},{background:'#F2CE73',color:'#3A2C22'},{background:'#3A2C22',color:'#F2CE73'}];const whereL=en?{profile:'Profile',community:'Community',header:'Header',space:'Space',live:'Live Room'}:{profile:'Hồ sơ',community:'Cộng đồng',header:'Thanh trên',space:'Space',live:'Live Room'};const socBal=this.shopSocialAvail(),socUnit=en?' community pts':' điểm CĐ';// Confirm-before-buy: a price chip opens this sheet instead of charging on the
 // spot — the "(demo)" disclosure lives on the confirm step itself, not a toast
 // that can scroll out of view before anyone reads it.
-const confirmIt=s.shopConfirm?list.find(it=>it.id===s.shopConfirm.itId)||null:null;const confirmMoney=!!(s.shopConfirm&&s.shopConfirm.money),confirmSoc=!!(confirmIt&&confirmIt.mode==='shop_social')||!confirmMoney&&!!(s.shopConfirm&&s.shopConfirm.pay==='social');const confirmPtsOn=!(confirmIt&&confirmIt.mode==='shop_social'),confirmSocOn=!!(confirmIt&&(confirmIt.mode==='shop_social'||confirmIt.mode==='shop_either'));return{isShop:screen==='shop',shopBalance:bal.toLocaleString('vi-VN'),shopMsgOn:!!s.shopMsg,shopMsg:s.shopMsg,shopConfirmOpen:!!confirmIt,shopConfirmName:confirmIt?confirmIt.name:'',shopConfirmDesc:confirmIt?confirmIt.desc:'',shopConfirmIcon:confirmIt?confirmIt.img?React.createElement('img',{src:confirmIt.img,alt:'',style:{width:'44px',height:'44px',objectFit:'contain',borderRadius:confirmIt.cat==='avatar'?'50%':'8px',display:'block'}}):confirmIt.cat==='bg'&&confirmIt.bg?this.isAtelierTheme()?React.createElement('span',{style:{backgroundImage:"url('"+(confirmIt.id==='bg_night'?'./materials/atelier/shop-swatch-travertine.webp':confirmIt.id==='bg_ocean'?'./materials/atelier/shop-swatch-dopaper.webp':'./materials/atelier/shop-swatch-linen.webp')+"')",backgroundSize:'cover',backgroundPosition:'center',width:'44px',height:'44px',borderRadius:'8px',display:'block'}}):React.createElement('span',{style:{...confirmIt.bg,width:'44px',height:'44px',borderRadius:'8px',display:'block'}}):confirmIt.icon:'',// T-334 · T-339 · T-381
+const confirmIt=s.shopConfirm?list.find(it=>it.id===s.shopConfirm.itId)||null:null;const confirmMoney=!!(s.shopConfirm&&s.shopConfirm.money),confirmSoc=!!(confirmIt&&confirmIt.mode==='shop_social')||!confirmMoney&&!!(s.shopConfirm&&s.shopConfirm.pay==='social');const confirmPtsOn=!(confirmIt&&confirmIt.mode==='shop_social'),confirmSocOn=!!(confirmIt&&(confirmIt.mode==='shop_social'||confirmIt.mode==='shop_either'));return{isShop:screen==='shop',shopBalance:bal.toLocaleString('vi-VN'),shopMsgOn:!!s.shopMsg,shopMsg:s.shopMsg,shopConfirmOpen:!!confirmIt,shopConfirmName:confirmIt?confirmIt.name:'',shopConfirmDesc:confirmIt?confirmIt.desc:'',shopConfirmIcon:confirmIt?confirmIt.img?React.createElement('img',{src:confirmIt.img,alt:'',style:{width:'44px',height:'44px',objectFit:'contain',borderRadius:confirmIt.cat==='avatar'?'50%':'8px',display:'block'}}):confirmIt.cat==='bg'&&confirmIt.bg?this.isSignatureTheme()?React.createElement('span',{style:{backgroundImage:"url('"+(confirmIt.id==='bg_night'?'./materials/signature-v4/shop-bg-dawn-star-v4.webp':confirmIt.id==='bg_ocean'?'./materials/signature-v4/shop-bg-bamboo-v4.webp':'./materials/signature-v4/shop-bg-sunrise-v4.webp')+"')",backgroundSize:'cover',backgroundPosition:'center',width:'44px',height:'44px',borderRadius:'8px',display:'block'}}):this.isAtelierTheme()?React.createElement('span',{style:{backgroundImage:"url('"+(confirmIt.id==='bg_night'?'./materials/atelier/shop-swatch-travertine.webp':confirmIt.id==='bg_ocean'?'./materials/atelier/shop-swatch-dopaper.webp':'./materials/atelier/shop-swatch-linen.webp')+"')",backgroundSize:'cover',backgroundPosition:'center',width:'44px',height:'44px',borderRadius:'8px',display:'block'}}):React.createElement('span',{style:{...confirmIt.bg,width:'44px',height:'44px',borderRadius:'8px',display:'block'}}):confirmIt.icon:'',// T-334 · T-339 · T-381 · T-382
 shopConfirmPts:confirmIt?confirmIt.pts:0,shopConfirmVnd:confirmIt?confirmIt.vnd:'',shopConfirmMoney:confirmMoney,shopConfirmPoints:!confirmMoney,shopConfirmSetPoints:()=>this.setState(st=>({shopConfirm:{...st.shopConfirm,money:false,pay:'points'}})),shopConfirmSetMoney:()=>this.setState(st=>({shopConfirm:{...st.shopConfirm,money:true,pay:'points'}})),shopConfirmPtsOn:confirmPtsOn,shopConfirmVndOk:!!(confirmIt&&confirmIt.vnd),// T-334: shop_social = community points only · no VND text = no money chip
 shopConfirmSocOn:confirmSocOn,shopConfirmSocLabel:confirmIt?confirmIt.soc+socUnit:'',shopConfirmSetSoc:()=>this.setState(st=>({shopConfirm:{...st.shopConfirm,money:false,pay:'social'}})),shopConfirmSocChipStyle:{flex:1,background:confirmSoc?'#3A2C22':'transparent',color:confirmSoc?'#fff':'#6B5044',border:confirmSoc?'none':'1.5px solid #D9CDBC',borderRadius:'12px',padding:'13px 8px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'13px',fontWeight:800,cursor:'pointer'},shopConfirmBalOn:confirmSocOn,shopConfirmBalText:en?'You have ★ '+bal+' pts · '+socBal+' community pts available':'Bạn có ★ '+bal+' điểm · '+socBal+' điểm cộng đồng khả dụng',shopConfirmPtsChipStyle:{flex:1,background:!confirmMoney&&!confirmSoc?'#3A2C22':'transparent',color:!confirmMoney&&!confirmSoc?'#fff':'#6B5044',border:!confirmMoney&&!confirmSoc?'none':'1.5px solid #D9CDBC',borderRadius:'12px',padding:'13px 8px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'13.5px',fontWeight:800,cursor:'pointer',minHeight:'44px'},shopConfirmVndChipStyle:{flex:1,background:confirmMoney?'#3A2C22':'transparent',color:confirmMoney?'#fff':'#6B5044',border:confirmMoney?'none':'1.5px solid #D9CDBC',borderRadius:'12px',padding:'13px 8px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'13.5px',fontWeight:800,cursor:'pointer',minHeight:'44px'},shopConfirmActionLabel:confirmSoc?en?'Confirm redeem '+(confirmIt?confirmIt.soc:0)+' community pts':'Xác nhận đổi '+(confirmIt?confirmIt.soc:0)+' điểm cộng đồng':confirmMoney?en?'Confirm simulated payment '+(confirmIt?confirmIt.vnd:''):'Xác nhận thanh toán mô phỏng '+(confirmIt?confirmIt.vnd:''):en?'Confirm redeem ★ '+(confirmIt?confirmIt.pts:0)+' pts':'Xác nhận đổi ★ '+(confirmIt?confirmIt.pts:0)+' điểm',shopConfirmCancel:()=>this.setState({shopConfirm:null}),shopConfirmGo:()=>{if(confirmIt)this.shopBuy(confirmIt,confirmMoney,confirmSoc?'social':'points');this.setState({shopConfirm:null});},shopBuyUndoOn:!!s.shopBuyUndo,shopBuyUndoText:s.shopBuyUndo?''+(en?'Added "'+s.shopBuyUndo.name+'"':'Đã thêm "'+s.shopBuyUndo.name+'"'):'',shopBuyUndoGo:()=>this.shopUndoBuy(),shopTabs:[['all',en?'All':'Tất cả'],...(catMode?[['avatar',en?'Portraits':'Chân dung'],['afr',en?'Avatar frames':'Khung avatar'],['banner','Banner']]:[]),['bg',en?'Backgrounds':'Nền'],['stk','Sticker & Meme'],['frame',en?'Frames':'Khung ảnh'],['ticket',en?'Event tickets':'Vé sự kiện'],['ai',en?'AI tools':'Công cụ AI']].map(([id,label])=>({label,click:()=>this.setState({shopTab:id}),style:s.shopTab===id?tabOn:tabBase})),shopItems:items.map(it=>{const m=it.mat||null,free=!!m&&(m.mode==='free'||m.mode==='achievement');// T-334: catalog row (Google + gas-18)
-const owned=free?this.wardOwned(m):!!s.shopOwned[it.id];const afford=bal>=it.pts,wear=it.cat==='avatar'||it.cat==='afr'||it.cat==='banner',r=m?this.SHOP_RARITY[m.rarity]||0:0;const where=m?String(m.appear||'').split(',').map(x=>whereL[x.trim()]).filter(Boolean):[];return{name:it.name,desc:it.desc,pts:it.pts,vnd:it.vnd,catLabel:catLabels[it.cat]||(it.cat==='avatar'?en?'Portrait':'Chân dung':it.cat==='afr'?en?'Frame':'Khung':it.cat==='banner'?'Banner':''),prevText:it.img?React.createElement('img',{src:it.img,alt:'',loading:'lazy',style:it.cat==='banner'?{width:'100%',height:'104px',objectFit:'cover',display:'block'}:{height:'92px',width:'92px',objectFit:'contain',borderRadius:it.cat==='avatar'?'50%':'0',display:'block'}}):it.cat==='bg'?this.isAtelierTheme()?React.createElement('span',{style:{width:'100%',height:'104px',backgroundImage:"url('"+(it.id==='bg_night'?'./materials/atelier/shop-swatch-travertine.webp':it.id==='bg_ocean'?'./materials/atelier/shop-swatch-dopaper.webp':'./materials/atelier/shop-swatch-linen.webp')+"')",backgroundSize:'cover',backgroundPosition:'center',display:'block',opacity:0.72,mixBlendMode:'multiply'}}):'':it.icon,prevStyle:it.img?{...prevBase,background:'#F7F2EB',overflow:'hidden'}:it.cat==='bg'?{...prevBase,overflow:'hidden',...it.bg}:it.cat==='frame'?{...prevBase,...framePrev[it.id]}:{...prevBase,background:it.cat==='ai'?this.isAtelierTheme()?'linear-gradient(145deg,#FBF4E6,#ECD8AC)':'#3A2C22':'#F7F2EB',color:it.cat==='ai'?this.isAtelierTheme()?'#6B4E12':'#F2CE73':'#3A2C22'},extraOn:!!m,rarityLabel:rarL[r],rarityStyle:{...rarS[r],borderRadius:'999px',padding:'3px 9px',fontSize:'10.5px',fontWeight:800,whiteSpace:'nowrap'},useAt:where.length?(en?'Used in: ':'Dùng ở: ')+where.join(' · '):'',ptsOn:!m||m.mode==='shop_points',vndOn:!m||!!it.vnd&&!free,altOn:!!m&&(m.mode==='shop_social'||m.mode==='shop_either'),altLabel:m&&m.mode==='shop_social'?it.soc+socUnit:en?'Redeem · ★ '+it.pts+' or '+it.soc+socUnit:'Đổi · ★ '+it.pts+' hoặc '+it.soc+socUnit,altClick:()=>this.setState({shopConfirm:{itId:it.id,money:false,pay:m&&m.mode==='shop_social'?'social':'points'}}),noteOn:free&&!owned,note:m?m.mode==='free'?en?'Free':'Miễn phí':''+this.wardWhy(m,en):'',wearOn:owned&&wear,wearLabel:en?'Wear in my wardrobe →':'Mặc trong Tủ đồ →',wear:()=>{this.setState({screen:'profile'});this.openWardrobe();this.setState({wardTab:it.cat==='avatar'?'av':it.cat==='afr'?'fr':'banner'});},owned,notOwned:!owned,ownedLabel:it.cat==='ai'?en?'✓ Activated':'✓ Đã kích hoạt':it.cat==='ticket'?en?'✓ Ticket saved':'✓ Vé đã lưu':en?'✓ Owned':'✓ Đã sở hữu',hasUse:it.img?it.cat==='stk'&&!!this.spImgOf(it.id):it.cat==='bg'||it.cat==='stk'||it.cat==='meme'||it.cat==='frame',// T-334 · T-335: a picture sticker can go on the Space desk
+const owned=free?this.wardOwned(m):!!s.shopOwned[it.id];const afford=bal>=it.pts,wear=it.cat==='avatar'||it.cat==='afr'||it.cat==='banner',r=m?this.SHOP_RARITY[m.rarity]||0:0;const where=m?String(m.appear||'').split(',').map(x=>whereL[x.trim()]).filter(Boolean):[];return{name:it.name,desc:it.desc,pts:it.pts,vnd:it.vnd,catLabel:catLabels[it.cat]||(it.cat==='avatar'?en?'Portrait':'Chân dung':it.cat==='afr'?en?'Frame':'Khung':it.cat==='banner'?'Banner':''),prevText:it.img?React.createElement('img',{src:it.img,alt:'',loading:'lazy',style:it.cat==='banner'?{width:'100%',height:'104px',objectFit:'cover',display:'block'}:{height:'92px',width:'92px',objectFit:'contain',borderRadius:it.cat==='avatar'?'50%':'0',display:'block'}}):it.cat==='bg'?this.isSignatureTheme()?React.createElement('span',{style:{width:'100%',height:'104px',backgroundImage:"url('"+(it.id==='bg_night'?'./materials/signature-v4/shop-bg-dawn-star-v4.webp':it.id==='bg_ocean'?'./materials/signature-v4/shop-bg-bamboo-v4.webp':'./materials/signature-v4/shop-bg-sunrise-v4.webp')+"')",backgroundSize:'cover',backgroundPosition:'center',display:'block'}}):this.isAtelierTheme()?React.createElement('span',{style:{width:'100%',height:'104px',backgroundImage:"url('"+(it.id==='bg_night'?'./materials/atelier/shop-swatch-travertine.webp':it.id==='bg_ocean'?'./materials/atelier/shop-swatch-dopaper.webp':'./materials/atelier/shop-swatch-linen.webp')+"')",backgroundSize:'cover',backgroundPosition:'center',display:'block',opacity:0.72,mixBlendMode:'multiply'}}):'':this.isSignatureTheme()&&it.cat!=='frame'?React.createElement('span',{className:'gb-shop-jewel-stage'},it.icon):it.icon,prevStyle:it.img?{...prevBase,background:'#F7F2EB',overflow:'hidden'}:it.cat==='bg'?this.isSignatureTheme()?{...prevBase,overflow:'hidden',background:'#FBF4E6'}:{...prevBase,overflow:'hidden',...it.bg}:it.cat==='frame'?{...prevBase,...framePrev[it.id]}:{...prevBase,background:this.isSignatureTheme()?'linear-gradient(180deg,#FFFDF9 0%,#F6EAD4 100%)':it.cat==='ai'?this.isAtelierTheme()?'linear-gradient(145deg,#FBF4E6,#ECD8AC)':'#3A2C22':'#F7F2EB',color:it.cat==='ai'?this.isAtelierTheme()?'#6B4E12':'#F2CE73':'#3A2C22'},extraOn:!!m,rarityLabel:rarL[r],rarityStyle:{...rarS[r],borderRadius:'999px',padding:'3px 9px',fontSize:'10.5px',fontWeight:800,whiteSpace:'nowrap'},useAt:where.length?(en?'Used in: ':'Dùng ở: ')+where.join(' · '):'',ptsOn:!m||m.mode==='shop_points',vndOn:!m||!!it.vnd&&!free,altOn:!!m&&(m.mode==='shop_social'||m.mode==='shop_either'),altLabel:m&&m.mode==='shop_social'?it.soc+socUnit:en?'Redeem · ★ '+it.pts+' or '+it.soc+socUnit:'Đổi · ★ '+it.pts+' hoặc '+it.soc+socUnit,altClick:()=>this.setState({shopConfirm:{itId:it.id,money:false,pay:m&&m.mode==='shop_social'?'social':'points'}}),noteOn:free&&!owned,note:m?m.mode==='free'?en?'Free':'Miễn phí':''+this.wardWhy(m,en):'',wearOn:owned&&wear,wearLabel:en?'Wear in my wardrobe →':'Mặc trong Tủ đồ →',wear:()=>{this.setState({screen:'profile'});this.openWardrobe();this.setState({wardTab:it.cat==='avatar'?'av':it.cat==='afr'?'fr':'banner'});},owned,notOwned:!owned,ownedLabel:it.cat==='ai'?en?'✓ Activated':'✓ Đã kích hoạt':it.cat==='ticket'?en?'✓ Ticket saved':'✓ Vé đã lưu':en?'✓ Owned':'✓ Đã sở hữu',hasUse:it.img?it.cat==='stk'&&!!this.spImgOf(it.id):it.cat==='bg'||it.cat==='stk'||it.cat==='meme'||it.cat==='frame',// T-334 · T-335: a picture sticker can go on the Space desk
 use:()=>{this.setState({screen:'space',spBg:it.cat==='bg'?it.id:this.state.spBg,spPhotoFrameDesign:it.cat==='frame'?it.id.replace('frm_',''):this.state.spPhotoFrameDesign,spPhotoFrameOn:it.cat==='frame'?true:this.state.spPhotoFrameOn});if(it.cat==='stk'||it.cat==='meme'){// Drop a copy straight onto the desk (roughly centered) so "Use" gives the same
 // instant, visible result as backgrounds/frames — no extra drag-from-tray step needed.
 // sp-canvas isn't mounted yet the instant this fires (we're still on the Shop
@@ -9302,7 +9633,7 @@ mxCWhyLabel:en?'Why are they at this exact tier?':'Vì sao ở đúng bậc này
 bottomNextBlockDesc:this.nextBlockInfo(en)?this.nextBlockInfo(en).desc:GOOGLE_AUTH&&this.isCloud()&&!this.libLessons.length?en?'Your instructor is uploading the first lesson for your class.':'Giảng viên đang cập nhật bài học đầu tiên cho lớp của bạn.':en?'Final block of Beginner cell. Complete to earn 80 points.':'Block cuối cùng của ô Beginner. Hoàn thành để nhận 80 điểm.',bottomContinueLessonBtn:GOOGLE_AUTH&&this.isCloud()&&!this.libLessons.length?en?'Open Library →':'Mở Thư viện →':en?'Continue learning →':'Học tiếp →',goNextBlock:()=>{if(this.isCloud()){this.resumeLast();return;}this.stopTimers();this.setState({screen:'lesson'});},// T-113: Demo = goLesson as before
 bottomCrossExploreLabel:en?'Cross-exploration':'Khám phá chéo',bottomCrossExploreTitle:en?'Operator column is where real productivity lies':'Cột Operator là nơi năng suất thật sự nằm',bottomCrossExploreDesc:en?'Strong in Office class — Agent User cell will double your daily output.':'Bạn mạnh ở lớp Office — ô Agent User sẽ nhân đôi sản lượng mỗi ngày của bạn.',bottomCrossExploreLink:en?'View Agent User roadmap →':'Xem lộ trình Agent User →',calcHeaderLabel:en?'Value Calculator · Beginner Cell Outcome':'Máy tính giá trị · kết quả ô Beginner',calcHeaderTitle:en?'How much is this cell worth to you?':'Kỹ năng ô này đáng giá bao nhiêu với bạn?',calcHoursSavedLabel:en?'Hours saved per week with AI':'Giờ tiết kiệm mỗi tuần nhờ AI',calcHourlyRateLabel:en?'Your hourly value':'Giá trị 1 giờ làm việc của bạn',calcRetainMonthlyLabel:en?'You regain each month':'Bạn lấy lại mỗi tháng',calcRetainYearSub:en?'≈ '+((s.calcHours||4)*4*(s.calcRate||150)*12/(s.calcRate||150)/8).toFixed(1)+' work days per year — the exact metric to report to your manager.':'≈ '+((s.calcHours||4)*4*(s.calcRate||150)*12/(s.calcRate||150)/8).toFixed(1)+' ngày làm việc mỗi năm — chính là con số kết quả để tự báo cáo với sếp.',mxDExpectedOutcomeLabel:en?'Expected Outcome':'Kết quả kỳ vọng',mxDYouAreHereStudent:en?'You are here':'Bạn ở đây',mxDWithClassmates:this.isCloud()?(c=>en?'with your '+c+' classmates':'cùng các bạn lớp '+c)({office:'Office',management:'Management',creativity:'Creativity',affiliate:'Affiliate'}[s.libStuCls??'office']||'Office'):en?'with 12 Office classmates':'cùng 12 bạn lớp Office',// T-113: no real class roster yet → no number
 mxDPointsSub:this.rankProg()?this.rankProg().pts+' / '+this.rankProg().need+' '+(en?'pts — ':'điểm — ')+this.rankLeftLine(en):en?'400 / 480 pts — only 80 pts to unlock Researcher':'400 / 480 điểm — còn 80 điểm để mở khóa Researcher',mxDBarW:this.rankProg()?this.rankProg().pct:'83%',homeTileBarW:this.rankProg()?this.rankProg().pct:'80%',// T-112
-mxDStudyFinalBlockBtn:this.nextBlockInfo(en)?(en?'Study next block · ':'Học block tiếp · ')+this.nextBlockInfo(en).dur+(en?' · +40 pts →':' · +40 điểm →'):GOOGLE_AUTH&&this.isCloud()&&!this.libLessons.length?en?'Open Library →':'Mở Thư viện →':en?'Study final block · 6 min · +80 pts →':'Học block cuối · 6 phút · +80 điểm →',mxDClassLearningHere:en?'Class is on this cell':'Lớp đang học ô này',pillarSubConsumer:en?'Save time':'Tiết kiệm thời gian',pillarSubOperator:en?'Productivity':'Năng suất',pillarSubArchitect:en?'Operations':'Vận hành',pillarSubStrategist:en?'Breakthrough':'Đột phá',tierBasicLabel:en?'Basic':'Cơ bản',tierMiddleLabel:en?'Middle':'Lưng chừng',tierAdvanceLabel:en?'Advance':'Nâng cao',emptyCellLabel:en?'— Intentional empty cell —':'— Ô trống có chủ đích —',emptyCellWhy:en?'why?':'vì sao?',homeSubTag:en?'AI Competency Matrix · 4 Pillars × 3 Tiers':'Ma trận năng lực AI · 4 hướng × 3 tầng',homeGreetingLine1:en?'Good evening, '+(s.name||'Linh')+'.':'Chào buổi tối, '+(s.name||'Linh')+'.',homeGreetingLine2:this.rankProg()?(l=>l.charAt(0).toUpperCase()+l.slice(1)+'.')(this.rankLeftLine(en)):en?'Only 80 pts to unlock Researcher.':'Còn 80 điểm để mở khóa Researcher.',homeTeacherGreeting1:en?'Good evening, Teacher Huong Tra.':'Chào buổi tối, GV Hương Trà.',homeTeacherGreeting2:en?'Shared competency map for all 4 classes.':'Bản đồ năng lực dùng chung cho cả 4 lớp.',homeOnboardBtn:en?'New learner experience · 2 min →':'Trải nghiệm học viên mới · 2 phút →',homeBackTeacherBtn:en?'← Back to Teacher Dashboard':'← Về bàn điều hành',homeTileProgressLabel:en?'Current Cell Progress':'Tiến độ ô hiện tại',homeTileProgressSub:this.rankProg()?(r=>r.pts+' / '+r.need+' '+(en?'points · ':'điểm · ')+r.bd+'/'+r.bt+(en?' blocks completed':' block hoàn thành'))(this.rankProg()):en?'400 / 480 points · 4/5 blocks completed':'400 / 480 điểm · 4/5 block hoàn thành',homeTeachingLabel:en?'Teaching':'Đang dạy',homeTeachingTip:en?'Click a cell to view lesson content.':'Bấm một ô để xem bài giảng trong ô đó.',homeWelcomeBackHeader:en?'Welcome back, '+(s.name||'Linh')+'!':'Chào mừng trở lại, '+(s.name||'Linh')+'!',homeWelcomeBackBody:en?'Last time you were at':'Lần trước bạn đang ở',homeWelcomeBackBody2:en?'— resume in 1 click.':'— quay lại đúng chỗ trong 1 chạm.',homeResumeBtn:en?'Resume →':'Tiếp tục →',homeRegionFilterLabel:en?'Filter by Region':'Xem theo khu vực',homeRegAllLabel:en?'All · 31':'Tất cả · 31',homeRegGlLabel:en?'Global · 21':'Global · 21',homeRegVnLabel:en?'🇻🇳 Vietnam · 4':'🇻🇳 Việt Nam · 4',homeRegCnLabel:en?'🇨🇳 China · 6':'🇨🇳 Trung Quốc · 6',homeHowRankedBtn:en?'How are companies assigned?':'Công ty được xếp ô thế nào?',homeWhyBtn:en?'Why? →':'Vì sao? →'};}renderVals(){const screen=this.state.screen??this.props.startScreen??'home';const role=this.state.role??(screen==='teacher'||this.props.startScreen==='teacher'?'teacher':'student');const revealed=this.state.isRevealed??this.props.wallRevealed??true;const isLoggedIn=!!this.state.isLoggedIn;const isNotTeacher=role!=='teacher';const nav=s=>()=>{if(!this.state.isLoggedIn){this.setState({screen:'login',navMenuOpen:false});return;}this._rtInLiveGame=false;this.stopTimers();this.clearGameExplain();this.setState({screen:s});};const homeKey=isNotTeacher?'home':'teacher';// T-110 (= A): a teacher's "home" (logo, Ma trận button, tab) is the teacher dashboard
+mxDStudyFinalBlockBtn:this.nextBlockInfo(en)?(en?'Study next block · ':'Học block tiếp · ')+this.nextBlockInfo(en).dur+(en?' · +40 pts →':' · +40 điểm →'):GOOGLE_AUTH&&this.isCloud()&&!this.libLessons.length?en?'Open Library →':'Mở Thư viện →':en?'Study final block · 6 min · +80 pts →':'Học block cuối · 6 phút · +80 điểm →',mxDClassLearningHere:en?'Class is on this cell':'Lớp đang học ô này',pillarSubConsumer:en?'Save time':'Tiết kiệm thời gian',pillarSubOperator:en?'Productivity':'Năng suất',pillarSubArchitect:en?'Operations':'Vận hành',pillarSubStrategist:en?'Breakthrough':'Đột phá',tierBasicLabel:en?'Basic':'Cơ bản',tierMiddleLabel:en?'Middle':'Lưng chừng',tierAdvanceLabel:en?'Advance':'Nâng cao',emptyCellLabel:en?'— Intentional empty cell —':'— Ô trống có chủ đích —',emptyCellWhy:en?'why?':'vì sao?',homeSubTag:en?'AI Competency Matrix · 4 Pillars × 3 Tiers':'Ma trận năng lực AI · 4 hướng × 3 tầng',homeGreetingLine1:en?'Good evening, '+(s.name||'Linh')+'.':'Chào buổi tối, '+(s.name||'Linh')+'.',homeGreetingLine2:this.sigAccent(this.rankProg()?(l=>l.charAt(0).toUpperCase()+l.slice(1)+'.')(this.rankLeftLine(en)):en?'Only 80 pts to unlock Researcher.':'Còn 80 điểm để mở khóa Researcher.',1),homeTeacherGreeting1:en?'Good evening, Teacher Huong Tra.':'Chào buổi tối, GV Hương Trà.',homeTeacherGreeting2:this.sigAccent(en?'Shared competency map for all 4 classes.':'Bản đồ năng lực dùng chung cho cả 4 lớp.',2),homeOnboardBtn:en?'New learner experience · 2 min →':'Trải nghiệm học viên mới · 2 phút →',homeBackTeacherBtn:en?'← Back to Teacher Dashboard':'← Về bàn điều hành',homeTileProgressLabel:en?'Current Cell Progress':'Tiến độ ô hiện tại',homeTileProgressSub:this.rankProg()?(r=>r.pts+' / '+r.need+' '+(en?'points · ':'điểm · ')+r.bd+'/'+r.bt+(en?' blocks completed':' block hoàn thành'))(this.rankProg()):en?'400 / 480 points · 4/5 blocks completed':'400 / 480 điểm · 4/5 block hoàn thành',homeTeachingLabel:en?'Teaching':'Đang dạy',homeTeachingTip:en?'Click a cell to view lesson content.':'Bấm một ô để xem bài giảng trong ô đó.',homeWelcomeBackHeader:en?'Welcome back, '+(s.name||'Linh')+'!':'Chào mừng trở lại, '+(s.name||'Linh')+'!',homeWelcomeBackBody:en?'Last time you were at':'Lần trước bạn đang ở',homeWelcomeBackBody2:en?'— resume in 1 click.':'— quay lại đúng chỗ trong 1 chạm.',homeResumeBtn:en?'Resume →':'Tiếp tục →',homeRegionFilterLabel:en?'Filter by Region':'Xem theo khu vực',homeRegAllLabel:en?'All · 31':'Tất cả · 31',homeRegGlLabel:en?'Global · 21':'Global · 21',homeRegVnLabel:en?'🇻🇳 Vietnam · 4':'🇻🇳 Việt Nam · 4',homeRegCnLabel:en?'🇨🇳 China · 6':'🇨🇳 Trung Quốc · 6',homeHowRankedBtn:en?'How are companies assigned?':'Công ty được xếp ô thế nào?',homeWhyBtn:en?'Why? →':'Vì sao? →'};}renderVals(){const screen=this.state.screen??this.props.startScreen??'home';const role=this.state.role??(screen==='teacher'||this.props.startScreen==='teacher'?'teacher':'student');const revealed=this.state.isRevealed??this.props.wallRevealed??true;const isLoggedIn=!!this.state.isLoggedIn;const isNotTeacher=role!=='teacher';const nav=s=>()=>{if(!this.state.isLoggedIn){this.setState({screen:'login',navMenuOpen:false});return;}this._rtInLiveGame=false;this.stopTimers();this.clearGameExplain();this.setState({screen:s});};const homeKey=isNotTeacher?'home':'teacher';// T-110 (= A): a teacher's "home" (logo, Ma trận button, tab) is the teacher dashboard
 const userName=this.state.name??this.props.userName??'Linh';const navBase={padding:'8px 7px',whiteSpace:'nowrap',flexShrink:0,border:'none',borderRadius:'999px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'13px',fontWeight:600,cursor:'pointer',background:'transparent',color:'#6B5044',whiteSpace:'nowrap',flexShrink:0};const navActive={...navBase,background:'#3A2C22',color:'#fff',fontWeight:700};const ns=key=>screen===key?navActive:navBase;const mobG=(this.state.vw||1200)<=720;const inLiveG=this._rtInLiveGame&&screen.indexOf('g-')===0;const activeNav=k=>k==='live'?screen==='live'||inLiveG:k==='arcade'?screen==='arcade'||!inLiveG&&screen.indexOf('g-')===0:k==='library'?screen==='library'||screen==='lesson':screen===k;const enNav=this.state.lang==='en';const navMenuItems=(isNotTeacher?[['home',enNav?'Matrix':'Ma trận'],['library',enNav?'Library':'Thư viện'],['live','Live Room'],['community',enNav?'Community':'Cộng đồng'],['arcade','Arcade'],['shop','Shop'],['space','Space'],['guide',enNav?'Guide':'Hướng dẫn']]:[// T-110 (= A) + Q12 = A · T-303 (Q32 = B): + Cộng đồng · T-374 (Q104 = A): + Thư viện & Arcade for direct teacher verification
 ['teacher',this.state.lang==='en'?'Teacher Dashboard':'Bảng giáo viên'],['home',this.state.lang==='en'?'Matrix':'Ma trận'],['library',enNav?'Library':'Thư viện'],['live','Live Room'],['community',enNav?'Community':'Cộng đồng'],['arcade','Arcade'],['guide',this.state.lang==='en'?'Guide':'Hướng dẫn']]).map(([k,label])=>({label,style:{textAlign:'left',width:'100%',boxSizing:'border-box',padding:'13px 16px',border:'none',borderRadius:'12px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'15px',fontWeight:activeNav(k)?800:600,cursor:'pointer',background:activeNav(k)?'#3A2C22':'transparent',color:activeNav(k)?'#fff':'#3A2C22'},click:()=>{this.stopTimers();this.setState({screen:k,navMenuOpen:false});}}));const tabBase={padding:'7px 16px',border:'1px solid #D9CDBC',borderRadius:'999px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'12px',fontWeight:700,cursor:'pointer',background:'transparent',color:'#6B5044',whiteSpace:'nowrap',flexShrink:0};const tabActive={...tabBase,background:'#3A2C22',borderColor:'#3A2C22',color:'#fff'};const ts=key=>this.state.tab===key?tabActive:tabBase;const setTab=t=>()=>this.setState({tab:t});/* ── Community discovery: view tabs, search, sort, type & tag filters ── */const viewBase={padding:'9px 18px',border:'1px solid #D9CDBC',borderRadius:'999px',fontFamily:"'Montserrat',Arial,sans-serif",fontSize:'13px',fontWeight:800,cursor:'pointer',background:'transparent',color:'#6B5044',whiteSpace:'nowrap',flexShrink:0};const viewActive={...viewBase,background:'#3A2C22',borderColor:'#3A2C22',color:'#fff'};const commView=this.state.commView||'all';const vs=key=>commView===key?viewActive:viewBase;const setView=v=>()=>this.setState({commView:v});const commType=this.state.commType||'all';const cts=key=>commType===key?tabActive:tabBase;const setCommType=t=>()=>this.setState({commType:t});const en=this.state.lang==='en';const TAG_LIST=en?['Prompt','Workflow','Agent','Data','Image & Video']:['Prompt','Workflow','Agent','Dữ liệu','Ảnh & Video'];const commTagFilter=this.state.commTagFilter||{};const activeTagCount=Object.keys(commTagFilter).length;const toggleCommTag=t=>()=>this.setState(s=>{const cur={...(s.commTagFilter||{})};if(cur[t])delete cur[t];else cur[t]=true;return{commTagFilter:cur};});const commTagChips=TAG_LIST.map(t=>({label:t,style:commTagFilter[t]?tabActive:tabBase,toggle:toggleCommTag(t)}));const commQuery=this.state.commQuery||'';const setCommQuery=e=>this.setState({commQuery:e.target.value});const commSort=this.state.commSort||'new';const setCommSort=e=>this.setState({commSort:e.target.value});const commFiltersActive=commType!=='all'||activeTagCount>0||commQuery.trim()!==''||this.state.tab!=='all'||commSort!=='new';const clearCommFilters=()=>this.setState({commType:'all',commTagFilter:{},commQuery:'',tab:'all',commSort:'new'});const fc=this.feedCloud();// T-303 (Q33 = A): Google + gas-13 → real posts only
 const allPosts=fc?[]:this.communitySeedPosts(userName);const tab=this.state.tab;const modMode=!!this.state.modMode&&role==='teacher';// moderation is GV-only — never active in student view
